@@ -19,14 +19,14 @@ public class LarielTrackEntityCommand {
 
                             var target = player.level().getEntity(id);
                             if (target == null) {
-                                ctx.getSource().sendFailure(Component.literal("Entity not found."));
+                                ctx.getSource().sendFailure(Component.translatable("spawnnotification.larielsqualityoflife.entity_not_found"));
                                 return 0;
                             }
 
-                            LarielEntityTrackListener.StartCompassTracking(player, target);
+                            LarielEntityTrackListener.GetInstance().startTracking(player, target);
 
                             ctx.getSource().sendSuccess(
-                                    () -> Component.literal("Tracking started for entity " + id),
+                                    () -> Component.translatable("spawnnotification.larielsqualityoflife.start_tracking"),
                                     false
                             );
 

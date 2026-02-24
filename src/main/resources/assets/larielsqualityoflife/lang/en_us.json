@@ -1,6 +1,6 @@
 {
   "spawnnotification.larielsqualityoflife.at": "at pos: ",
-  "spawnnotification.larielsqualityoflife.start_tracking.tooltip": "Start tracking",
+
   "spawnnotification.larielsqualityoflife.boss.prefix": "§c⚔ A wild §lBoss§r§4 ",
   "spawnnotification.larielsqualityoflife.boss.postfix": "§c has appeared! §c⚔",
   "spawnnotification.larielsqualityoflife.shiny.prefix": "§e★ A wild §lSHINY§r§e ",
@@ -12,5 +12,11 @@
   "spawnnotification.larielsqualityoflife.raid.prefix": "§4⚔ §cA §lRAID BOSS§r§4 ",
   "spawnnotification.larielsqualityoflife.raid.postfix": "§4 has spawned! §4⚔",
   "spawnnotification.larielsqualityoflife.specialpalette.prefix": "§b◆ A wild §lSPECIAL‑PALETTE§r§3 ",
-  "spawnnotification.larielsqualityoflife.specialpalette.postfix": "§b has appeared! §b◆"
+  "spawnnotification.larielsqualityoflife.specialpalette.postfix": "§b has appeared! §b◆",
+  "spawnnotification.larielsqualityoflife.zygarde.prefix": "§b◆ A ",
+  "spawnnotification.larielsqualityoflife.zygarde.postfix": "§b has appeared! §b◆",
+
+  "spawnnotification.larielsqualityoflife.start_tracking.tooltip": "Start tracking",
+  "spawnnotification.larielsqualityoflife.start_tracking": "Start tracking for ",
+  "spawnnotification.larielsqualityoflife.entity_not_found": "Entity not found."
 }
