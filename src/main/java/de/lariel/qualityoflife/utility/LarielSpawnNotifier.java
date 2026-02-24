@@ -11,9 +11,7 @@ import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import java.util.Locale;
 
 public class LarielSpawnNotifier {
-
-    public void NotifyBoss(PixelmonEntity entity)
-    {
+    public void NotifyBoss(PixelmonEntity entity) {
         var component = Component.translatable("spawnnotification.larielsqualityoflife.boss.prefix")
                 .append(GetLocalizedPokemonName(entity.getPokemon()))
                 .append(Component.translatable("spawnnotification.larielsqualityoflife.boss.postfix"));
@@ -21,8 +19,7 @@ public class LarielSpawnNotifier {
         NotifyPlayers(entity, component);
     }
 
-    public void NotifyShiny(PixelmonEntity entity)
-    {
+    public void NotifyShiny(PixelmonEntity entity) {
         var component = Component.translatable("spawnnotification.larielsqualityoflife.shiny.prefix")
                 .append(GetLocalizedPokemonName(entity.getPokemon()))
                 .append(Component.translatable("spawnnotification.larielsqualityoflife.shiny.postfix"));
@@ -30,8 +27,7 @@ public class LarielSpawnNotifier {
         NotifyPlayers(entity, component);
     }
 
-    public void NotifyLegendary(PixelmonEntity entity)
-    {
+    public void NotifyLegendary(PixelmonEntity entity) {
         var component = Component.translatable("spawnnotification.larielsqualityoflife.legendary.prefix")
                 .append(GetLocalizedPokemonName(entity.getPokemon()))
                 .append(Component.translatable("spawnnotification.larielsqualityoflife.legendary.postfix"));
@@ -39,8 +35,7 @@ public class LarielSpawnNotifier {
         NotifyPlayers(entity, component);
     }
 
-    public void NotifyUltraBeast(PixelmonEntity entity)
-    {
+    public void NotifyUltraBeast(PixelmonEntity entity) {
         var component = Component.translatable("spawnnotification.larielsqualityoflife.ultrabeast.prefix")
                 .append(GetLocalizedPokemonName(entity.getPokemon()))
                 .append(Component.translatable("spawnnotification.larielsqualityoflife.ultrabeast.postfix"));
@@ -48,8 +43,7 @@ public class LarielSpawnNotifier {
         NotifyPlayers(entity, component);
     }
 
-    public void NotifySpecialPalette(PixelmonEntity entity)
-    {
+    public void NotifySpecialPalette(PixelmonEntity entity) {
         var component = Component.translatable("spawnnotification.larielsqualityoflife.specialpalette.prefix")
                 .append(GetLocalizedPokemonName(entity.getPokemon()))
                 .append(" - " + entity.getPokemon().getPaletteName())
@@ -73,8 +67,9 @@ public class LarielSpawnNotifier {
             var coords = GetCoords(entity);
             var coordsComponent = Component.literal("[" + coords.x() + " " + coords.y() + " " + coords.z() + "]")
                     .withStyle(style -> style.withColor(TextColor.fromRgb(0x55FF55))
-                            .withUnderlined(true) .withClickEvent(new ClickEvent( ClickEvent.Action.RUN_COMMAND, "/tp @s " + coords.x() + " " + coords.y() + " " + coords.z() ))
-                            .withHoverEvent(new HoverEvent( HoverEvent.Action.SHOW_TEXT, Component.literal("Teleport to these coordinates") )) );
+                            .withUnderlined(true)
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/trackspawn " + entity.getId()))
+                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("spawnnotification.larielsqualityoflife.start_tracking.tooltip"))));
             var atMessage = Component.translatable("spawnnotification.larielsqualityoflife.at").append(coordsComponent);
 
             player.sendSystemMessage(atMessage);
@@ -98,6 +93,6 @@ public class LarielSpawnNotifier {
     private boolean IsPlayerInRange(ServerPlayer player, PixelmonEntity entity) {
         var detectionRadius = LarielsQoL.getConfig().GetSpawnDetectionRadiusField();
         double distanceSquared = player.distanceToSqr(entity);
-        return distanceSquared <= (double)(detectionRadius * detectionRadius);
+        return distanceSquared <= (detectionRadius * detectionRadius);
     }
 }

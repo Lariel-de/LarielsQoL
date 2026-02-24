@@ -1,8 +1,10 @@
 package de.lariel.qualityoflife;
 
 import com.pixelmonmod.pixelmon.api.config.api.yaml.YamlConfigFactory;
+import de.lariel.qualityoflife.commands.LarielTrackEntityCommand;
 import de.lariel.qualityoflife.config.LarielsQoLConfig;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
+import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -47,8 +49,10 @@ public class LarielsQoL {
 
         // Since the desired pixelmon event fires to early and the coordinates of the entity is always 0 0 0
         // use the NeoForgeEventBus
-        if (_instance._config.GetEnableSpawnNotificationField())
+        if (_instance._config.GetEnableSpawnNotificationField()) {
             NeoForge.EVENT_BUS.register(new LarielPokeSpawnListener(_instance._notifier));
+            NeoForge.EVENT_BUS.register(new LarielEntityTrackListener());
+        }
     }
 
     @SubscribeEvent
@@ -72,6 +76,7 @@ public class LarielsQoL {
     @SubscribeEvent
     public static void onCommandRegister(RegisterCommandsEvent event) {
         //Register command logic here
+        LarielTrackEntityCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent
