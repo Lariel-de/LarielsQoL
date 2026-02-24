@@ -4,7 +4,6 @@ import de.lariel.qualityoflife.utility.LarielTrackedTarget;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.HashMap;
@@ -19,8 +18,7 @@ public abstract class LarielBaseTrackListener<T> {
             "🡱", "🡲", "🡲", "🡳", "🡳", "🡰", "🡰", "🡱"
     };
 
-    @SubscribeEvent
-    public void onPlayerTick(PlayerTickEvent.Post event) {
+    protected void onPlayerTick(PlayerTickEvent.Post event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
 
         var data = activeTargets.get(player.getUUID());

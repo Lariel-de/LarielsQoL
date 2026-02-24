@@ -3,6 +3,8 @@ package de.lariel.qualityoflife.listener;
 import de.lariel.qualityoflife.listener.base.LarielBaseTrackListener;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 public class LarielBlockTrackListener extends LarielBaseTrackListener<BlockPos> {
     private static LarielBlockTrackListener _instance;
@@ -12,6 +14,11 @@ public class LarielBlockTrackListener extends LarielBaseTrackListener<BlockPos> 
             _instance = new LarielBlockTrackListener();
 
         return _instance;
+    }
+
+    @SubscribeEvent
+    public void onPlayerTick(PlayerTickEvent.Post event) {
+        super.onPlayerTick(event);
     }
 
     @Override
