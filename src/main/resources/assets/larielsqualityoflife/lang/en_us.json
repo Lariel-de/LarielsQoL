@@ -1,0 +1,15 @@
+{
+  "spawnnotification.larielsqualityoflife.at": "at pos: ",
+  "spawnnotification.larielsqualityoflife.boss.prefix": "§c⚔ A wild §lBoss§r§4 ",
+  "spawnnotification.larielsqualityoflife.boss.postfix": "§c has appeared! §c⚔",
+  "spawnnotification.larielsqualityoflife.shiny.prefix": "§e★ A wild §lSHINY§r§e ",
+  "spawnnotification.larielsqualityoflife.shiny.postfix": "§e has appeared! §e★",
+  "spawnnotification.larielsqualityoflife.legendary.prefix": "§d✪ A wild §lLEGENDARY§r§6 ",
+  "spawnnotification.larielsqualityoflife.legendary.postfix": "§d has appeared! §d✪",
+  "spawnnotification.larielsqualityoflife.ultrabeast.prefix": "§d⟬§5UB§d⟭ §5A wild §lULTRA‑BEAST§r§d ",
+  "spawnnotification.larielsqualityoflife.ultrabeast.postfix": "§d has appeared! §d⟬§5UB§d⟭",
+  "spawnnotification.larielsqualityoflife.raid.prefix": "§4⚔ §cA §lRAID BOSS§r§4 ",
+  "spawnnotification.larielsqualityoflife.raid.postfix": "§4 has spawned! §4⚔",
+  "spawnnotification.larielsqualityoflife.specialpalette.prefix": "§b◆ A wild §lSPECIAL‑PALETTE§r§3 ",
+  "spawnnotification.larielsqualityoflife.specialpalette.postfix": "§b has appeared! §b◆"
+}

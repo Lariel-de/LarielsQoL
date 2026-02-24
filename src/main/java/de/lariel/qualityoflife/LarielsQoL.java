@@ -1,8 +1,10 @@
-package your.domain.path;
+package de.lariel.qualityoflife;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
 import com.pixelmonmod.pixelmon.api.config.api.yaml.YamlConfigFactory;
-import com.pixelmonmod.tcg.TCG;
+import de.lariel.qualityoflife.config.LarielsQoLConfig;
+import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
+import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -15,43 +17,35 @@ import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import your.domain.path.command.CustomHealCommand;
-import your.domain.path.command.CustomSpawnCommand;
-import your.domain.path.command.ExampleCommand;
-import your.domain.path.command.MoreComplicatedCommand;
-import your.domain.path.config.ExampleConfig;
-import your.domain.path.listener.PixelmonEggHatchExampleListener;
-import your.domain.path.listener.PokemonSpawnExampleListener;
-import your.domain.path.listener.tcg.PackOpeningListener;
 
 import java.io.IOException;
 
-@Mod(ModFile.MOD_ID)
-@EventBusSubscriber(modid = ModFile.MOD_ID)
-public class ModFile {
+@SuppressWarnings("unused")
+@Mod(LarielsQoL.MOD_ID)
+@EventBusSubscriber(modid = LarielsQoL.MOD_ID)
+public class LarielsQoL {
 
-    public static final String MOD_ID = "examplemod";
+    public static final String MOD_ID = "larielsqualityoflife";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-    private static ModFile instance;
+    private static LarielsQoL _instance;
+    private final LarielSpawnNotifier _notifier;
 
-    private ExampleConfig config;
+    private LarielsQoLConfig _config;
 
-    public ModFile(IEventBus bus) {
-        instance = this;
+    public LarielsQoL(IEventBus bus) {
+        _instance = this;
+        _notifier = new LarielSpawnNotifier();
 
         reloadConfig();
 
-        bus.addListener(ModFile::onModLoad);
+        bus.addListener(LarielsQoL::onModLoad);
     }
 
     public static void onModLoad(FMLCommonSetupEvent event) {
         // Here is how you register a listener for Pixelmon events
-        // Pixelmon has its own event bus for its events, as does TCG
-        // So any event listener for those mods need to be registered to those specific event buses
-        Pixelmon.EVENT_BUS.register(new PixelmonEggHatchExampleListener());
-        Pixelmon.EVENT_BUS.register(new PokemonSpawnExampleListener());
-        TCG.EVENT_BUS.register(new PackOpeningListener());
+        if (_instance._config.getEnableSpawnNotificationField())
+            Pixelmon.EVENT_BUS.register(new LarielPokeSpawnListener(_instance._notifier));
     }
 
     @SubscribeEvent
@@ -61,7 +55,7 @@ public class ModFile {
 
     public void reloadConfig() {
         try {
-            this.config = YamlConfigFactory.getInstance(ExampleConfig.class);
+            _config = YamlConfigFactory.getInstance(LarielsQoLConfig.class);
         } catch (IOException e) {
             LOGGER.error("Failed to load config", e);
         }
@@ -75,12 +69,6 @@ public class ModFile {
     @SubscribeEvent
     public static void onCommandRegister(RegisterCommandsEvent event) {
         //Register command logic here
-        // Commands don't have to be registered here
-        // However, not registering them here can lead to some hybrids/server software not recognising the commands
-        ExampleCommand.register(event.getDispatcher());
-        MoreComplicatedCommand.register(event.getDispatcher());
-        CustomHealCommand.register(event.getDispatcher());
-        CustomSpawnCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent
@@ -93,15 +81,15 @@ public class ModFile {
         // Logic for when the server is stopped
     }
 
-    public static ModFile getInstance() {
-        return instance;
+    public static LarielsQoL get_instance() {
+        return _instance;
     }
 
     public static Logger getLogger() {
         return LOGGER;
     }
 
-    public static ExampleConfig getConfig() {
-        return instance.config;
+    public static LarielsQoLConfig getConfig() {
+        return _instance._config;
     }
 }
