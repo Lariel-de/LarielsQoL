@@ -22,7 +22,7 @@ public class LarielEntityTrackListener extends LarielBaseTrackListener<Entity> {
     }
 
     @Override
-    protected boolean isTargetValid(Entity target) {
+    protected boolean isTargetValid(ServerPlayer player, Entity target) {
         return target.isAlive();
     }
 

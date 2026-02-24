@@ -22,8 +22,8 @@ public class LarielBlockTrackListener extends LarielBaseTrackListener<BlockPos> 
     }
 
     @Override
-    protected boolean isTargetValid(BlockPos target) {
-        return true; // BlockPos stirbt nicht
+    protected boolean isTargetValid(ServerPlayer player, BlockPos target) {
+        return getDistance(player, target) > 1;
     }
 
     @Override

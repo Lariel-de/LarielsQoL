@@ -25,7 +25,7 @@ public abstract class LarielBaseTrackListener<T> {
         if (data == null) return;
 
         var target = data.target().get();
-        if (target == null || !isTargetValid(target)) {
+        if (target == null || !isTargetValid(player, target)) {
             activeTargets.remove(player.getUUID());
             return;
         }
@@ -37,7 +37,7 @@ public abstract class LarielBaseTrackListener<T> {
         activeTargets.put(player.getUUID(), new LarielTrackedTarget<>(player, target));
     }
 
-    protected abstract boolean isTargetValid(T target);
+    protected abstract boolean isTargetValid(ServerPlayer player, T target);
 
     protected abstract double getDistance(ServerPlayer player, T target);
 
