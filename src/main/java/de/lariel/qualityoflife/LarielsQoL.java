@@ -1,6 +1,5 @@
 package de.lariel.qualityoflife;
 
-import com.pixelmonmod.pixelmon.Pixelmon;
 import com.pixelmonmod.pixelmon.api.config.api.yaml.YamlConfigFactory;
 import de.lariel.qualityoflife.config.LarielsQoLConfig;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
@@ -10,6 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -44,8 +44,11 @@ public class LarielsQoL {
 
     public static void onModLoad(FMLCommonSetupEvent event) {
         // Here is how you register a listener for Pixelmon events
-        if (_instance._config.getEnableSpawnNotificationField())
-            Pixelmon.EVENT_BUS.register(new LarielPokeSpawnListener(_instance._notifier));
+
+        // Since the desired pixelmon event fires to early and the coordinates of the entity is always 0 0 0
+        // use the NeoForgeEventBus
+        if (_instance._config.GetEnableSpawnNotificationField())
+            NeoForge.EVENT_BUS.register(new LarielPokeSpawnListener(_instance._notifier));
     }
 
     @SubscribeEvent

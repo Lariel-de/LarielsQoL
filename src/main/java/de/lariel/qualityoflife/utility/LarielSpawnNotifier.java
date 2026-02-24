@@ -2,6 +2,7 @@ package de.lariel.qualityoflife.utility;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
+import de.lariel.qualityoflife.LarielsQoL;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.level.ServerPlayer;
@@ -64,6 +65,9 @@ public class LarielSpawnNotifier {
             return;
 
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+            if (!IsPlayerInRange(player, entity))
+                continue;
+
             player.sendSystemMessage(component);
 
             var coords = GetCoords(entity);
@@ -89,5 +93,11 @@ public class LarielSpawnNotifier {
         return Component.translatable(translationKey)
                 .withStyle(Style.EMPTY.withColor(ChatFormatting.WHITE)
                         .withBold(true));
+    }
+
+    private boolean IsPlayerInRange(ServerPlayer player, PixelmonEntity entity) {
+        var detectionRadius = LarielsQoL.getConfig().GetSpawnDetectionRadiusField();
+        double distanceSquared = player.distanceToSqr(entity);
+        return distanceSquared <= (double)(detectionRadius * detectionRadius);
     }
 }

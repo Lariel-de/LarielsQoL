@@ -1,11 +1,10 @@
 package de.lariel.qualityoflife.listener;
 
-import com.pixelmonmod.pixelmon.api.events.spawning.SpawnEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
-import com.pixelmonmod.pixelmon.api.spawning.archetypes.entities.pokemon.SpawnActionPokemon;
 import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 
 public class LarielPokeSpawnListener {
 
@@ -16,15 +15,14 @@ public class LarielPokeSpawnListener {
     }
 
     @SubscribeEvent
-    public void onEntitySpawn(SpawnEvent event) {
-        var action = event.action;
+    public void Notify(EntityJoinLevelEvent event) {
+        var entity = event.getEntity();
 
-        if (!(action instanceof SpawnActionPokemon pokemonAction)) {
+        if (event.getLevel().isClientSide() || !(entity instanceof PixelmonEntity pixelmonEntity)) {
             return;
         }
 
-        var pixelmonEntity = pokemonAction.getOrCreateEntity();
-        var pokemon = pokemonAction.pokemon;
+        var pokemon = pixelmonEntity.getPokemon();
 
         if (!IsValidPokemon(pixelmonEntity, pokemon)) {
             return;
