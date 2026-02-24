@@ -51,8 +51,8 @@ public class LarielsQoL {
         // use the NeoForgeEventBus
         if (_instance._config.GetEnableSpawnNotificationField()) {
             NeoForge.EVENT_BUS.register(new LarielPokeSpawnListener(LarielSpawnNotifier.GetInstance()));
-            NeoForge.EVENT_BUS.register(new LarielEntityTrackListener());
-            NeoForge.EVENT_BUS.register(new LarielBlockTrackListener());
+            NeoForge.EVENT_BUS.register(LarielEntityTrackListener.GetInstance());
+            NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
         }
     }
 
