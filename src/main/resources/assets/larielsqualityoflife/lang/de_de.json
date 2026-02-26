@@ -1,0 +1,22 @@
+{
+  "spawnnotification.larielsqualityoflife.at": "auf Position: ",
+
+  "spawnnotification.larielsqualityoflife.boss.prefix": "§c⚔ Ein wildes §lBoss§r§4 ",
+  "spawnnotification.larielsqualityoflife.boss.postfix": "§c ist erschienen! §c⚔",
+  "spawnnotification.larielsqualityoflife.shiny.prefix": "§e★ Ein wildes §lSHINY§r§e ",
+  "spawnnotification.larielsqualityoflife.shiny.postfix": "§e ist erschienen! §e★",
+  "spawnnotification.larielsqualityoflife.legendary.prefix": "§d✪ Ein wildes §Legendäres§r§6 ",
+  "spawnnotification.larielsqualityoflife.legendary.postfix": "§d ist erschienen! §d✪",
+  "spawnnotification.larielsqualityoflife.ultrabeast.prefix": "§d⟬§5UB§d⟭ §5Eine wilde §lULTRA‑Bestie§r§d ",
+  "spawnnotification.larielsqualityoflife.ultrabeast.postfix": "§d ist erschienen! §d⟬§5UB§d⟭",
+  "spawnnotification.larielsqualityoflife.raid.prefix": "§4⚔ §cEin §lRAID BOSS§r§4 ",
+  "spawnnotification.larielsqualityoflife.raid.postfix": "§4 ist erschienen! §4⚔",
+  "spawnnotification.larielsqualityoflife.specialpalette.prefix": "§b◆ Ein wildes §lSPECIAL‑PALETTE§r§3 ",
+  "spawnnotification.larielsqualityoflife.specialpalette.postfix": "§b ist erschienen! §b◆",
+  "spawnnotification.larielsqualityoflife.zygarde.prefix": "§b◆ Ein ",
+  "spawnnotification.larielsqualityoflife.zygarde.postfix": "§b ist erschienen! §b◆",
+
+  "spawnnotification.larielsqualityoflife.start_tracking.tooltip": "Tracking starten",
+  "spawnnotification.larielsqualityoflife.start_tracking": "Starte tracking für ",
+  "spawnnotification.larielsqualityoflife.entity_not_found": "Entity nicht gefunden."
+}
