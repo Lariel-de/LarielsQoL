@@ -1,12 +1,15 @@
 package de.lariel.qualityoflife;
 
+import com.pixelmonmod.pixelmon.Pixelmon;
 import com.pixelmonmod.pixelmon.api.config.api.yaml.YamlConfigFactory;
 import de.lariel.qualityoflife.commands.LarielTrackBlockCommand;
 import de.lariel.qualityoflife.commands.LarielTrackEntityCommand;
 import de.lariel.qualityoflife.config.LarielsQoLConfig;
+import de.lariel.qualityoflife.listener.EggHatchedListener;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
+import de.lariel.qualityoflife.network.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -24,7 +27,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-@SuppressWarnings("unused")
 @Mod(LarielsQoL.MOD_ID)
 @EventBusSubscriber(modid = LarielsQoL.MOD_ID)
 public class LarielsQoL {
@@ -41,6 +43,8 @@ public class LarielsQoL {
 
         reloadConfig();
 
+        NeoForge.EVENT_BUS.register(new LarielHotkeyHandler());
+
         bus.addListener(LarielsQoL::onModLoad);
     }
 
@@ -54,6 +58,8 @@ public class LarielsQoL {
             NeoForge.EVENT_BUS.register(LarielEntityTrackListener.GetInstance());
             NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
         }
+
+        Pixelmon.EVENT_BUS.register(new EggHatchedListener());
     }
 
     @SubscribeEvent

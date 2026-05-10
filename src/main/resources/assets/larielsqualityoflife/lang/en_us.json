@@ -18,5 +18,9 @@
 
   "spawnnotification.larielsqualityoflife.start_tracking.tooltip": "Start tracking",
   "spawnnotification.larielsqualityoflife.start_tracking": "Start tracking for ",
-  "spawnnotification.larielsqualityoflife.entity_not_found": "Entity not found."
+  "spawnnotification.larielsqualityoflife.entity_not_found": "Entity not found.",
+
+  "key.larielsqualityoflife.category_name": "Lariel's QoL",
+  "key.larielsqualityoflife.open_poke_bag": "Open Poké Bag",
+  "key.larielsqualityoflife.no_poke_bag_found": "§cNo Poké Bag found in inventory."
 }
