@@ -10,29 +10,29 @@ import info.pixelmon.repack.org.spongepowered.objectmapping.ConfigSerializable;
 public class LarielsQoLConfig extends AbstractYamlConfig {
 
     // --- General QoL Settings ---
-    private boolean enableSpawnNotification;
-    private double spawnDetectionRadius;
+    private final boolean enableSpawnNotification;
+    private final double spawnDetectionRadius;
 
     // --- BetterBreeding: Undiscovered Breeding ---
-    private boolean allowUndiscoveredBreeding;
-    private int undiscoveredBreedingCount;
-    private int undiscoveredBabyBreedingCount;
+    private final boolean allowUndiscoveredBreeding;
+    private final int undiscoveredBreedingCount;
+    private final int undiscoveredBabyBreedingCount;
 
     // --- BetterBreeding: IV Inheritance ---
-    private double ivInheritanceChance;
+    private final double ivInheritanceChance;
 
     // --- BetterBreeding: Shiny ---
-    private double shinyBaseChance;
-    private double shinyParentMultiplier;
-    private boolean shinyGuaranteeEnabled;
-    private int shinyGuaranteeCostAmount;
-    private String shinyGuaranteeCostItem;
+    private final double shinyBaseChance;
+    private final double shinyParentMultiplier;
+    private final boolean shinyGuaranteeEnabled;
+    private final int shinyGuaranteeCostAmount;
+    private final String shinyGuaranteeCostItem;
 
     // --- BetterBreeding: Form/Skin ---
-    private double formInheritanceChance;
-    private boolean formGuaranteeEnabled;
-    private int formGuaranteeCostAmount;
-    private String formGuaranteeCostItem;
+    private final double formInheritanceChance;
+    private final boolean formGuaranteeEnabled;
+    private final int formGuaranteeCostAmount;
+    private final String formGuaranteeCostItem;
 
     public LarielsQoLConfig() {
         super();

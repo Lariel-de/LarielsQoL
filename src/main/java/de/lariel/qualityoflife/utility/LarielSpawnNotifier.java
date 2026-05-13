@@ -123,7 +123,7 @@ public class LarielSpawnNotifier {
     }
 
     private boolean IsPlayerInRange(ServerPlayer player, PixelmonEntity entity) {
-        var detectionRadius = LarielsQoL.getConfig().GetSpawnDetectionRadiusField();
+        var detectionRadius = LarielsQoL.getConfig().getSpawnDetectionRadius();
         double distanceSquared = player.distanceToSqr(entity);
         return distanceSquared <= (detectionRadius * detectionRadius);
     }

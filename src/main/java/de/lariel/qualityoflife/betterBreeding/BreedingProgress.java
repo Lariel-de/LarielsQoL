@@ -16,14 +16,13 @@ public class BreedingProgress {
         player.getPersistentData().putInt(KEY_COUNT, current + 1);
     }
 
-    public static boolean hasBredBaby(ServerPlayer player) {
-
-        return player.getPersistentData().getBoolean(KEY_BABY);
+    public static int getBredBabyCount(ServerPlayer player) {
+        return player.getPersistentData().getInt(KEY_BABY);
     }
 
-    public static void setBredBaby(ServerPlayer player) {
-
-        player.getPersistentData().putBoolean(KEY_BABY, true);
+    public static void incrementBredBabyCount(ServerPlayer player) {
+        int current = getBredBabyCount(player);
+        player.getPersistentData().putInt(KEY_BABY, current + 1);
     }
 
     public static void reset(ServerPlayer player) {
