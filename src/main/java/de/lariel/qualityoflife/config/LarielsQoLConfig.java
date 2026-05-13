@@ -9,84 +9,122 @@ import info.pixelmon.repack.org.spongepowered.objectmapping.ConfigSerializable;
 @ConfigPath("config/" + LarielsQoL.MOD_ID + "/config.yml")
 public class LarielsQoLConfig extends AbstractYamlConfig {
 
-    // --- General QoL-Settings ---
-    private boolean _enableSpawnNotification;
-    private double _spawnDetectionRadius;
+    // --- General QoL Settings ---
+    private boolean enableSpawnNotification;
+    private double spawnDetectionRadius;
 
-    // --- BetterBreeding: IV-Inheritance ---
-    private double _ivInheritanceChance = 0.9; // Chance pro Stat, dass der höhere IV übernommen wird
+    // --- BetterBreeding: Undiscovered Breeding ---
+    private boolean allowUndiscoveredBreeding;
+    private int undiscoveredBreedingCount;
+    private int undiscoveredBabyBreedingCount;
+
+    // --- BetterBreeding: IV Inheritance ---
+    private double ivInheritanceChance;
 
     // --- BetterBreeding: Shiny ---
-    private double _shinyBaseChance = 0.01; // Basis-Shiny-Chance
-    private double _shinyParentMultiplier = 1.5; // 50% Bonus pro Shiny-Elternteil
-    private boolean _shinyGuaranteeEnabled = true;
-    private int _shinyGuaranteeCostAmount = 10;
-    private String _shinyGuaranteeCostItem = "minecraft:emerald";
+    private double shinyBaseChance;
+    private double shinyParentMultiplier;
+    private boolean shinyGuaranteeEnabled;
+    private int shinyGuaranteeCostAmount;
+    private String shinyGuaranteeCostItem;
 
     // --- BetterBreeding: Form/Skin ---
-    private double _formInheritanceChance = 0.9; // 90% Chance
-    private boolean _formGuaranteeEnabled = true;
-    private int _formGuaranteeCostAmount = 5;
-    private String _formGuaranteeCostItem = "minecraft:emerald";
+    private double formInheritanceChance;
+    private boolean formGuaranteeEnabled;
+    private int formGuaranteeCostAmount;
+    private String formGuaranteeCostItem;
 
     public LarielsQoLConfig() {
         super();
 
-        _enableSpawnNotification = true;
-        _spawnDetectionRadius = 90;
+        // --- QoL Defaults ---
+        this.enableSpawnNotification = true;
+        this.spawnDetectionRadius = 90;
+
+        // --- Undiscovered Breeding Defaults ---
+        this.allowUndiscoveredBreeding = true;
+        this.undiscoveredBreedingCount = 20;
+        this.undiscoveredBabyBreedingCount = 3;
+
+        // --- IV Inheritance Defaults ---
+        this.ivInheritanceChance = 0.9;
+
+        // --- Shiny Defaults ---
+        this.shinyBaseChance = 0.01;
+        this.shinyParentMultiplier = 1.5;
+        this.shinyGuaranteeEnabled = true;
+        this.shinyGuaranteeCostAmount = 10;
+        this.shinyGuaranteeCostItem = "minecraft:emerald";
+
+        // --- Form/Skin Defaults ---
+        this.formInheritanceChance = 0.9;
+        this.formGuaranteeEnabled = true;
+        this.formGuaranteeCostAmount = 5;
+        this.formGuaranteeCostItem = "minecraft:emerald";
     }
 
     // --- Getter: QoL ---
-    public boolean GetEnableSpawnNotificationField() {
-        return _enableSpawnNotification;
+    public boolean getEnableSpawnNotification() {
+        return enableSpawnNotification;
     }
 
-    public double GetSpawnDetectionRadiusField() {
-        return _spawnDetectionRadius;
+    public double getSpawnDetectionRadius() {
+        return spawnDetectionRadius;
     }
 
-
-    // --- Getter: IV-Vererbung ---
-    public double GetIvInheritanceChance() {
-        return _ivInheritanceChance;
+    // --- Getter: Undiscovered Breeding ---
+    public boolean getAllowUndiscoveredBreeding() {
+        return allowUndiscoveredBreeding;
     }
 
+    public int getUndiscoveredBreedingCount() {
+        return undiscoveredBreedingCount;
+    }
+
+    public int getUndiscoveredBabyBreedingCount() {
+        return undiscoveredBabyBreedingCount;
+    }
+
+    // --- Getter: IV Inheritance ---
+    public double getIvInheritanceChance() {
+        return ivInheritanceChance;
+    }
 
     // --- Getter: Shiny ---
-    public double GetShinyBaseChance() {
-        return _shinyBaseChance;
+    public double getShinyBaseChance() {
+        return shinyBaseChance;
     }
 
-    public double GetShinyParentMultiplier() {
-        return _shinyParentMultiplier;
+    public double getShinyParentMultiplier() {
+        return shinyParentMultiplier;
     }
 
-    public boolean GetShinyGuaranteeEnabled() {
-        return _shinyGuaranteeEnabled;
+    public boolean getShinyGuaranteeEnabled() {
+        return shinyGuaranteeEnabled;
     }
 
-    public int GetShinyGuaranteeCostAmount() {
-        return _shinyGuaranteeCostAmount;
+    public int getShinyGuaranteeCostAmount() {
+        return shinyGuaranteeCostAmount;
     }
 
-    public String GetShinyGuaranteeCostItem() {
-        return _shinyGuaranteeCostItem;
+    public String getShinyGuaranteeCostItem() {
+        return shinyGuaranteeCostItem;
     }
 
     // --- Getter: Form/Skin ---
-    public double GetFormInheritanceChance() {
-        return _formInheritanceChance;
+    public double getFormInheritanceChance() {
+        return formInheritanceChance;
     }
 
-    public boolean GetFormGuaranteeEnabled() {
-        return _formGuaranteeEnabled;
+    public boolean getFormGuaranteeEnabled() {
+        return formGuaranteeEnabled;
     }
 
-    public int GetFormGuaranteeCostAmount() {
-        return _formGuaranteeCostAmount;
+    public int getFormGuaranteeCostAmount() {
+        return formGuaranteeCostAmount;
     }
 
-    public String GetFormGuaranteeCostItem() {
-        return _formGuaranteeCostItem;
+    public String getFormGuaranteeCostItem() {
+        return formGuaranteeCostItem;
     }
 }

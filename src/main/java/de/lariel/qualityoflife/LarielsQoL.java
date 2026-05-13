@@ -5,7 +5,7 @@ import com.pixelmonmod.pixelmon.api.config.api.yaml.YamlConfigFactory;
 import de.lariel.qualityoflife.commands.LarielTrackBlockCommand;
 import de.lariel.qualityoflife.commands.LarielTrackEntityCommand;
 import de.lariel.qualityoflife.config.LarielsQoLConfig;
-import de.lariel.qualityoflife.listener.EggHatchedListener;
+import de.lariel.qualityoflife.betterBreeding.BetterBreedingListener;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
@@ -59,7 +59,7 @@ public class LarielsQoL {
             NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
         }
 
-        Pixelmon.EVENT_BUS.register(new EggHatchedListener());
+        Pixelmon.EVENT_BUS.register(new BetterBreedingListener());
     }
 
     @SubscribeEvent
