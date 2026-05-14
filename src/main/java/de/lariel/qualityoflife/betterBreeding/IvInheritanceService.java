@@ -3,25 +3,32 @@ package de.lariel.qualityoflife.betterBreeding;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.api.pokemon.stats.BattleStatsType;
 import de.lariel.qualityoflife.config.LarielsQoLConfig;
+import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
+import org.apache.logging.log4j.Logger;
 
 public class IvInheritanceService {
 
-    private final LarielsQoLConfig config;
+    private final LarielsQolBetterBreedingConfig config;
+    private final Logger logger;
 
-    public IvInheritanceService(LarielsQoLConfig config) {
+    public IvInheritanceService(LarielsQolBetterBreedingConfig config, Logger logger) {
         this.config = config;
+        this.logger = logger;
     }
 
     public void applyIvInheritance(Pokemon egg, Pokemon p1, Pokemon p2) {
 
-        double chance = config.getIvInheritanceChance();
+        var chance = config.getIvInheritanceChance();
 
         for (var stat : BattleStatsType.values()) {
-
-            if (Math.random() < chance) {
-                int iv1 = p1.getIVs().getStat(stat);
-                int iv2 = p2.getIVs().getStat(stat);
-                egg.getIVs().setStat(stat, Math.max(iv1, iv2));
+            var random = Math.random();
+            logger.info("IV-Inheritance: Chance: {}\tRandom-Value: {}\tRandom < Chance: {}", chance, random, random < chance);
+            if (random < chance) {
+                var iv1 = p1.getIVs().getStat(stat);
+                var iv2 = p2.getIVs().getStat(stat);
+                var maxIV = Math.max(iv1, iv2);
+                logger.info("IV-Inheritance: Changed {} from {} to {}", stat.name(), egg.getIVs().getStat(stat), maxIV);
+                egg.getIVs().setStat(stat, maxIV);
             }
         }
     }

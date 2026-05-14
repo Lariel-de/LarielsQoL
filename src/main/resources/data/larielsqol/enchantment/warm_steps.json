@@ -1,0 +1,18 @@
+{
+  "description": "Reduces the egg steps.",
+  "supported_items": "#minecraft:enchantable/foot_armor",
+  "weight": 1,
+  "max_level": 1,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 15,
+    "per_level_above_first": 15
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "feet"
+  ]
+}

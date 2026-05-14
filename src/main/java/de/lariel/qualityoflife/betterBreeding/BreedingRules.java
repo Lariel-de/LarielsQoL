@@ -4,13 +4,14 @@ import com.pixelmonmod.pixelmon.api.daycare.event.DayCareEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.api.pokemon.PokemonFactory;
 import de.lariel.qualityoflife.config.LarielsQoLConfig;
+import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import net.minecraft.server.level.ServerPlayer;
 
 public class BreedingRules {
 
-    private final LarielsQoLConfig config;
+    private final LarielsQolBetterBreedingConfig config;
 
-    public BreedingRules(LarielsQoLConfig config) {
+    public BreedingRules(LarielsQolBetterBreedingConfig config) {
         this.config = config;
     }
 

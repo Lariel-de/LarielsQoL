@@ -2,26 +2,32 @@ package de.lariel.qualityoflife.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import de.lariel.qualityoflife.config.LarielsQoLConfig;
+import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
+import org.apache.logging.log4j.Logger;
 
 public class ShinyService {
 
-    private final LarielsQoLConfig config;
+    private final LarielsQolBetterBreedingConfig config;
+    private final Logger logger;
 
-    public ShinyService(LarielsQoLConfig config) {
+    public ShinyService(LarielsQolBetterBreedingConfig config, Logger logger) {
         this.config = config;
+        this.logger = logger;
     }
 
     public void applyShinyLogic(Pokemon egg, Pokemon p1, Pokemon p2) {
 
-        double shinyChance = config.getShinyBaseChance();
+        var chance = config.getShinyBaseChance();
+        var random = Math.random();
 
-        int shinyParents = (p1.isShiny() ? 1 : 0) + (p2.isShiny() ? 1 : 0);
+        var shinyParents = (p1.isShiny() ? 1 : 0) + (p2.isShiny() ? 1 : 0);
 
-        for (int i = 0; i < shinyParents; i++) {
-            shinyChance *= config.getShinyParentMultiplier();
+        for (var i = 0; i < shinyParents; i++) {
+            chance *= config.getShinyParentMultiplier();
         }
 
-        if (Math.random() < shinyChance) {
+        logger.info("IV-Inheritance Chance: {}\tRandom-Value: {}\tApply shiny: {}", chance, random, random < chance);
+        if (random < chance) {
             egg.setShiny(true);
         }
     }

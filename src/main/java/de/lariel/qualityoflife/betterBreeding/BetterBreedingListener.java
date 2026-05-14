@@ -1,11 +1,11 @@
 package de.lariel.qualityoflife.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.daycare.event.DayCareEvent;
-import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import de.lariel.qualityoflife.LarielsQoL;
+import de.lariel.qualityoflife.enchantments.ArmorBonusService;
 import de.lariel.qualityoflife.utility.AdvancementService;
-import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
+import org.apache.logging.log4j.Logger;
 
 public class BetterBreedingListener {
 
@@ -14,13 +14,15 @@ public class BetterBreedingListener {
     private final ShinyService shinyService;
     private final FormService formService;
     private final AdvancementService advancementService;
+    private final Logger logger;
 
     public BetterBreedingListener() {
-        var config = LarielsQoL.getConfig();
-        this.rules = new BreedingRules(config);
-        this.ivService = new IvInheritanceService(config);
-        this.shinyService = new ShinyService(config);
-        this.formService = new FormService(config);
+        var breedingConfig = LarielsQoL.getConfig().breeding();
+        this.logger = LarielsQoL.getLogger();
+        this.rules = new BreedingRules(breedingConfig);
+        this.ivService = new IvInheritanceService(breedingConfig, logger);
+        this.shinyService = new ShinyService(breedingConfig, logger);
+        this.formService = new FormService(breedingConfig, logger);
         this.advancementService = new AdvancementService();
     }
 
@@ -30,8 +32,8 @@ public class BetterBreedingListener {
         if (!rules.canUseUndiscoveredBreeding(event.getPlayer()))
             return;
 
-        Pokemon p1 = event.getParentOne();
-        Pokemon p2 = event.getParentTwo();
+        var p1 = event.getParentOne();
+        var p2 = event.getParentTwo();
 
         if (!rules.canParentsBreed(p1, p2))
             return;
@@ -45,9 +47,9 @@ public class BetterBreedingListener {
     @SubscribeEvent
     public void onPreEggCollect(DayCareEvent.PreCollect event) {
 
-        Pokemon p1 = event.getParentOne();
-        Pokemon p2 = event.getParentTwo();
-        Pokemon egg = event.getChildGiven();
+        var p1 = event.getParentOne();
+        var p2 = event.getParentTwo();
+        var egg = event.getChildGiven();
 
         if (p1 == null || p2 == null || egg == null)
             return;
@@ -55,18 +57,22 @@ public class BetterBreedingListener {
         ivService.applyIvInheritance(egg, p1, p2);
         shinyService.applyShinyLogic(egg, p1, p2);
         formService.applyFormInheritance(egg, p1, p2);
+        ArmorBonusService.applyBreedingBonuses(event.getPlayer(), egg);
     }
 
     @SubscribeEvent
     public void onPostCollect(DayCareEvent.PostCollect event) {
 
-        ServerPlayer player = event.getPlayer();
-        Pokemon child = event.getChildGiven();
+        var player = event.getPlayer();
+        var child = event.getChildGiven();
 
         BreedingProgress.incrementCount(player);
 
+        logger.info("Breeding count: {}", BreedingProgress.getCount(player));
+
         if (rules.isBaby(child)) {
             BreedingProgress.incrementBredBabyCount(player);
+            logger.info("Baby breeding count: {}", BreedingProgress.getBredBabyCount(player));
         }
 
         if (rules.hasUnlockedUndiscovered(player)) {

@@ -1,12 +1,11 @@
 package de.lariel.qualityoflife;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
-import com.pixelmonmod.pixelmon.api.config.api.yaml.YamlConfigFactory;
 import de.lariel.qualityoflife.commands.LarielResetBreedingCounterCommand;
 import de.lariel.qualityoflife.commands.LarielTrackBlockCommand;
 import de.lariel.qualityoflife.commands.LarielTrackEntityCommand;
-import de.lariel.qualityoflife.config.LarielsQoLConfig;
 import de.lariel.qualityoflife.betterBreeding.BetterBreedingListener;
+import de.lariel.qualityoflife.config.LarielsQolConfigManager;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
@@ -26,8 +25,6 @@ import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-
 @Mod(LarielsQoL.MOD_ID)
 @EventBusSubscriber(modid = LarielsQoL.MOD_ID)
 public class LarielsQoL {
@@ -37,7 +34,7 @@ public class LarielsQoL {
 
     private static LarielsQoL _instance;
 
-    private LarielsQoLConfig _config;
+    private LarielsQolConfigManager _configManager;
 
     public LarielsQoL(IEventBus bus) {
         _instance = this;
@@ -54,7 +51,7 @@ public class LarielsQoL {
 
         // Since the desired pixelmon event fires to early and the coordinates of the entity is always 0 0 0
         // use the NeoForgeEventBus
-        if (_instance._config.getEnableSpawnNotification()) {
+        if (_instance._configManager.general().getEnableSpawnNotification()) {
             NeoForge.EVENT_BUS.register(new LarielPokeSpawnListener(LarielSpawnNotifier.GetInstance()));
             NeoForge.EVENT_BUS.register(LarielEntityTrackListener.GetInstance());
             NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
@@ -69,11 +66,8 @@ public class LarielsQoL {
     }
 
     public void reloadConfig() {
-        try {
-            _config = YamlConfigFactory.getInstance(LarielsQoLConfig.class);
-        } catch (IOException e) {
-            LOGGER.error("Failed to load config", e);
-        }
+            _configManager = new LarielsQolConfigManager(LOGGER);
+            _configManager.loadAll();
     }
 
     @SubscribeEvent
@@ -109,7 +103,7 @@ public class LarielsQoL {
         return LOGGER;
     }
 
-    public static LarielsQoLConfig getConfig() {
-        return _instance._config;
+    public static LarielsQolConfigManager getConfig() {
+        return _instance._configManager;
     }
 }
