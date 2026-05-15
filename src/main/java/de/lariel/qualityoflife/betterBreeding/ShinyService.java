@@ -26,7 +26,7 @@ public class ShinyService {
             chance *= config.getShinyParentMultiplier();
         }
 
-        logger.info("IV-Inheritance Chance: {}\tRandom-Value: {}\tApply shiny: {}", chance, random, random < chance);
+        logger.info("Shiny-Inheritance Chance: {}\tRandom-Value: {}\tApply shiny: {}", chance, random, random < chance);
         if (random < chance) {
             egg.setShiny(true);
         }
