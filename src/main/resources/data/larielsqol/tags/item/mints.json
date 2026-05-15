@@ -1,0 +1,34 @@
+{
+  "values": [
+    "pixelmon:mint_hardy",
+    "pixelmon:mint_serious",
+    "pixelmon:mint_docile",
+    "pixelmon:mint_bashful",
+    "pixelmon:mint_quirky",
+
+    "pixelmon:mint_lonely",
+    "pixelmon:mint_brave",
+    "pixelmon:mint_adamant",
+    "pixelmon:mint_naughty",
+
+    "pixelmon:mint_bold",
+    "pixelmon:mint_relaxed",
+    "pixelmon:mint_impish",
+    "pixelmon:mint_lax",
+
+    "pixelmon:mint_timid",
+    "pixelmon:mint_hasty",
+    "pixelmon:mint_jolly",
+    "pixelmon:mint_naive",
+
+    "pixelmon:mint_modest",
+    "pixelmon:mint_mild",
+    "pixelmon:mint_quiet",
+    "pixelmon:mint_rash",
+
+    "pixelmon:mint_calm",
+    "pixelmon:mint_gentle",
+    "pixelmon:mint_sassy",
+    "pixelmon:mint_careful"
+  ]
+}

@@ -1,14 +1,16 @@
 package de.lariel.qualityoflife;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
+import de.lariel.qualityoflife.betterBreeding.BetterBreedingListener;
+import de.lariel.qualityoflife.commands.LarielOpenMintTraderCommand;
 import de.lariel.qualityoflife.commands.LarielResetBreedingCounterCommand;
 import de.lariel.qualityoflife.commands.LarielTrackBlockCommand;
 import de.lariel.qualityoflife.commands.LarielTrackEntityCommand;
-import de.lariel.qualityoflife.betterBreeding.BetterBreedingListener;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
+import de.lariel.qualityoflife.gui.LarielsQolModMenus;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
-import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
+import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.network.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
@@ -41,6 +43,8 @@ public class LarielsQoL {
 
         reloadConfig();
 
+        LarielsQolModMenus.MENUS.register(bus);
+
         NeoForge.EVENT_BUS.register(new LarielHotkeyHandler());
 
         bus.addListener(LarielsQoL::onModLoad);
@@ -66,8 +70,8 @@ public class LarielsQoL {
     }
 
     public void reloadConfig() {
-            _configManager = new LarielsQolConfigManager(LOGGER);
-            _configManager.loadAll();
+        _configManager = new LarielsQolConfigManager(LOGGER);
+        _configManager.loadAll();
     }
 
     @SubscribeEvent
@@ -81,6 +85,7 @@ public class LarielsQoL {
         LarielTrackEntityCommand.register(event.getDispatcher());
         LarielTrackBlockCommand.register(event.getDispatcher());
         LarielResetBreedingCounterCommand.register(event.getDispatcher());
+        LarielOpenMintTraderCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent

@@ -1,0 +1,135 @@
+package de.lariel.qualityoflife.gui;
+
+import com.pixelmonmod.pixelmon.client.gui.npc.widget.DropDownWidget;
+import de.lariel.qualityoflife.network.packet.LarielMintTradePacket;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Renderable;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.network.PacketDistributor;
+import org.jetbrains.annotations.NotNull;
+
+public class MintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
+    private Item selectedMint;
+    private static final ResourceLocation BG = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/gui/container/crafting_table.png");
+    private Component statusMessage = null;
+    private long statusMessageUntil = 0;
+
+    public MintTraderScreen(MintTraderMenu menu, Inventory inv, Component title) {
+        super(menu, inv, title);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+
+        this.addRenderableWidget(Button.builder(
+                Component.literal("Tauschen"),
+                btn -> PacketDistributor.sendToServer(new LarielMintTradePacket(true, selectedMint))
+        ).bounds(leftPos + 115, topPos + 33, 53, 20).build());
+
+        selectedMint = LarielMintTradePacket.DESIRED_MINTS.getFirst();
+
+        DropDownWidget<Item> dropdown = new DropDownWidget<>(
+                leftPos + 95,
+                topPos + 16,
+                65,
+                11
+        );
+
+        dropdown.setOnSelected(item -> this.selectedMint = item)
+                .setOptionConverter(s -> s.getDescription().getString())
+                .setOptions(LarielMintTradePacket.DESIRED_MINTS, LarielMintTradePacket.DESIRED_MINTS.getFirst());
+        dropdown.setSelected(selectedMint);
+
+        this.addRenderableWidget(dropdown);
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
+        guiGraphics.blit(BG, leftPos, topPos, 0, 0, imageWidth, imageHeight);
+
+        // Remove the output slot on the screen
+        guiGraphics.fill(
+                leftPos + 114, topPos + 25,
+                leftPos + 124 + 26, topPos + 35 + 26,
+                0xFFC6C6C6);
+    }
+
+    @Override
+    public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
+        super.render(graphics, mouseX, mouseY, partialTicks);
+
+        graphics.pose().pushPose();
+        graphics.pose().translate(0, 0, 1);
+
+        for (Renderable r : this.renderables) {
+            if (r instanceof DropDownWidget<?> dd) {
+                dd.render(graphics, mouseX, mouseY, partialTicks);
+            }
+        }
+
+        graphics.pose().popPose();
+
+        if (selectedMint != null) {
+            graphics.pose().pushPose();
+            graphics.pose().translate(0, 0, 1);
+
+            graphics.drawString(
+                    this.font,
+                    selectedMint.getDescription().getString(),
+                    leftPos + 98,
+                    topPos + 18,
+                    0xFF000000,
+                    false
+            );
+
+            graphics.pose().popPose();
+        }
+
+        if (statusMessage != null && System.currentTimeMillis() < statusMessageUntil) {
+            graphics.pose().pushPose();
+            graphics.pose().translate(0, 0, 500); // ganz oben
+
+            graphics.drawCenteredString(
+                    this.font,
+                    statusMessage.getString(),
+                    this.width / 2,
+                    topPos - 10, // über dem GUI
+                    0xFFFF5555 // rot oder grün
+            );
+
+            graphics.pose().popPose();
+        }
+
+        if (statusMessage != null && System.currentTimeMillis() < statusMessageUntil) {
+            graphics.pose().pushPose();
+            graphics.pose().translate(0, 0, 500); // ganz oben
+
+            graphics.drawCenteredString(
+                    this.font,
+                    statusMessage.getString(),
+                    this.width / 2,
+                    topPos - 10, // über dem GUI
+                    0xFFFF5555 // rot oder grün
+            );
+
+            graphics.pose().popPose();
+        }
+        else {
+            statusMessage = null;
+        }
+
+        super.renderTooltip(graphics, mouseX, mouseY);
+    }
+
+    public void showStatusMessage(Component msg, int durationTicks) {
+        this.statusMessage = msg;
+        this.statusMessageUntil = System.currentTimeMillis() + (durationTicks * 50L);
+    }
+}
+
