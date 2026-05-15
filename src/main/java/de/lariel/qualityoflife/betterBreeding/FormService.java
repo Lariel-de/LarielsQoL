@@ -1,13 +1,10 @@
 package de.lariel.qualityoflife.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
-import com.pixelmonmod.pixelmon.api.pokemon.species.palette.PaletteProperties;
-import de.lariel.qualityoflife.config.LarielsQoLConfig;
+import com.pixelmonmod.pixelmon.api.pokemon.species.Stats;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,46 +27,48 @@ public class FormService {
         if (random >= chance)
             return;
 
-        var palette1 = safePaletteName(p1);
-        var palette2 = safePaletteName(p2);
+        var form1 = safeFormName(p1);
+        var form2 = safeFormName(p2);
 
-        var supported = getSupportedPalettes(egg);
+        var supported = getSupportedForms(egg);
 
-        var supportsP1 = supported.contains(palette1);
-        var supportsP2 = supported.contains(palette2);
+        var supportsP1 = supported.contains(form1);
+        var supportsP2 = supported.contains(form2);
 
         if (supportsP1 && supportsP2) {
-            var palette = Math.random() < 0.5 ? palette1 : palette2;
-            logger.info("Form-Inheritance: Updated Form to {}",  palette);
-            egg.setPalette(palette);
+            var palette = Math.random() < 0.5 ? form1 : form2;
+            logger.info("Form-Inheritance: Updated Form to {}", palette);
+            egg.setForm(palette);
             return;
         }
 
         if (supportsP1) {
-            logger.info("Form-Inheritance: Updated Form to {}",  palette1);
-            egg.setPalette(palette1);
+            logger.info("Form-Inheritance: Updated Form to {}", form1);
+            egg.setForm(form1);
             return;
         }
 
         if (supportsP2) {
-            logger.info("Form-Inheritance: Updated Form to {}",  palette2);
-            egg.setPalette(palette2);
+            logger.info("Form-Inheritance: Updated Form to {}", form2);
+            egg.setForm(form2);
         }
     }
 
-    private String safePaletteName(Pokemon p) {
-        return p != null && p.getPalette() != null
-                ? p.getPalette().getName()
+    private String safeFormName(Pokemon p) {
+        return p != null && p.getForm() != null
+                ? p.getForm().getName()
                 : "none";
     }
 
-    private Set<String> getSupportedPalettes(Pokemon egg) {
+    private Set<String> getSupportedForms(Pokemon egg) {
 
         if (egg == null || egg.getGenderProperties() == null)
             return Set.of();
 
-        return Arrays.stream(Objects.requireNonNull(egg.getGenderProperties()).getPalettes())
-                .map(PaletteProperties::getName)
+        return egg.getSpecies()
+                .getForms()
+                .stream()
+                .map(Stats::getName)
                 .collect(Collectors.toSet());
     }
 }
