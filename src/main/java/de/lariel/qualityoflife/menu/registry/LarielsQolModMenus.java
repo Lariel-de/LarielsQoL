@@ -1,6 +1,7 @@
-package de.lariel.qualityoflife.gui;
+package de.lariel.qualityoflife.menu.registry;
 
 import de.lariel.qualityoflife.LarielsQoL;
+import de.lariel.qualityoflife.menu.MintTraderMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;

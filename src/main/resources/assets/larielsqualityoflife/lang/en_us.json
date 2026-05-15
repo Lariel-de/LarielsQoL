@@ -22,5 +22,9 @@
 
   "key.larielsqualityoflife.category_name": "Lariel's QoL",
   "key.larielsqualityoflife.open_poke_bag": "Open Poké Bag",
-  "key.larielsqualityoflife.no_poke_bag_found": "§cNo Poké Bag found in inventory."
+  "key.larielsqualityoflife.no_poke_bag_found": "§cNo Poké Bag found in inventory.",
+
+  "minttrader.larielsqualityoflife.trade": "Trade",
+  "minttrader.larielsqualityoflife.ninemintsrequired": "You need 9 mints!",
+  "minttrader.larielsqualityoflife.thanksfortrade": "Thanks for trading."
 }

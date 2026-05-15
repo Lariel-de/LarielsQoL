@@ -1,7 +1,6 @@
 package de.lariel.qualityoflife.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
-import de.lariel.qualityoflife.config.LarielsQoLConfig;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import org.apache.logging.log4j.Logger;
 

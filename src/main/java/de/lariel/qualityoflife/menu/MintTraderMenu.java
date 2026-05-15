@@ -1,5 +1,6 @@
-package de.lariel.qualityoflife.gui;
+package de.lariel.qualityoflife.menu;
 
+import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;

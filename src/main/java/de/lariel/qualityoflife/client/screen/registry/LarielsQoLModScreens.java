@@ -1,6 +1,8 @@
-package de.lariel.qualityoflife.gui;
+package de.lariel.qualityoflife.client.screen.registry;
 
 import de.lariel.qualityoflife.LarielsQoL;
+import de.lariel.qualityoflife.client.screen.LarielMintTraderScreen;
+import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -11,7 +13,7 @@ public class LarielsQoLModScreens {
 
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event) {
-        event.register(LarielsQolModMenus.MINT_TRADER.get(), MintTraderScreen::new);
+        event.register(LarielsQolModMenus.MINT_TRADER.get(), LarielMintTraderScreen::new);
     }
 }
 

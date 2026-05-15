@@ -1,7 +1,8 @@
-package de.lariel.qualityoflife.gui;
+package de.lariel.qualityoflife.client.screen;
 
 import com.pixelmonmod.pixelmon.client.gui.npc.widget.DropDownWidget;
-import de.lariel.qualityoflife.network.packet.LarielMintTradePacket;
+import de.lariel.qualityoflife.menu.MintTraderMenu;
+import de.lariel.qualityoflife.network.packet.LarielMintTraderPacket;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Renderable;
@@ -13,13 +14,14 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
-public class MintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
+public class LarielMintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
     private Item selectedMint;
     private static final ResourceLocation BG = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/gui/container/crafting_table.png");
     private Component statusMessage = null;
     private long statusMessageUntil = 0;
+    private int statusMessageColor;
 
-    public MintTraderScreen(MintTraderMenu menu, Inventory inv, Component title) {
+    public LarielMintTraderScreen(MintTraderMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
     }
 
@@ -27,12 +29,13 @@ public class MintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
     protected void init() {
         super.init();
 
+        //noinspection unused
         this.addRenderableWidget(Button.builder(
-                Component.literal("Tauschen"),
-                btn -> PacketDistributor.sendToServer(new LarielMintTradePacket(true, selectedMint))
+                Component.translatable("minttrader.larielsqualityoflife.trade"),
+                btn -> PacketDistributor.sendToServer(new LarielMintTraderPacket(true, selectedMint))
         ).bounds(leftPos + 115, topPos + 33, 53, 20).build());
 
-        selectedMint = LarielMintTradePacket.DESIRED_MINTS.getFirst();
+        selectedMint = LarielMintTraderPacket.DESIRED_MINTS.getFirst();
 
         DropDownWidget<Item> dropdown = new DropDownWidget<>(
                 leftPos + 95,
@@ -43,7 +46,7 @@ public class MintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
 
         dropdown.setOnSelected(item -> this.selectedMint = item)
                 .setOptionConverter(s -> s.getDescription().getString())
-                .setOptions(LarielMintTradePacket.DESIRED_MINTS, LarielMintTradePacket.DESIRED_MINTS.getFirst());
+                .setOptions(LarielMintTraderPacket.DESIRED_MINTS, LarielMintTraderPacket.DESIRED_MINTS.getFirst());
         dropdown.setSelected(selectedMint);
 
         this.addRenderableWidget(dropdown);
@@ -93,42 +96,25 @@ public class MintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
 
         if (statusMessage != null && System.currentTimeMillis() < statusMessageUntil) {
             graphics.pose().pushPose();
-            graphics.pose().translate(0, 0, 500); // ganz oben
+            graphics.pose().translate(0, 0, 2);
 
-            graphics.drawCenteredString(
+            graphics.drawString(
                     this.font,
                     statusMessage.getString(),
-                    this.width / 2,
-                    topPos - 10, // über dem GUI
-                    0xFFFF5555 // rot oder grün
+                    leftPos + 70,
+                    topPos + 72,
+                    this.statusMessageColor
             );
 
             graphics.pose().popPose();
-        }
-
-        if (statusMessage != null && System.currentTimeMillis() < statusMessageUntil) {
-            graphics.pose().pushPose();
-            graphics.pose().translate(0, 0, 500); // ganz oben
-
-            graphics.drawCenteredString(
-                    this.font,
-                    statusMessage.getString(),
-                    this.width / 2,
-                    topPos - 10, // über dem GUI
-                    0xFFFF5555 // rot oder grün
-            );
-
-            graphics.pose().popPose();
-        }
-        else {
-            statusMessage = null;
         }
 
         super.renderTooltip(graphics, mouseX, mouseY);
     }
 
-    public void showStatusMessage(Component msg, int durationTicks) {
+    public void showStatusMessage(Component msg, int durationTicks, boolean success) {
         this.statusMessage = msg;
+        this.statusMessageColor = success ? 0xFF55FF55 : 0xFFFF5555;
         this.statusMessageUntil = System.currentTimeMillis() + (durationTicks * 50L);
     }
 }

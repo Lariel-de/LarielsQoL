@@ -1,4 +1,4 @@
-package de.lariel.qualityoflife.network.client;
+package de.lariel.qualityoflife.client;
 
 import de.lariel.qualityoflife.keybinds.LarielKeybinds;
 import de.lariel.qualityoflife.network.packet.LarielOpenPokeBagPacket;
@@ -12,7 +12,7 @@ public class LarielHotkeyHandler {
         HandleOpenPokeBag(event);
     }
 
-    private void HandleOpenPokeBag(ClientTickEvent.Post event) {
+    private void HandleOpenPokeBag(ClientTickEvent.Post ignoredEvent) {
         while (LarielKeybinds.OPEN_POKE_BAG_HOTKEY.get().consumeClick()) {
             PacketDistributor.sendToServer(new LarielOpenPokeBagPacket(true));
         }

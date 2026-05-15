@@ -1,4 +1,4 @@
-package de.lariel.qualityoflife.gui;
+package de.lariel.qualityoflife.menu;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;

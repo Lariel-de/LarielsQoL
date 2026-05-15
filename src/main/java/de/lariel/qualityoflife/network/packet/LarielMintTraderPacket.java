@@ -2,11 +2,10 @@ package de.lariel.qualityoflife.network.packet;
 
 import com.pixelmonmod.pixelmon.init.registry.ItemRegistration;
 import de.lariel.qualityoflife.LarielsQoL;
-import de.lariel.qualityoflife.gui.MintTraderMenu;
+import de.lariel.qualityoflife.menu.MintTraderMenu;
 import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -21,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class LarielMintTradePacket extends LarielPacketBase {
+public class LarielMintTraderPacket extends LarielPacketBase {
     private final Item selectedMint;
 
     private static final TagKey<Item> MINT_TAG =
@@ -34,20 +33,20 @@ public class LarielMintTradePacket extends LarielPacketBase {
             ItemRegistration.MINT_ADAMANT.get()
     );
 
-    public LarielMintTradePacket(boolean sync, Item selectedMint) {
+    public LarielMintTraderPacket(boolean sync, Item selectedMint) {
         super(sync);
 
         this.selectedMint = selectedMint;
     }
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, LarielMintTradePacket> CODEC =
+    public static final StreamCodec<RegistryFriendlyByteBuf, LarielMintTraderPacket> CODEC =
             StreamCodec.composite(
                     ByteBufCodecs.BOOL, p -> p.sync,
                     ByteBufCodecs.registry(Registries.ITEM), p -> p.selectedMint,
-                    LarielMintTradePacket::new
+                    LarielMintTraderPacket::new
             );
 
-    public static final Type<LarielMintTradePacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "mint_trader_packet"));
+    public static final Type<LarielMintTraderPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "mint_trader_packet"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
@@ -72,7 +71,7 @@ public class LarielMintTradePacket extends LarielPacketBase {
             }
 
             if (count < 9) {
-                player.sendSystemMessage(Component.literal("Du brauchst 9 Minzen!"));
+                player.connection.send(new LarielMintTraderStatusPacket(true, ("minttrader.larielsqualityoflife.ninemintsrequired")));
                 return;
             }
 
@@ -81,7 +80,7 @@ public class LarielMintTradePacket extends LarielPacketBase {
             Item reward = getMintByName(selectedMint);
             player.getInventory().add(new ItemStack(reward));
 
-            player.sendSystemMessage(Component.literal("Danke für den Tausch!"));
+            player.connection.send(new LarielMintTraderStatusPacket(true, ("minttrader.larielsqualityoflife.thanksfortrade")));
         });
     }
 
