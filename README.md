@@ -48,7 +48,7 @@ This system allows players to quickly locate rare or valuable Pokémon without r
 - No mixins or invasive patches required
 - Fully compatible with NeoForge 20.4+ and Pixelmon 9.2–9.3
 
-### 🧪 Mint Trader (Custom GUI)
+## 🧪 Mint Trader (Custom GUI)
 A fully custom trading interface for Pokémon Mints.
 
 - Custom Screen + Menu
