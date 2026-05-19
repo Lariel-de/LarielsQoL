@@ -8,12 +8,12 @@ import org.apache.logging.log4j.Logger;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class FormService {
+public class LarielFormService {
 
     private final LarielsQolBetterBreedingConfig config;
     private final Logger logger;
 
-    public FormService(LarielsQolBetterBreedingConfig config, Logger logger) {
+    public LarielFormService(LarielsQolBetterBreedingConfig config, Logger logger) {
         this.config = config;
         this.logger = logger;
     }

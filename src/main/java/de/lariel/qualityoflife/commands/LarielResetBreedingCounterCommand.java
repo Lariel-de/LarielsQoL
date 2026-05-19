@@ -1,9 +1,7 @@
 package de.lariel.qualityoflife.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import de.lariel.qualityoflife.betterBreeding.BreedingProgress;
-import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
+import de.lariel.qualityoflife.betterBreeding.LarielBreedingProgress;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -19,7 +17,7 @@ public class LarielResetBreedingCounterCommand {
                         .then(Commands.argument("player", EntityArgument.player())
                                 .executes(ctx -> {
                                     ServerPlayer player = EntityArgument.getPlayer(ctx, "player");
-                                    BreedingProgress.reset(player);
+                                    LarielBreedingProgress.reset(player);
                                     ctx.getSource().sendSuccess(() -> Component.translatable("Breeding progress reset for " + player.getName().getString()), true);
                                     return 1;
                                 }))));

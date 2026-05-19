@@ -2,7 +2,7 @@ package de.lariel.qualityoflife.betterBreeding;
 
 import net.minecraft.server.level.ServerPlayer;
 
-public class BreedingProgress {
+public class LarielBreedingProgress {
 
     private static final String KEY_COUNT = "betterbreeding_count";
     private static final String KEY_BABY = "betterbreeding_baby";

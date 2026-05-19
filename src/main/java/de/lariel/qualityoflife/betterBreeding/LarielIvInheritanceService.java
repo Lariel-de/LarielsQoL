@@ -2,16 +2,15 @@ package de.lariel.qualityoflife.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.api.pokemon.stats.BattleStatsType;
-import de.lariel.qualityoflife.config.LarielsQoLConfig;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import org.apache.logging.log4j.Logger;
 
-public class IvInheritanceService {
+public class LarielIvInheritanceService {
 
     private final LarielsQolBetterBreedingConfig config;
     private final Logger logger;
 
-    public IvInheritanceService(LarielsQolBetterBreedingConfig config, Logger logger) {
+    public LarielIvInheritanceService(LarielsQolBetterBreedingConfig config, Logger logger) {
         this.config = config;
         this.logger = logger;
     }

@@ -1,11 +1,8 @@
 package de.lariel.qualityoflife;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
-import de.lariel.qualityoflife.betterBreeding.BetterBreedingListener;
-import de.lariel.qualityoflife.commands.LarielOpenMintTraderCommand;
-import de.lariel.qualityoflife.commands.LarielResetBreedingCounterCommand;
-import de.lariel.qualityoflife.commands.LarielTrackBlockCommand;
-import de.lariel.qualityoflife.commands.LarielTrackEntityCommand;
+import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
+import de.lariel.qualityoflife.commands.*;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
 import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
@@ -61,7 +58,7 @@ public class LarielsQoL {
             NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
         }
 
-        Pixelmon.EVENT_BUS.register(new BetterBreedingListener());
+        Pixelmon.EVENT_BUS.register(new LarielBetterBreedingListener());
     }
 
     @SubscribeEvent
@@ -86,6 +83,7 @@ public class LarielsQoL {
         LarielTrackBlockCommand.register(event.getDispatcher());
         LarielResetBreedingCounterCommand.register(event.getDispatcher());
         LarielOpenMintTraderCommand.register(event.getDispatcher());
+        LarielOpenBetterBreedingCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent

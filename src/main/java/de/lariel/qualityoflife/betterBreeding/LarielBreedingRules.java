@@ -3,15 +3,14 @@ package de.lariel.qualityoflife.betterBreeding;
 import com.pixelmonmod.pixelmon.api.daycare.event.DayCareEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.api.pokemon.PokemonFactory;
-import de.lariel.qualityoflife.config.LarielsQoLConfig;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import net.minecraft.server.level.ServerPlayer;
 
-public class BreedingRules {
+public class LarielBreedingRules {
 
     private final LarielsQolBetterBreedingConfig config;
 
-    public BreedingRules(LarielsQolBetterBreedingConfig config) {
+    public LarielBreedingRules(LarielsQolBetterBreedingConfig config) {
         this.config = config;
     }
 
@@ -20,8 +19,8 @@ public class BreedingRules {
     }
 
     public boolean hasUnlockedUndiscovered(ServerPlayer player) {
-        return BreedingProgress.getCount(player) >= config.getUndiscoveredBreedingCount()
-                && BreedingProgress.getBredBabyCount(player) >= config.getUndiscoveredBabyBreedingCount();
+        return LarielBreedingProgress.getCount(player) >= config.getUndiscoveredBreedingCount()
+                && LarielBreedingProgress.getBredBabyCount(player) >= config.getUndiscoveredBabyBreedingCount();
     }
 
     public boolean canParentsBreed(Pokemon p1, Pokemon p2) {

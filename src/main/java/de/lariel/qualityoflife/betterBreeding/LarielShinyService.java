@@ -4,12 +4,12 @@ import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import org.apache.logging.log4j.Logger;
 
-public class ShinyService {
+public class LarielShinyService {
 
     private final LarielsQolBetterBreedingConfig config;
     private final Logger logger;
 
-    public ShinyService(LarielsQolBetterBreedingConfig config, Logger logger) {
+    public LarielShinyService(LarielsQolBetterBreedingConfig config, Logger logger) {
         this.config = config;
         this.logger = logger;
     }

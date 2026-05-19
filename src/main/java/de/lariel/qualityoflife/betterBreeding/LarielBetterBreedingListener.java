@@ -7,22 +7,22 @@ import de.lariel.qualityoflife.utility.AdvancementService;
 import net.neoforged.bus.api.SubscribeEvent;
 import org.apache.logging.log4j.Logger;
 
-public class BetterBreedingListener {
+public class LarielBetterBreedingListener {
 
-    private final BreedingRules rules;
-    private final IvInheritanceService ivService;
-    private final ShinyService shinyService;
-    private final FormService formService;
+    private final LarielBreedingRules rules;
+    private final LarielIvInheritanceService ivService;
+    private final LarielShinyService shinyService;
+    private final LarielFormService formService;
     private final AdvancementService advancementService;
     private final Logger logger;
 
-    public BetterBreedingListener() {
+    public LarielBetterBreedingListener() {
         var breedingConfig = LarielsQoL.getConfig().breeding();
         this.logger = LarielsQoL.getLogger();
-        this.rules = new BreedingRules(breedingConfig);
-        this.ivService = new IvInheritanceService(breedingConfig, logger);
-        this.shinyService = new ShinyService(breedingConfig, logger);
-        this.formService = new FormService(breedingConfig, logger);
+        this.rules = new LarielBreedingRules(breedingConfig);
+        this.ivService = new LarielIvInheritanceService(breedingConfig, logger);
+        this.shinyService = new LarielShinyService(breedingConfig, logger);
+        this.formService = new LarielFormService(breedingConfig, logger);
         this.advancementService = new AdvancementService();
     }
 
@@ -66,13 +66,13 @@ public class BetterBreedingListener {
         var player = event.getPlayer();
         var child = event.getChildGiven();
 
-        BreedingProgress.incrementCount(player);
+        LarielBreedingProgress.incrementCount(player);
 
-        logger.info("Breeding count: {}", BreedingProgress.getCount(player));
+        logger.info("Breeding count: {}", LarielBreedingProgress.getCount(player));
 
         if (rules.isBaby(child)) {
-            BreedingProgress.incrementBredBabyCount(player);
-            logger.info("Baby breeding count: {}", BreedingProgress.getBredBabyCount(player));
+            LarielBreedingProgress.incrementBredBabyCount(player);
+            logger.info("Baby breeding count: {}", LarielBreedingProgress.getBredBabyCount(player));
         }
 
         if (rules.hasUnlockedUndiscovered(player)) {

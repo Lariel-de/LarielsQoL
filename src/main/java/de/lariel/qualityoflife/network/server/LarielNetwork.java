@@ -1,13 +1,12 @@
 package de.lariel.qualityoflife.network.server;
 
 import de.lariel.qualityoflife.LarielsQoL;
-import de.lariel.qualityoflife.network.packet.LarielMintTraderPacket;
-import de.lariel.qualityoflife.network.packet.LarielMintTraderStatusPacket;
-import de.lariel.qualityoflife.network.packet.LarielOpenPokeBagPacket;
+import de.lariel.qualityoflife.network.packet.*;
 import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -22,9 +21,12 @@ public class LarielNetwork {
         // Client → Server
         registerToServer(registrar, LarielOpenPokeBagPacket.TYPE, LarielOpenPokeBagPacket.CODEC);
         registerToServer(registrar, LarielMintTraderPacket.TYPE, LarielMintTraderPacket.CODEC);
+        registerToServer(registrar, LarielBetterBreedingApplyPacket.TYPE, LarielBetterBreedingApplyPacket.CODEC);
 
         // Server → Client
         registerToClient(registrar, LarielMintTraderStatusPacket.TYPE, LarielMintTraderStatusPacket.CODEC);
+        registerToClient(registrar, LarielBetterBreedingOpenScreenPacket.TYPE, LarielBetterBreedingOpenScreenPacket.CODEC);
+        registerToClient(registrar, LarielBetterBreedingStatusPacket.TYPE, LarielBetterBreedingStatusPacket.CODEC);
     }
 
     private static <T extends LarielPacketBase> void registerToServer(
@@ -34,11 +36,18 @@ public class LarielNetwork {
         registrar.playToServer(type, codec, LarielPacketBase::handle);
     }
 
-    @SuppressWarnings("SameParameterValue")
     private static <T extends LarielPacketBase> void registerToClient(
             PayloadRegistrar registrar,
             CustomPacketPayload.Type<T> type,
             StreamCodec<RegistryFriendlyByteBuf, T> codec) {
         registrar.playToClient(type, codec, LarielPacketBase::handle);
+    }
+
+    public static void sendToClient(ServerPlayer player, LarielPacketBase packet)
+    {
+        if (player == null)
+            return;
+
+        player.connection.send(packet);
     }
 }
