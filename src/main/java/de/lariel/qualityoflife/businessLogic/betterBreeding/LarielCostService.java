@@ -27,7 +27,7 @@ public class LarielCostService {
     }
 
     public static LarielCostEntry CalculatePaletteCosts(Pokemon egg, String palette) {
-        if (!egg.getPalette().getName().equals(palette)) {
+        if (!egg.getPalette().getName().equals(palette) && palette != null) {
             if (palette.equalsIgnoreCase("shiny"))
                 return resolveCost(
                         config.getShinyGuaranteeCostItem(),
