@@ -61,6 +61,9 @@ A fully custom trading interface for Pokémon Mints.
 Improves the Pokémon breeding experience with clearer logic and better control.
 
 - Form and palette handling
+- Control gender
+- Shiny options - can be also disabled
+- Own GUI for editing Eggs (Form/Palette/Gender)
 - Clean inheritance logic
 - Extendable service structure for future breeding features
 
