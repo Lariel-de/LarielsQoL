@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class LarielMintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
     private Item selectedMint;
-    private static final ResourceLocation BG = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/gui/container/crafting_table.png");
+    private static final ResourceLocation BG = ResourceLocation.fromNamespaceAndPath("larielsqualityoflife", "textures/gui/container/mint_trader.png");
     private Component statusMessage = null;
     private long statusMessageUntil = 0;
     private int statusMessageColor;
@@ -55,12 +55,6 @@ public class LarielMintTraderScreen extends AbstractContainerScreen<MintTraderMe
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
         guiGraphics.blit(BG, leftPos, topPos, 0, 0, imageWidth, imageHeight);
-
-        // Remove the output slot on the screen
-        guiGraphics.fill(
-                leftPos + 114, topPos + 25,
-                leftPos + 124 + 26, topPos + 35 + 26,
-                0xFFC6C6C6);
     }
 
     @Override

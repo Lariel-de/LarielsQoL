@@ -2,7 +2,6 @@ package de.lariel.qualityoflife.network.packet;
 
 import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.client.screen.LarielBetterBreedingScreen;
-import de.lariel.qualityoflife.client.screen.LarielMintTraderScreen;
 import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;

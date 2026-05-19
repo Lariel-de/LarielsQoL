@@ -3,8 +3,6 @@ package de.lariel.qualityoflife.client.screen;
 import com.google.common.collect.Lists;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.api.pokemon.PokemonBase;
-import com.pixelmonmod.pixelmon.api.pokemon.PokemonBuilder;
-import com.pixelmonmod.pixelmon.api.pokemon.species.Stats;
 import com.pixelmonmod.pixelmon.api.pokemon.species.gender.Gender;
 import com.pixelmonmod.pixelmon.api.pokemon.species.palette.PaletteProperties;
 import com.pixelmonmod.pixelmon.api.storage.StorageProxy;
@@ -12,7 +10,9 @@ import com.pixelmonmod.pixelmon.client.gui.ScreenHelper;
 import com.pixelmonmod.pixelmon.client.gui.npc.widget.DropDownWidget;
 import com.pixelmonmod.pixelmon.client.gui.npc.widget.ScrollableListWidget;
 import de.lariel.qualityoflife.LarielsQoL;
+import de.lariel.qualityoflife.businessLogic.LarielPreviewFactory;
 import de.lariel.qualityoflife.businessLogic.betterBreeding.LarielCostService;
+import de.lariel.qualityoflife.client.screen.services.LarielDropDownFactory;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import de.lariel.qualityoflife.network.packet.LarielBetterBreedingApplyPacket;
 import net.minecraft.client.Minecraft;
@@ -55,6 +55,7 @@ public class LarielBetterBreedingScreen extends Screen {
     private ScrollableListWidget editorList;
     private Pokemon preview;
     private Pokemon egg;
+    private Button applyButton;
 
     public LarielBetterBreedingScreen() {
         super(Component.literal("Better Breeding"));
@@ -92,11 +93,11 @@ public class LarielBetterBreedingScreen extends Screen {
 
         gfx.drawString(this.font, "Better Breeding", this.width / 2 - 50, 20, 0xFFFFFF);
 
-        int totalWidth = LEFT_PANEL_WIDTH + PANEL_SPACING + RIGHT_PANEL_WIDTH;
-        int startX = (this.width - totalWidth) / 2;
+        var totalWidth = LEFT_PANEL_WIDTH + PANEL_SPACING + RIGHT_PANEL_WIDTH;
+        var startX = (this.width - totalWidth) / 2;
 
-        int rightX = startX + LEFT_PANEL_WIDTH + PANEL_SPACING;
-        int y = 50;
+        var rightX = startX + LEFT_PANEL_WIDTH + PANEL_SPACING;
+        var y = 50;
 
         renderLeftPanel(gfx, startX, y);
         renderRightPanel(gfx, rightX, y);
@@ -114,11 +115,11 @@ public class LarielBetterBreedingScreen extends Screen {
         gfx.fill(x, y, x + LEFT_PANEL_WIDTH, y + PANEL_HEIGHT, 0xAA000000);
         gfx.drawString(this.font, "Eggs", x + 6, y + 6, 0xFFFFFF);
 
-        int entryY = y + 20;
+        var entryY = y + 20;
 
-        for (int i = 0; i < eggs.size(); i++) {
-            Pokemon egg = eggs.get(i);
-            int color = (i == selectedEggIndex) ? 0xFF55FF55 : 0xFFFFFFFF;
+        for (var i = 0; i < eggs.size(); i++) {
+            var egg = eggs.get(i);
+            var color = (i == selectedEggIndex) ? 0xFF55FF55 : 0xFFFFFFFF;
 
             ScreenHelper.drawImageQuad(
                     egg.getSprite(),
@@ -153,8 +154,8 @@ public class LarielBetterBreedingScreen extends Screen {
 
         gfx.drawString(this.font, "Species: " + egg.getSpecies().getName(), x + 6, y + 30, 0xFFFFFF);
 
-        int spriteX = x + RIGHT_PANEL_WIDTH - 40;
-        int spriteY = y + 10;
+        var spriteX = x + RIGHT_PANEL_WIDTH - 40;
+        var spriteY = y + 10;
 
         applyPreviewSelections();
 
@@ -168,8 +169,8 @@ public class LarielBetterBreedingScreen extends Screen {
                 1
         );
 
-        int costX = spriteX - 50;
-        int costY = y + 65;
+        var costX = spriteX - 50;
+        var costY = y + 65;
 
         var formCosts = LarielCostService.CalculateFormCosts(egg, selectedForm);
         if (formCosts != null) {
@@ -205,14 +206,14 @@ public class LarielBetterBreedingScreen extends Screen {
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        int totalWidth = LEFT_PANEL_WIDTH + PANEL_SPACING + RIGHT_PANEL_WIDTH;
-        int startX = (this.width - totalWidth) / 2;
-        int y = 50;
+        var totalWidth = LEFT_PANEL_WIDTH + PANEL_SPACING + RIGHT_PANEL_WIDTH;
+        var startX = (this.width - totalWidth) / 2;
+        var y = 50;
 
         if (mouseX >= startX && mouseX <= startX + LEFT_PANEL_WIDTH &&
                 mouseY >= y + 20 && mouseY <= y + PANEL_HEIGHT) {
 
-            int index = (int) ((mouseY - (y + 20)) / 12);
+            var index = (int) ((mouseY - (y + 20)) / 12);
 
             if (index >= 0 && index < eggs.size()) {
                 selectedEggIndex = index;
@@ -225,8 +226,8 @@ public class LarielBetterBreedingScreen extends Screen {
 
     private void renderStatusMessage(GuiGraphics gfx) {
         if (statusMessage != null && System.currentTimeMillis() < statusUntil) {
-            int x = this.width / 2 - this.font.width(statusMessage) / 2;
-            int y = this.height - 30;
+            var x = (this.width / 2 - this.font.width(statusMessage) / 2) + 90;
+            var y = this.height - 40;
             gfx.drawString(this.font, statusMessage, x, y, statusColor);
         }
     }
@@ -249,8 +250,7 @@ public class LarielBetterBreedingScreen extends Screen {
 
         egg = eggs.get(selectedEggIndex);
 
-        preview = PokemonBuilder.copy(egg).egg(false).build();
-        preview.hatchEgg();
+        preview = LarielPreviewFactory.createEggPreview(egg);
 
         if (editorList != null) {
             removeWidget(editorList);
@@ -262,10 +262,15 @@ public class LarielBetterBreedingScreen extends Screen {
         createPaletteDropDown(editorList, egg);
         createGenderDropDown(editorList, egg);
 
-        var applyButton = Button.builder(Component.translatable("Apply"),
-                        btn -> sendApplyPacket())
-                .size(80, 20)
+        this.applyButton = Button.builder(Component.translatable("Apply"),
+                        btn -> {
+                            sendApplyPacket();
+                            updateApplyButtonState();
+                        })
+                .size(90, 20)
                 .build();
+
+        applyButton.active = false;
 
         editorList.addWidgets(applyButton);
         addRenderableWidget(editorList);
@@ -280,14 +285,49 @@ public class LarielBetterBreedingScreen extends Screen {
         );
     }
 
-    private void createFormDropDown(ScrollableListWidget scrollableListWidget, Pokemon egg) {
-        List<Stats> forms = egg.getSpecies().getForms(true);
-        DropDownWidget<Stats> formDropDown = new DropDownWidget<>(90, 20);
+    private void rebuildDependentDropdowns() {
+        if (preview == null || editorList == null) return;
 
-        formDropDown.setOptionConverter(p -> Component.translatable(p.getTranslationKey()).getString());
-        formDropDown.setOptions(Lists.newArrayList(forms), egg.getForm());
-        formDropDown.setOrdered();
-        formDropDown.setOnSelected(p -> selectedForm = p.getName());
+        var genderProps = preview.getForm().getGenderProperties(preview.getGender());
+        List<PaletteProperties> palettes = genderProps != null
+                ? Lists.newArrayList(genderProps.getPalettes())
+                : new ArrayList<>();
+
+        if (!config.getShinyGuaranteeEnabled()) {
+            palettes.removeIf(p -> p.getName().toLowerCase().contains("shiny"));
+        }
+
+        List<DropDownWidget> dropdowns = editorList.getWidgets().stream()
+                .filter(w -> w instanceof DropDownWidget<?>)
+                .toList();
+
+        if (dropdowns.size() < 3) return;
+
+        var paletteDropDown = dropdowns.get(1);
+        var genderDropDown = dropdowns.get(2);
+
+        paletteDropDown.setOptions(palettes, preview.getPalette());
+
+        var genders = preview.getForm().getPossibleGenders();
+        genderDropDown.setOptions(genders, preview.getGender());
+
+        if (paletteDropDown.getSelected() instanceof PaletteProperties palette)
+            selectedPalette = palette.getName();
+
+        if (genderDropDown.getSelected() instanceof Gender gender)
+            selectedGender = gender.name();
+    }
+
+    private void createFormDropDown(ScrollableListWidget scrollableListWidget, Pokemon egg) {
+        var forms = egg.getSpecies().getForms(true);
+        var formDropDown = LarielDropDownFactory.create(forms, egg.getForm(),
+                p -> Component.translatable(p.getTranslationKey()).getString(),
+                p -> {
+                    selectedForm = p.getName();
+                    preview.setForm(selectedForm);
+                    rebuildDependentDropdowns();
+                    updateApplyButtonState();
+                });
 
         if (formDropDown.getSelected() != null) {
             selectedForm = formDropDown.getSelected().getName();
@@ -309,19 +349,15 @@ public class LarielBetterBreedingScreen extends Screen {
             palettes.removeIf(p -> p.getName().toLowerCase().contains("shiny"));
         }
 
-        PaletteProperties defaultPalette = egg.getPalette();
-        if (!palettes.contains(defaultPalette) && !palettes.isEmpty()) {
-            defaultPalette = palettes.getFirst();
-        }
-
-        DropDownWidget<PaletteProperties> paletteDropDownList = new DropDownWidget<>(90, 20);
-        paletteDropDownList.setOptionConverter(p -> Component.translatable(p.getTranslationKey()).getString());
-        paletteDropDownList.setOptions(Lists.newArrayList(palettes), defaultPalette);
-        paletteDropDownList.setOrdered();
-        paletteDropDownList.setOnSelected(p -> selectedPalette = p.getName());
-
+        var paletteDropDownList = LarielDropDownFactory.create(palettes, egg.getPalette(),
+                p -> Component.translatable(p.getTranslationKey()).getString(),
+                p -> {
+                    selectedPalette = p.getName();
+                    updateApplyButtonState();
+                });
         if (paletteDropDownList.getSelected() != null) {
             selectedPalette = paletteDropDownList.getSelected().getName();
+            preview.setPalette(selectedPalette);
         }
 
         scrollableListWidget.addWidgets(
@@ -333,14 +369,16 @@ public class LarielBetterBreedingScreen extends Screen {
     private void createGenderDropDown(ScrollableListWidget scrollableListWidget, Pokemon egg) {
         List<Gender> genders = Lists.newArrayList(egg.getForm().getPossibleGenders());
 
-        DropDownWidget<Gender> genderDropDownList = new DropDownWidget<>(90, 20);
-        genderDropDownList.setOptionConverter(p -> Component.translatable(p.getTranslationKey()).getString());
-        genderDropDownList.setOptions(Lists.newArrayList(genders), egg.getGender());
-        genderDropDownList.setOrdered();
-        genderDropDownList.setOnSelected(p -> selectedGender = p.name());
+        var genderDropDownList = LarielDropDownFactory.create(genders, egg.getGender(),
+                p -> Component.translatable(p.getTranslationKey()).getString(),
+                p -> {
+                    selectedPalette = p.name();
+                    updateApplyButtonState();
+                });
 
         if (genderDropDownList.getSelected() != null) {
             selectedGender = genderDropDownList.getSelected().name();
+            preview.setGender(genderDropDownList.getSelected());
         }
 
         scrollableListWidget.addWidgets(
@@ -348,6 +386,15 @@ public class LarielBetterBreedingScreen extends Screen {
                 genderDropDownList
         );
     }
+
+    private void updateApplyButtonState() {
+        if (applyButton == null) return;
+
+        applyButton.active = !selectedForm.equals(egg.getForm().getName()) ||
+                !selectedPalette.equals(egg.getPalette().getName()) ||
+                !selectedGender.equals(egg.getGender().name());
+    }
+
 
     private void sendApplyPacket() {
         if (selectedEggIndex == -1 || egg == null) {

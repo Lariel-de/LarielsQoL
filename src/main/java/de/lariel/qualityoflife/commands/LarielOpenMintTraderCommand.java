@@ -9,7 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 public class LarielOpenMintTraderCommand {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("openminttrader")
+        dispatcher.register(Commands.literal("_zlariel:qol/internal/openminttrader")
                 .executes(ctx -> {
                     ServerPlayer player = ctx.getSource().getPlayer();
 
