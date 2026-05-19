@@ -18,7 +18,7 @@ public class LarielBetterBreedingStatusPacket extends LarielPacketBase {
     private final String message;
     private final boolean success;
 
-    protected LarielBetterBreedingStatusPacket(String message, boolean success) {
+    public LarielBetterBreedingStatusPacket(String message, boolean success) {
         super(true);
 
         this.message = message;

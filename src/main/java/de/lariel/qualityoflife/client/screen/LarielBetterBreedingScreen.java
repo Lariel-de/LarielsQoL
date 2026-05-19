@@ -12,7 +12,7 @@ import com.pixelmonmod.pixelmon.client.gui.ScreenHelper;
 import com.pixelmonmod.pixelmon.client.gui.npc.widget.DropDownWidget;
 import com.pixelmonmod.pixelmon.client.gui.npc.widget.ScrollableListWidget;
 import de.lariel.qualityoflife.LarielsQoL;
-import de.lariel.qualityoflife.betterBreeding.LarielCostService;
+import de.lariel.qualityoflife.businessLogic.betterBreeding.LarielCostService;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import de.lariel.qualityoflife.network.packet.LarielBetterBreedingApplyPacket;
 import net.minecraft.client.Minecraft;

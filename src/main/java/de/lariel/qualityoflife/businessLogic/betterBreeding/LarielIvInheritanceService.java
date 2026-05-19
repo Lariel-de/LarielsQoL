@@ -1,4 +1,4 @@
-package de.lariel.qualityoflife.betterBreeding;
+package de.lariel.qualityoflife.businessLogic.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.api.pokemon.stats.BattleStatsType;

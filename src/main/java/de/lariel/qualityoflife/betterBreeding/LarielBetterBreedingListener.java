@@ -2,6 +2,9 @@ package de.lariel.qualityoflife.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.daycare.event.DayCareEvent;
 import de.lariel.qualityoflife.LarielsQoL;
+import de.lariel.qualityoflife.businessLogic.betterBreeding.LarielFormService;
+import de.lariel.qualityoflife.businessLogic.betterBreeding.LarielIvInheritanceService;
+import de.lariel.qualityoflife.businessLogic.betterBreeding.LarielShinyService;
 import de.lariel.qualityoflife.enchantments.ArmorBonusService;
 import de.lariel.qualityoflife.utility.AdvancementService;
 import net.neoforged.bus.api.SubscribeEvent;

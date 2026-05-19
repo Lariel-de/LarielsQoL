@@ -1,10 +1,12 @@
-package de.lariel.qualityoflife.betterBreeding;
+package de.lariel.qualityoflife.businessLogic.betterBreeding;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.config.LarielsQolBetterBreedingConfig;
 import de.lariel.qualityoflife.utility.LarielCostEntry;
 import net.minecraft.world.item.Item;
+
+import java.util.List;
 
 public class LarielCostService {
     private static final LarielsQolBetterBreedingConfig config;
@@ -50,6 +52,24 @@ public class LarielCostService {
         }
 
         return null;
+    }
+
+    public static void addFormCostIfChanged(List<LarielCostEntry> list, Pokemon egg, String newForm) {
+        if (!egg.getForm().getName().equals(newForm)) {
+            list.add(CalculateFormCosts(egg, newForm));
+        }
+    }
+
+    public static void addPaletteCostIfChanged(List<LarielCostEntry> list, Pokemon egg, String newPalette) {
+        if (!egg.getPalette().getName().equals(newPalette)) {
+            list.add(CalculatePaletteCosts(egg, newPalette));
+        }
+    }
+
+    public static void addGenderCostIfChanged(List<LarielCostEntry> list, Pokemon egg, String newGender) {
+        if (!egg.getGender().name().equals(newGender)) {
+            list.add(CalculateGenderCosts(egg, newGender));
+        }
     }
 
     private static LarielCostEntry resolveCost(Item item, int amount) {
