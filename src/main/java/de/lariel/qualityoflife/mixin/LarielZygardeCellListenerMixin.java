@@ -2,6 +2,7 @@ package de.lariel.qualityoflife.mixin;
 
 import com.pixelmonmod.pixelmon.init.registry.BlockRegistration;
 import com.pixelmonmod.pixelmon.listener.ZygardeCellsListener;
+import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -10,14 +11,14 @@ import net.minecraft.world.level.chunk.ChunkAccess;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ZygardeCellsListener.class)
 public abstract class LarielZygardeCellListenerMixin {
     @Inject(method = "spawnOn", at = @At("TAIL"))
-    private static void onZygardeSpawn(ChunkAccess chunk, BlockPos pos, Direction facing, ServerPlayer player,
-                                       CallbackInfo ci) {
+    private static void onZygardeSpawn(ChunkAccess chunk, BlockPos pos, Direction facing, ServerPlayer player) {
         handleZygardeSpawn(chunk, pos, player);
+
+        LarielsQoL.getLogger().debug("Zygarde spawned");
     }
 
     private static void handleZygardeSpawn(ChunkAccess chunk, BlockPos pos, ServerPlayer player) {
