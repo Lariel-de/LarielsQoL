@@ -186,6 +186,8 @@ public class LarielBetterBreedingScreen extends Screen {
         if (genderCosts != null) {
             renderCost(gfx, costX, costY + 60, genderCosts.item(), genderCosts.amount());
         }
+
+        updateApplyButtonState();
     }
 
     private void applyPreviewSelections() {
@@ -263,10 +265,7 @@ public class LarielBetterBreedingScreen extends Screen {
         createGenderDropDown(editorList, egg);
 
         this.applyButton = Button.builder(Component.translatable("Apply"),
-                        btn -> {
-                            sendApplyPacket();
-                            updateApplyButtonState();
-                        })
+                        btn -> sendApplyPacket())
                 .size(90, 20)
                 .build();
 
@@ -326,7 +325,6 @@ public class LarielBetterBreedingScreen extends Screen {
                     selectedForm = p.getName();
                     preview.setForm(selectedForm);
                     rebuildDependentDropdowns();
-                    updateApplyButtonState();
                 });
 
         if (formDropDown.getSelected() != null) {
@@ -351,10 +349,7 @@ public class LarielBetterBreedingScreen extends Screen {
 
         var paletteDropDownList = LarielDropDownFactory.create(palettes, egg.getPalette(),
                 p -> Component.translatable(p.getTranslationKey()).getString(),
-                p -> {
-                    selectedPalette = p.getName();
-                    updateApplyButtonState();
-                });
+                p -> selectedPalette = p.getName());
         if (paletteDropDownList.getSelected() != null) {
             selectedPalette = paletteDropDownList.getSelected().getName();
             preview.setPalette(selectedPalette);
@@ -371,10 +366,7 @@ public class LarielBetterBreedingScreen extends Screen {
 
         var genderDropDownList = LarielDropDownFactory.create(genders, egg.getGender(),
                 p -> Component.translatable(p.getTranslationKey()).getString(),
-                p -> {
-                    selectedPalette = p.name();
-                    updateApplyButtonState();
-                });
+                p -> selectedGender = p.name());
 
         if (genderDropDownList.getSelected() != null) {
             selectedGender = genderDropDownList.getSelected().name();
