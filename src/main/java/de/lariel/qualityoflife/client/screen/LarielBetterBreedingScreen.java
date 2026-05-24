@@ -58,7 +58,7 @@ public class LarielBetterBreedingScreen extends Screen {
     private Button applyButton;
 
     public LarielBetterBreedingScreen() {
-        super(Component.literal("Better Breeding"));
+        super(Component.translatable("betterbreeding.larielsqualityoflife.title"));
         this.config = LarielsQoL.getConfig().breeding();
     }
 
@@ -91,7 +91,7 @@ public class LarielBetterBreedingScreen extends Screen {
     public void render(@NotNull GuiGraphics gfx, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(gfx, mouseX, mouseY, partialTicks);
 
-        gfx.drawString(this.font, "Better Breeding", this.width / 2 - 50, 20, 0xFFFFFF);
+        gfx.drawString(this.font, Component.translatable("betterbreeding.larielsqualityoflife.title").getString(), this.width / 2 - 50, 20, 0xFFFFFF);
 
         var totalWidth = LEFT_PANEL_WIDTH + PANEL_SPACING + RIGHT_PANEL_WIDTH;
         var startX = (this.width - totalWidth) / 2;
@@ -113,7 +113,7 @@ public class LarielBetterBreedingScreen extends Screen {
 
     private void renderLeftPanel(GuiGraphics gfx, int x, int y) {
         gfx.fill(x, y, x + LEFT_PANEL_WIDTH, y + PANEL_HEIGHT, 0xAA000000);
-        gfx.drawString(this.font, "Eggs", x + 6, y + 6, 0xFFFFFF);
+        gfx.drawString(this.font, Component.translatable("betterbreeding.larielsqualityoflife.eggs").getString(), x + 6, y + 6, 0xFFFFFF);
 
         var entryY = y + 20;
 
@@ -133,7 +133,7 @@ public class LarielBetterBreedingScreen extends Screen {
 
             gfx.drawString(
                     this.font,
-                    egg.getSpecies().getName(),
+                    egg.getSpecies().getTranslatedName().getString(),
                     x + 24,
                     entryY,
                     color
@@ -148,11 +148,12 @@ public class LarielBetterBreedingScreen extends Screen {
         gfx.drawString(this.font, "Editor", x + 6, y + 6, 0xFFFFFF);
 
         if (selectedEggIndex == -1 || egg == null || preview == null) {
-            gfx.drawString(this.font, "Select an egg", x + 6, y + 30, 0xAAAAAA);
+            gfx.drawString(this.font, Component.translatable("betterbreeding.larielsqualityoflife.selectegg"), x + 6, y + 30, 0xAAAAAA);
             return;
         }
 
-        gfx.drawString(this.font, "Species: " + egg.getSpecies().getName(), x + 6, y + 30, 0xFFFFFF);
+        gfx.drawString(this.font, Component.translatable("betterbreeding.larielsqualityoflife.species").getString() + ": " +
+                egg.getSpecies().getTranslatedName().getString(), x + 6, y + 30, 0xFFFFFF);
 
         var spriteX = x + RIGHT_PANEL_WIDTH - 40;
         var spriteY = y + 10;
@@ -264,7 +265,7 @@ public class LarielBetterBreedingScreen extends Screen {
         createPaletteDropDown(editorList, egg);
         createGenderDropDown(editorList, egg);
 
-        this.applyButton = Button.builder(Component.translatable("Apply"),
+        this.applyButton = Button.builder(Component.translatable("betterbreeding.larielsqualityoflife.apply"),
                         btn -> sendApplyPacket())
                 .size(90, 20)
                 .build();
@@ -318,6 +319,9 @@ public class LarielBetterBreedingScreen extends Screen {
     }
 
     private void createFormDropDown(ScrollableListWidget scrollableListWidget, Pokemon egg) {
+        if (!config.getFormGuaranteeEnabled())
+            return;
+
         var forms = egg.getSpecies().getForms(true);
         var formDropDown = LarielDropDownFactory.create(forms, egg.getForm(),
                 p -> Component.translatable(p.getTranslationKey()).getString(),
@@ -338,6 +342,9 @@ public class LarielBetterBreedingScreen extends Screen {
     }
 
     private void createPaletteDropDown(ScrollableListWidget scrollableListWidget, Pokemon egg) {
+        if (!config.getPaletteGuaranteeEnabled())
+            return;
+
         var genderProps = egg.getForm().getGenderProperties(egg.getGender());
         List<PaletteProperties> palettes = genderProps != null
                 ? Lists.newArrayList(genderProps.getPalettes())
@@ -362,7 +369,14 @@ public class LarielBetterBreedingScreen extends Screen {
     }
 
     private void createGenderDropDown(ScrollableListWidget scrollableListWidget, Pokemon egg) {
+        if (!config.getGenderGuaranteeEnabled())
+            return;
+
         List<Gender> genders = Lists.newArrayList(egg.getForm().getPossibleGenders());
+
+        if (config.getAllowForceMaleFemaleGender()) {
+            addMissingGender(genders);
+        }
 
         var genderDropDownList = LarielDropDownFactory.create(genders, egg.getGender(),
                 p -> Component.translatable(p.getTranslationKey()).getString(),
@@ -379,8 +393,21 @@ public class LarielBetterBreedingScreen extends Screen {
         );
     }
 
+    private static void addMissingGender(List<Gender> genders) {
+        var male = Gender.getGender("male");
+        var female = Gender.getGender("female");
+
+        if (male == null || female == null)
+            return;
+
+        if (!genders.contains(male))
+            genders.add(male);
+        if (!genders.contains(female))
+            genders.add(female);
+    }
+
     private void updateApplyButtonState() {
-        if (applyButton == null) return;
+        if (applyButton == null || selectedForm == null || selectedPalette == null || selectedGender == null) return;
 
         applyButton.active = !selectedForm.equals(egg.getForm().getName()) ||
                 !selectedPalette.equals(egg.getPalette().getName()) ||

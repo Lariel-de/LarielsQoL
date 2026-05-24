@@ -12,7 +12,7 @@ public class MintTraderMenuProvider implements MenuProvider {
 
     @Override
     public @NotNull Component getDisplayName() {
-        return Component.literal("Mint Trader");
+        return Component.translatable("minttrader.larielsqualityoflife.title");
     }
 
     @Override

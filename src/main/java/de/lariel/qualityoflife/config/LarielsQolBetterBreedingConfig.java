@@ -42,6 +42,7 @@ public class LarielsQolBetterBreedingConfig extends AbstractYamlConfig {
     private final boolean genderGuaranteeEnabled;
     private final int genderGuaranteeCostAmount;
     private final String genderGuaranteeCostItem;
+    private final boolean allowForceMaleFemaleGender;
 
     public LarielsQolBetterBreedingConfig() {
         // --- Undiscovered Breeding Defaults ---
@@ -74,6 +75,7 @@ public class LarielsQolBetterBreedingConfig extends AbstractYamlConfig {
         this.genderGuaranteeEnabled = true;
         this.genderGuaranteeCostAmount = 2;
         this.genderGuaranteeCostItem = "minecraft:emerald";
+        this.allowForceMaleFemaleGender = false;
     }
 
     // --- Getter: Undiscovered Breeding ---
@@ -156,6 +158,10 @@ public class LarielsQolBetterBreedingConfig extends AbstractYamlConfig {
 
     public Item getGenderGuaranteeCostItem() {
         return getCostItem(genderGuaranteeCostItem);
+    }
+
+    public boolean getAllowForceMaleFemaleGender() {
+        return allowForceMaleFemaleGender;
     }
 
     private Item getCostItem(String itemString) {
