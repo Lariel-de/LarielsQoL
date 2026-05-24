@@ -13,18 +13,17 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 
 public class LarielOpenPokeBagPacket extends LarielPacketBase {
+    @SuppressWarnings("unused")
+    public static final StreamCodec<RegistryFriendlyByteBuf, LarielOpenPokeBagPacket> CODEC = StreamCodec.composite(
+            ByteBufCodecs.BOOL, p -> true,
+            LarielOpenPokeBagPacket::new);
+    public static final Type<LarielOpenPokeBagPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "hotkey_packet"));
+
     // Keep that constructor, else I have to implement singleton
     // because StreamCoded.unit expects the absolute same instance
     public LarielOpenPokeBagPacket(boolean sync) {
         super(sync);
     }
-
-    @SuppressWarnings("unused")
-    public static final StreamCodec<RegistryFriendlyByteBuf, LarielOpenPokeBagPacket> CODEC = StreamCodec.composite(
-            ByteBufCodecs.BOOL, p -> true,
-            LarielOpenPokeBagPacket::new);
-
-    public static final Type<LarielOpenPokeBagPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "hotkey_packet"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {

@@ -12,11 +12,10 @@ import java.util.UUID;
 
 public abstract class LarielBaseTrackListener<T> {
 
-    protected final Map<UUID, LarielTrackedTarget<T>> activeTargets = new HashMap<>();
-
     private static final String[] ARROWS = {
             "🡱", "🡲", "🡲", "🡳", "🡳", "🡰", "🡰", "🡱"
     };
+    protected final Map<UUID, LarielTrackedTarget<T>> activeTargets = new HashMap<>();
 
     protected void onPlayerTick(PlayerTickEvent.Post event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
@@ -42,6 +41,7 @@ public abstract class LarielBaseTrackListener<T> {
     protected abstract double getDistance(ServerPlayer player, T target);
 
     protected abstract double getTargetX(T target);
+
     protected abstract double getTargetZ(T target);
 
     private float getAngleToTarget(ServerPlayer player, T target) {

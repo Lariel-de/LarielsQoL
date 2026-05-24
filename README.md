@@ -1,6 +1,7 @@
 # Lariel’s Quality of Life – Pixelmon QoL Mod
 
-A modern Quality‑of‑Life mod for **Pixelmon Reforged / NeoForge**, designed to enhance gameplay with custom GUIs, improved breeding mechanics, new items, and various comfort features.  
+A modern Quality‑of‑Life mod for **Pixelmon Reforged / NeoForge**, designed to enhance gameplay with custom GUIs,
+improved breeding mechanics, new items, and various comfort features.  
 The goal is to streamline everyday Pixelmon interactions without altering the core experience.
 
 ---
@@ -9,9 +10,11 @@ The goal is to streamline everyday Pixelmon interactions without altering the co
 
 ## 🎯 Pokémon Spawn Tracker
 
-The mod includes an optional **Pokémon Spawn Tracker** that alerts the player when special Pokémon appear in the world and provides an interactive way to track them.
+The mod includes an optional **Pokémon Spawn Tracker** that alerts the player when special Pokémon appear in the world
+and provides an interactive way to track them.
 
 ### ✨ What It Detects
+
 The tracker listens for important Pixelmon spawns, including:
 
 - Shiny Pokémon
@@ -23,6 +26,7 @@ The tracker listens for important Pixelmon spawns, including:
 When such a Pokémon spawns near the player, a **system message** is displayed.
 
 ### 📨 Interactive Notifications
+
 The notification includes:
 
 - The Pokémon’s display name
@@ -32,6 +36,7 @@ The notification includes:
 Clicking the link automatically starts tracking the Pokémon.
 
 ### 🧭 Entity Tracking System
+
 Once tracking is activated:
 
 - The mod locates the target entity by UUID
@@ -39,9 +44,11 @@ Once tracking is activated:
 - The arrow updates every tick and always points toward the target
 - Tracking automatically stops if the entity despawns or is defeated
 
-This system allows players to quickly locate rare or valuable Pokémon without relying on teleport commands or external tools.
+This system allows players to quickly locate rare or valuable Pokémon without relying on teleport commands or external
+tools.
 
 ### 🛠 Technical Notes
+
 - Uses Pixelmon’s spawn events to detect special Pokémon
 - Tracking is handled server‑side and updated per tick
 - Directional arrows are rendered client‑side using lightweight UI overlays
@@ -49,6 +56,7 @@ This system allows players to quickly locate rare or valuable Pokémon without r
 - Fully compatible with NeoForge 20.4+ and Pixelmon 9.2–9.3
 
 ## 🧪 Mint Trader (Custom GUI)
+
 A fully custom trading interface for Pokémon Mints.
 
 - Custom Screen + Menu
@@ -58,6 +66,7 @@ A fully custom trading interface for Pokémon Mints.
 - Easily extendable for additional currencies or logic
 
 ## 🥚 Better Breeding
+
 Improves the Pokémon breeding experience with clearer logic and better control.
 
 - Form and palette handling
@@ -68,6 +77,7 @@ Improves the Pokémon breeding experience with clearer logic and better control.
 - Extendable service structure for future breeding features
 
 ## 📈 EV Items & QoL Mechanics
+
 Adds new items and mechanics to simplify EV training and Pokémon management.
 
 - Configurable EV increases
@@ -75,6 +85,7 @@ Adds new items and mechanics to simplify EV training and Pokémon management.
 - Seamless integration with Pixelmon systems
 
 ## 🧩 Clean Architecture
+
 The mod is structured for clarity and maintainability:
 
 - `menu` → server‑side container logic
@@ -88,6 +99,7 @@ The mod is structured for clarity and maintainability:
 ## 🛠 Technical Overview
 
 ### 🔌 Networking
+
 Uses NeoForge’s modern `StreamCodec` system:
 
 - Client → Server packets for actions

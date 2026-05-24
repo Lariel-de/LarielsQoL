@@ -14,6 +14,13 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 
 public class LarielBetterBreedingStatusPacket extends LarielPacketBase {
+    public static final StreamCodec<RegistryFriendlyByteBuf, LarielBetterBreedingStatusPacket> CODEC =
+            StreamCodec.composite(
+                    ByteBufCodecs.STRING_UTF8, p -> p.message,
+                    ByteBufCodecs.BOOL, p -> p.success,
+                    LarielBetterBreedingStatusPacket::new
+            );
+    public static final Type<LarielBetterBreedingStatusPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "better_breeding_status_packet"));
     private final String message;
     private final boolean success;
 
@@ -32,15 +39,6 @@ public class LarielBetterBreedingStatusPacket extends LarielPacketBase {
             }
         });
     }
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, LarielBetterBreedingStatusPacket> CODEC =
-            StreamCodec.composite(
-                    ByteBufCodecs.STRING_UTF8, p -> p.message,
-                    ByteBufCodecs.BOOL, p -> p.success,
-                    LarielBetterBreedingStatusPacket::new
-            );
-
-    public static final Type<LarielBetterBreedingStatusPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "better_breeding_status_packet"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {

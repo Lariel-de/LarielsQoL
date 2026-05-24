@@ -10,8 +10,7 @@ public class LarielsQolConfigManager {
     private LarielsQolBetterBreedingConfig breeding;
     private LarielsQolEnchantmentConfig enchantments;
 
-    public LarielsQolConfigManager(Logger logger)
-    {
+    public LarielsQolConfigManager(Logger logger) {
         this.logger = logger;
     }
 

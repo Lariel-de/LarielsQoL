@@ -21,32 +21,28 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class LarielMintTraderPacket extends LarielPacketBase {
-    private final Item selectedMint;
-
-    private static final TagKey<Item> MINT_TAG =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("larielsqol", "mints"));
-
     public static final List<Item> DESIRED_MINTS = List.of(
             ItemRegistration.MINT_JOLLY.get(),
             ItemRegistration.MINT_TIMID.get(),
             ItemRegistration.MINT_MODEST.get(),
             ItemRegistration.MINT_ADAMANT.get()
     );
-
-    public LarielMintTraderPacket(boolean sync, Item selectedMint) {
-        super(sync);
-
-        this.selectedMint = selectedMint;
-    }
-
     public static final StreamCodec<RegistryFriendlyByteBuf, LarielMintTraderPacket> CODEC =
             StreamCodec.composite(
                     ByteBufCodecs.BOOL, p -> p.sync,
                     ByteBufCodecs.registry(Registries.ITEM), p -> p.selectedMint,
                     LarielMintTraderPacket::new
             );
-
     public static final Type<LarielMintTraderPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "mint_trader_packet"));
+    private static final TagKey<Item> MINT_TAG =
+            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("larielsqol", "mints"));
+    private final Item selectedMint;
+
+    public LarielMintTraderPacket(boolean sync, Item selectedMint) {
+        super(sync);
+
+        this.selectedMint = selectedMint;
+    }
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
@@ -88,7 +84,7 @@ public class LarielMintTraderPacket extends LarielPacketBase {
         return DESIRED_MINTS.get(DESIRED_MINTS.indexOf(selectedMint));
     }
 
-    private void removeMints(Container c, int amount) {
+    private void removeMints(Container c, @SuppressWarnings("SameParameterValue") int amount) {
         int remaining = amount;
 
         for (int i = 0; i < 9 && remaining > 0; i++) {

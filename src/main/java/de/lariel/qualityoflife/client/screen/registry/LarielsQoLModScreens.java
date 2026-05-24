@@ -3,8 +3,6 @@ package de.lariel.qualityoflife.client.screen.registry;
 import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.client.screen.LarielMintTraderScreen;
 import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
-import de.lariel.qualityoflife.network.packet.LarielBetterBreedingOpenScreenPacket;
-import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

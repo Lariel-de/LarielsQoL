@@ -15,8 +15,8 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
 public class LarielMintTraderScreen extends AbstractContainerScreen<MintTraderMenu> {
-    private Item selectedMint;
     private static final ResourceLocation BG = ResourceLocation.fromNamespaceAndPath("larielsqualityoflife", "textures/gui/container/mint_trader.png");
+    private Item selectedMint;
     private Component statusMessage = null;
     private long statusMessageUntil = 0;
     private int statusMessageColor;

@@ -43,8 +43,7 @@ public class LarielNetwork {
         registrar.playToClient(type, codec, LarielPacketBase::handle);
     }
 
-    public static void sendToClient(ServerPlayer player, LarielPacketBase packet)
-    {
+    public static void sendToClient(ServerPlayer player, LarielPacketBase packet) {
         if (player == null)
             return;
 

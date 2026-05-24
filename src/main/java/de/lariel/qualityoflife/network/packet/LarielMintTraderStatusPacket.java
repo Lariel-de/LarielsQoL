@@ -14,6 +14,13 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 
 public class LarielMintTraderStatusPacket extends LarielPacketBase {
+    public static final StreamCodec<RegistryFriendlyByteBuf, LarielMintTraderStatusPacket> CODEC =
+            StreamCodec.composite(
+                    ByteBufCodecs.BOOL, p -> p.sync,
+                    ByteBufCodecs.STRING_UTF8, p -> p.translationKey,
+                    LarielMintTraderStatusPacket::new
+            );
+    public static final Type<LarielMintTraderStatusPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "mint_trader_status_packet"));
     private final String translationKey;
 
     protected LarielMintTraderStatusPacket(boolean success, String translationKey) {
@@ -21,15 +28,6 @@ public class LarielMintTraderStatusPacket extends LarielPacketBase {
 
         this.translationKey = translationKey;
     }
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, LarielMintTraderStatusPacket> CODEC =
-            StreamCodec.composite(
-                    ByteBufCodecs.BOOL, p -> p.sync,
-                    ByteBufCodecs.STRING_UTF8, p -> p.translationKey,
-                    LarielMintTraderStatusPacket::new
-            );
-
-    public static final Type<LarielMintTraderStatusPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "mint_trader_status_packet"));
 
     @Override
     protected void handlePacket(IPayloadContext context) {

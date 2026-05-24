@@ -13,6 +13,14 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 
 public class LarielBetterBreedingOpenScreenPacket extends LarielPacketBase {
+    public static final StreamCodec<RegistryFriendlyByteBuf, LarielBetterBreedingOpenScreenPacket> CODEC =
+            StreamCodec.composite(
+                    ByteBufCodecs.BOOL, p -> p.sync,
+                    LarielBetterBreedingOpenScreenPacket::new
+            );
+    public static final Type<LarielBetterBreedingOpenScreenPacket> TYPE =
+            new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "better_breeding_open_screen_packet"));
+
     public LarielBetterBreedingOpenScreenPacket(boolean sync) {
         super(sync);
     }
@@ -21,15 +29,6 @@ public class LarielBetterBreedingOpenScreenPacket extends LarielPacketBase {
     protected void handlePacket(IPayloadContext context) {
         LarielScreenService.openScreen(new LarielBetterBreedingScreen());
     }
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, LarielBetterBreedingOpenScreenPacket> CODEC =
-            StreamCodec.composite(
-                    ByteBufCodecs.BOOL, p -> p.sync,
-                    LarielBetterBreedingOpenScreenPacket::new
-            );
-
-    public static final Type<LarielBetterBreedingOpenScreenPacket> TYPE =
-            new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "better_breeding_open_screen_packet"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {

@@ -2,13 +2,13 @@ package de.lariel.qualityoflife;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
 import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
+import de.lariel.qualityoflife.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.commands.*;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
-import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
-import de.lariel.qualityoflife.client.LarielHotkeyHandler;
+import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -66,11 +66,6 @@ public class LarielsQoL {
         // Logic for when the server is starting here
     }
 
-    public void reloadConfig() {
-        _configManager = new LarielsQolConfigManager(LOGGER);
-        _configManager.loadAll();
-    }
-
     @SubscribeEvent
     public static void onServerStarted(ServerStartedEvent event) {
         // Logic for once the server has started here
@@ -108,5 +103,10 @@ public class LarielsQoL {
 
     public static LarielsQolConfigManager getConfig() {
         return _instance._configManager;
+    }
+
+    public void reloadConfig() {
+        _configManager = new LarielsQolConfigManager(LOGGER);
+        _configManager.loadAll();
     }
 }

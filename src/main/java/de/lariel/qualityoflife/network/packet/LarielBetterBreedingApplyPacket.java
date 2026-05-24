@@ -16,6 +16,16 @@ import java.util.UUID;
 
 public class LarielBetterBreedingApplyPacket extends LarielPacketBase {
 
+    public static final StreamCodec<RegistryFriendlyByteBuf, LarielBetterBreedingApplyPacket> CODEC =
+            StreamCodec.composite(
+                    UUIDUtil.STREAM_CODEC, p -> p.eggUUID,
+                    ByteBufCodecs.STRING_UTF8, p -> p.form,
+                    ByteBufCodecs.STRING_UTF8, p -> p.palette,
+                    ByteBufCodecs.STRING_UTF8, p -> p.gender,
+                    LarielBetterBreedingApplyPacket::new
+            );
+    public static final Type<LarielBetterBreedingApplyPacket> TYPE =
+            new Type<>(ResourceLocation.fromNamespaceAndPath("larielsqol", "better_breeding_packet"));
     private final UUID eggUUID;
     private final String form;
     private final String palette;
@@ -37,18 +47,6 @@ public class LarielBetterBreedingApplyPacket extends LarielPacketBase {
                 LarielBreedingApplyService.apply(player, eggUUID, form, palette, gender)
         );
     }
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, LarielBetterBreedingApplyPacket> CODEC =
-            StreamCodec.composite(
-                    UUIDUtil.STREAM_CODEC, p -> p.eggUUID,
-                    ByteBufCodecs.STRING_UTF8, p -> p.form,
-                    ByteBufCodecs.STRING_UTF8, p -> p.palette,
-                    ByteBufCodecs.STRING_UTF8, p -> p.gender,
-                    LarielBetterBreedingApplyPacket::new
-            );
-
-    public static final Type<LarielBetterBreedingApplyPacket> TYPE =
-            new Type<>(ResourceLocation.fromNamespaceAndPath("larielsqol", "better_breeding_packet"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
