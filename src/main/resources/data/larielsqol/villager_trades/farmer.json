@@ -1,0 +1,24 @@
+{
+  "profession": "minecraft:farmer",
+  "levels": {
+    "1": [
+      {
+        "chance": 0.8,
+        "buy": [
+          { "item": "minecraft:wheat", "count": 20 },
+          { "item": "minecraft:emerald", "count": 1 }
+        ],
+        "sell": { "item": "minecraft:bread", "count": 6 }
+      }
+    ],
+    "2": [
+      {
+        "chance": 0.5,
+        "buy": [
+          { "item": "minecraft:carrot", "count": 15 }
+        ],
+        "sell": { "item": "minecraft:emerald", "count": 1 }
+      }
+    ]
+  }
+}

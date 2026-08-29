@@ -42,6 +42,8 @@ public class LarielVillager extends Villager {
     public void customServerAiStep() {
         super.customServerAiStep();
 
+        updateTrades();
+
         var offers = this.getOffers();
         if (offers.isEmpty()) return;
 
