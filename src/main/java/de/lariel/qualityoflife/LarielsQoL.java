@@ -5,6 +5,7 @@ import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
 import de.lariel.qualityoflife.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.commands.*;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
+import de.lariel.qualityoflife.entities.LarielEntityRegistration;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
@@ -45,6 +46,7 @@ public class LarielsQoL {
         NeoForge.EVENT_BUS.register(new LarielHotkeyHandler());
 
         bus.addListener(LarielsQoL::onModLoad);
+        LarielEntityRegistration.register(bus);
     }
 
     public static void onModLoad(FMLCommonSetupEvent event) {
