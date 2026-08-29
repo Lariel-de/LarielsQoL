@@ -7,6 +7,7 @@ import de.lariel.qualityoflife.commands.*;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
 import de.lariel.qualityoflife.entities.LarielEntityRegistration;
 import de.lariel.qualityoflife.items.LarielCreateModeTabs;
+import de.lariel.qualityoflife.items.LarielItemRegistration;
 import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
@@ -47,6 +48,7 @@ public class LarielsQoL {
         NeoForge.EVENT_BUS.register(new LarielHotkeyHandler());
 
         bus.addListener(LarielsQoL::onModLoad);
+        LarielItemRegistration.register(bus);
         LarielCreateModeTabs.register(bus);
         LarielEntityRegistration.register(bus);
     }
