@@ -12,6 +12,7 @@ import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
+import de.lariel.qualityoflife.network.packet.LarielShopkeeperOpenScreenPacket;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -85,6 +86,7 @@ public class LarielsQoL {
         LarielResetBreedingCounterCommand.register(event.getDispatcher());
         LarielOpenMintTraderCommand.register(event.getDispatcher());
         LarielOpenBetterBreedingCommand.register(event.getDispatcher());
+        LarielOpenLarielShopkeeperCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent
