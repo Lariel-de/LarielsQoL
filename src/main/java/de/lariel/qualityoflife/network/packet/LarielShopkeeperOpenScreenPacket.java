@@ -38,8 +38,11 @@ public class LarielShopkeeperOpenScreenPacket extends LarielPacketBase {
     protected void handlePacket(IPayloadContext context) {
         var testItems = new ArrayList<LarielShopItem>();
 
-        testItems.add(new LarielShopItem(new ShopItem(new ItemStack(Items.EMERALD), 0, 0), 1, new CurrencyData(CurrencyType.ITEM, null, new ItemStack(Items.EMERALD), null)));
-        testItems.add(new LarielShopItem(new ShopItem(PokeBallRegistry.POKE_BALL.get().getBallItem(), 1500.0, 500.0), 10, new CurrencyData(CurrencyType.ITEM, null, new ItemStack(Items.DIRT), null)));
+        testItems.add(new LarielShopItem(new ShopItem(new ItemStack(Items.EMERALD), 0, 0),
+                1, new CurrencyData(new ItemStack(Items.EMERALD))));
+        testItems.add(new LarielShopItem(new ShopItem(PokeBallRegistry.POKE_BALL.get().getBallItem(), 1500.0, 500.0),
+                10, new CurrencyData(new ItemStack(Items.DIRT, 10))));
+        testItems.add(new LarielShopItem(new ShopItem(PokeBallRegistry.POKE_BALL.get().getBallItem(), 1500.0, 500.0)));
 
         LarielScreenService.openScreen(new LarielShopkeeperScreen(testItems, false));
     }

@@ -1,20 +1,32 @@
 package de.lariel.qualityoflife.shopkeeper;
 
 import com.pixelmonmod.pixelmon.api.shop.ShopItem;
+import org.jetbrains.annotations.NotNull;
 
 public class LarielShopItem {
 
-    private final ShopItem pixelmonItem;
+    private final ShopItem shopItem;
     private final int customPrice;
-    private final CurrencyData currency;
+    private final CurrencyData currencyData;
 
-    public LarielShopItem(ShopItem item, int customPrice, CurrencyData currency) {
-        this.pixelmonItem = item;
-        this.customPrice = customPrice;
-        this.currency = currency;
+    public LarielShopItem(@NotNull ShopItem shopItem) {
+        this(shopItem, 0, new CurrencyData());
     }
 
-    public ShopItem pixelmon() { return pixelmonItem; }
+    public LarielShopItem(@NotNull ShopItem shopItem, int customPrice, @NotNull CurrencyData currencyData) {
+        this.shopItem = getPixelmonItem(shopItem, currencyData);
+        this.customPrice = customPrice;
+        this.currencyData = currencyData;
+    }
+
+    public ShopItem shopItem() { return shopItem; }
     public int price() { return customPrice; }
-    public CurrencyData currency() { return currency; }
+    public CurrencyData currencyData() { return currencyData; }
+
+    private ShopItem getPixelmonItem(@NotNull ShopItem shopItem, @NotNull CurrencyData currencyData) {
+        if (currencyData.type() == CurrencyType.POKEDOLLAR)
+            return shopItem;
+
+        return shopItem.withSellPrice(0).withBuyPrice(0);
+    }
 }

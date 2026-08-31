@@ -4,13 +4,12 @@ import com.pixelmonmod.pixelmon.api.shop.ShopItem;
 import com.pixelmonmod.pixelmon.client.gui.Resources;
 import com.pixelmonmod.pixelmon.client.gui.ScreenHelper;
 import com.pixelmonmod.pixelmon.client.gui.npc.ShopkeeperScreen;
-import com.pixelmonmod.pixelmon.entities.npcs.registry.EnumBuySell;
 import com.pixelmonmod.pixelmon.storage.ClientData;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.resources.ResourceLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +86,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         buyItems.clear();
 
         for (LarielShopItem item : shopItems) {
-            buyItems.add(item.pixelmon());
+            buyItems.add(item.shopItem());
         }
 
         larielItems = shopItems;
@@ -96,7 +95,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     private static List<ShopItem> extractPixelmonItems(List<LarielShopItem> items) {
         List<ShopItem> pixelmonItems = new ArrayList<>();
         for (LarielShopItem item : items) {
-            pixelmonItems.add(item.pixelmon());
+            pixelmonItems.add(item.shopItem());
         }
 
         return pixelmonItems;
@@ -174,34 +173,53 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     protected void renderCost(GuiGraphics graphics, int i, List<ShopItem> listItems, float topLimit, String cost, int costWidth) {
         var larielItem = larielItems.get(i);
         int colour = 14540253;
-        if (this.currentTab == EnumBuySell.Buy && ((ShopItem) listItems.get(i)).buyPrice() > ClientData.playerMoney.doubleValue()) {
-            colour = 16729156;
+        var player = Minecraft.getInstance().player;
+
+        if (player == null) return;
+
+        switch (larielItem.currencyData().type()) {
+            case POKEDOLLAR -> {
+                if (larielItem.shopItem().buyPrice() > ClientData.playerMoney.doubleValue())
+                    colour = 16729156;
+            }
+            case SCOREBOARD -> {
+                var scoreboard = player.getScoreboard();
+                var objective = scoreboard.getObjective(larielItem.currencyData().customKey());
+
+                if (objective == null) {
+                    colour = 16729156;
+                    break;
+                }
+
+                var coins = scoreboard.getOrCreatePlayerScore(player, objective).get();
+
+                if (coins < larielItem.price())
+                    colour = 16729156;
+            }
+            case ITEM -> {
+                int currencyItem = player.getInventory().countItem(larielItem.currencyData().currencyItem().getItem());
+                if (currencyItem < larielItem.price())
+                    colour = 16729156;
+            }
+            case CUSTOM -> {
+                // do nothing -> NYI
+            }
         }
 
         int ICON_X = this.LIST_LEFT_EDGE + 140;
-        int ICON_Y = (int)(topLimit + 6);
+        int ICON_Y = (int) (topLimit + 6);
 
-        if (larielItem.currency().type() == CurrencyType.ITEM) {
-            var icon = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/item/emerald.png");
-            ScreenHelper.drawImageQuad(icon, graphics, ICON_X, ICON_Y, 6, 9, 0,0,1,1,1,1,1,1,0);
+        if (larielItem.currencyData().type() == CurrencyType.ITEM) {
+            graphics.renderItem(larielItem.currencyData().currencyItem(), ICON_X - 6, ICON_Y - 4);
         } else {
-            ScreenHelper.drawImageQuad(Resources.pokedollar, graphics, ICON_X, ICON_Y, 6, 9, 0,0,1,1,1,1,1,1,0);
+            ScreenHelper.drawImageQuad(Resources.pokedollar, graphics, ICON_X, ICON_Y - 1, 6, 9, 0, 0, 1, 1, 1, 1, 1, 1, 0);
         }
 
         int TEXT_X = ICON_X + 10;
-        int TEXT_Y = (int)(topLimit + 7);
+        int TEXT_Y = (int) (topLimit + 7);
 
-        ScreenHelper.drawSquashedString(
-                graphics,
-                this.minecraft.font,
-                String.valueOf(larielItem.price()),
-                false,
-                9999, // egal, wir nutzen feste Koordinaten
-                TEXT_X,
-                TEXT_Y,
-                colour,
-                false
-        );
+        ScreenHelper.drawSquashedString(graphics, Minecraft.getInstance().font, String.valueOf(larielItem.price()), false,
+                9999, TEXT_X, TEXT_Y, colour, false);
     }
 
     @Override

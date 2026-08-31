@@ -57,7 +57,7 @@ public class LarielsQoL {
     public static void onModLoad(FMLCommonSetupEvent event) {
         // Here is how you register a listener for Pixelmon events
 
-        // Since the desired pixelmon event fires to early and the coordinates of the entity is always 0 0 0
+        // Since the desired shopItem event fires to early and the coordinates of the entity is always 0 0 0
         // use the NeoForgeEventBus
         if (_instance._configManager.general().getEnableSpawnNotification()) {
             NeoForge.EVENT_BUS.register(new LarielPokeSpawnListener(LarielSpawnNotifier.GetInstance()));
