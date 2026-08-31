@@ -20,7 +20,7 @@ public class CurrencyData {
         this.customKey = null;
     }
 
-    public CurrencyData(String customKey, CurrencyData type) {
+    public CurrencyData(String customKey, CurrencyType type) {
         this.type = CurrencyType.SCOREBOARD;
         this.customKey = customKey;
         this.currencyItem = null;

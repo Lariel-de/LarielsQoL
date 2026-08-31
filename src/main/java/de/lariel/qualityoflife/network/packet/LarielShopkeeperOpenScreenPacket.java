@@ -43,6 +43,8 @@ public class LarielShopkeeperOpenScreenPacket extends LarielPacketBase {
         testItems.add(new LarielShopItem(new ShopItem(PokeBallRegistry.POKE_BALL.get().getBallItem(), 1500.0, 500.0),
                 10, new CurrencyData(new ItemStack(Items.DIRT, 10))));
         testItems.add(new LarielShopItem(new ShopItem(PokeBallRegistry.POKE_BALL.get().getBallItem(), 1500.0, 500.0)));
+        testItems.add(new LarielShopItem(new ShopItem(PokeBallRegistry.POKE_BALL.get().getBallItem(), 1500.0, 500.0),
+                420000, new CurrencyData("Terst", CurrencyType.SCOREBOARD)));
 
         LarielScreenService.openScreen(new LarielShopkeeperScreen(testItems, false));
     }
