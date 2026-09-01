@@ -242,6 +242,14 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 //        NetworkHelper.sendToServer(new ShopTransactionPacket(false, ((ShopItem)this.sellItems.get(this.selectedItem)).uuid(), this.quantity));
     }
 
+    @Override
+    public void onClose() {
+        var player = Minecraft.getInstance().player;
+
+        if (player != null)
+            player.closeContainer();
+    }
+
     private boolean playerHasEnoughCurrency(LarielShopItem item, LocalPlayer player, int quantity) {
         return switch (item.currencyData().type()) {
             case POKEDOLLAR -> ClientData.playerMoney.doubleValue() >= item.price() * quantity;
