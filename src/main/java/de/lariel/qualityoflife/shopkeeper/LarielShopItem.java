@@ -20,7 +20,7 @@ public class LarielShopItem {
     }
 
     public ShopItem shopItem() { return shopItem; }
-    public int price() { return customPrice; }
+    public int price() { return currencyData.type() == CurrencyType.POKEDOLLAR ? (int)shopItem.buyPrice() : customPrice; }
     public CurrencyData currencyData() { return currencyData; }
 
     private ShopItem getPixelmonItem(@NotNull ShopItem shopItem, @NotNull CurrencyData currencyData) {
