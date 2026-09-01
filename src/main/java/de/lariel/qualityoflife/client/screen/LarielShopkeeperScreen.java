@@ -23,7 +23,6 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     private static final int ENOUGH_CURRENCY_COLOR = 14540253;
     private static final int NOT_ENOUGH_CURRENCY_COLOR = 16729156;
     private final List<LarielShopItem> larielItems;
-    private int BUY_SCREEN_LEFT_EDGE;
     private int BUY_SCREEN_TOP_EDGE;
     private int LIST_LEFT_EDGE;
     private int MINI_SCREEN_LEFT_EDGE;
@@ -37,8 +36,6 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     private int BUY_BUTTON_RIGHT_EDGE;
     private int BUY_BUTTON_TOP_EDGE;
     private int BUY_BUTTON_BOTTOM_EDGE;
-
-    private float incrementInterval = 8.0F;
 
     public LarielShopkeeperScreen(List<LarielShopItem> shopItems, boolean sellable) {
         super(extractPixelmonItems(shopItems), sellable);
@@ -68,12 +65,12 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         var SCREEN_X_CENTER = this.width / 2;
         var SCREEN_Y_CENTER = this.height / 2;
         var var10001 = SCREEN_X_CENTER;
-        this.BUY_SCREEN_LEFT_EDGE = var10001 + 197 / -2;
+        var BUY_SCREEN_LEFT_EDGE = var10001 + 197 / -2;
         var10001 = SCREEN_Y_CENTER;
         var10001 += 201 / -2;
         this.BUY_SCREEN_TOP_EDGE = var10001 - 4;
-        this.LIST_LEFT_EDGE = this.BUY_SCREEN_LEFT_EDGE + 12;
-        var10001 = this.BUY_SCREEN_LEFT_EDGE;
+        this.LIST_LEFT_EDGE = BUY_SCREEN_LEFT_EDGE + 12;
+        var10001 = BUY_SCREEN_LEFT_EDGE;
         this.MINI_SCREEN_LEFT_EDGE = var10001 + 197 + 8;
         this.ARROW_BUTTON_LEFT_EDGE = this.MINI_SCREEN_LEFT_EDGE + 27;
         this.ARROW_BUTTON_RIGHT_EDGE = this.ARROW_BUTTON_LEFT_EDGE + 25;
@@ -88,29 +85,14 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     }
 
     @Override
-    protected void renderPlayerMoney(GuiGraphics graphics) {
-        var moneyLabel = I18n.get("gui.shopkeeper.money");
-        var playerMoneyLabel = String.valueOf(ClientData.playerMoney);
-        var MONEY_LABEL_LEFT_EDGE = this.BUY_SCREEN_LEFT_EDGE + 158 - Minecraft.getInstance().font.width(moneyLabel) / 2;
-        var POKE_DOLLAR_LABEL_LEFT_EDGE = this.BUY_SCREEN_LEFT_EDGE + 158 - Minecraft.getInstance().font.width(playerMoneyLabel + "8") / 2;
-        var PLAYER_MONEY_LEFT_EDGE = this.BUY_SCREEN_LEFT_EDGE + 158 - Minecraft.getInstance().font.width(playerMoneyLabel + "8") / 2 + 8;
-        var MONEY_LABEL_Y = this.BUY_SCREEN_TOP_EDGE + 12;
-        var POKE_DOLLAR_TOP_EDGE = this.BUY_SCREEN_TOP_EDGE + 25;
-        var PLAYER_MONEY_TOP_EDGE = this.BUY_SCREEN_TOP_EDGE + 26;
-        graphics.drawString(Minecraft.getInstance().font, moneyLabel, MONEY_LABEL_LEFT_EDGE, MONEY_LABEL_Y, 16777215);
-        ScreenHelper.drawImageQuad(Resources.pokedollar, graphics, (float) POKE_DOLLAR_LABEL_LEFT_EDGE, (float) POKE_DOLLAR_TOP_EDGE, 6.0F, 9.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-        graphics.drawString(Minecraft.getInstance().font, playerMoneyLabel, PLAYER_MONEY_LEFT_EDGE, PLAYER_MONEY_TOP_EDGE, 16777215);
-    }
-
-    @Override
     protected void renderCost(GuiGraphics graphics, int i, List<ShopItem> listItems, float topLimit, String cost, int costWidth) {
         var larielItem = larielItems.get(i);
         var color = ENOUGH_CURRENCY_COLOR;
         var player = Minecraft.getInstance().player;
-        var ICON_X = this.LIST_LEFT_EDGE + 140;
-        var ICON_Y = (int) (topLimit + 6);
-        var TEXT_X = ICON_X + 10;
-        var TEXT_Y = (int) (topLimit + 7);
+        final var ICON_X = LIST_LEFT_EDGE + 140;
+        final var ICON_Y = (int) (topLimit + 6);
+        final var TEXT_X = ICON_X + 10;
+        final var TEXT_Y = ICON_Y + 1;
 
         if (player == null) return;
 
@@ -138,7 +120,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         var larielItem = larielItems.get(selectedItem);
         var player = Minecraft.getInstance().player;
         var priceLabel = I18n.get("gui.shopkeeper.price");
-        var priceAmount = "" + (double) this.quantity * larielItem.price();
+        var priceAmount = String.valueOf(this.quantity * larielItem.price());
         var PRICE_LABEL_LEFT_EDGE = this.MINI_SCREEN_LEFT_EDGE + 30 - Minecraft.getInstance().font.width(priceLabel) / 2;
         var PRICE_LABEL_TOP_EDGE = this.BUY_SCREEN_TOP_EDGE + 6;
         var POKE_DOLLAR_LEFT_EDGE = this.MINI_SCREEN_LEFT_EDGE + 29 - (Minecraft.getInstance().font.width(priceAmount) + 8) / 2 - 4;
@@ -226,30 +208,25 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
             }
 
             this.floatQuantity = 2.0F;
-            this.decreaseIncrementInterval();
         }
 
         // --- DOWN ARROW ---
         if (mouseX > ARROW_BUTTON_LEFT_EDGE && mouseX < ARROW_BUTTON_RIGHT_EDGE &&
                 mouseY > DOWN_ARROW_BUTTON_TOP_EDGE && mouseY < DOWN_ARROW_BUTTON_BOTTOM_EDGE) {
 
-            if (maxBuyable == 0) {
+            if (maxBuyable <= 1) {
                 this.quantity = 1;
                 this.floatQuantity = 2.0F;
-                this.decreaseIncrementInterval();
                 return;
             }
 
             if (this.quantity > 1) {
                 this.quantity--;
                 this.floatQuantity = 2.0F;
-                this.decreaseIncrementInterval();
                 return;
             }
 
             this.quantity = maxBuyable;
-            this.floatQuantity = 2.0F;
-            this.decreaseIncrementInterval();
         }
 
         // --- BUY BUTTON ---
@@ -260,10 +237,6 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
                 this.sendBuyPacket();
                 this.selectedItem = -1;
             }
-        }
-
-        if (isInstant) {
-            this.incrementInterval = 8.0F;
         }
     }
 
@@ -302,33 +275,30 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
     private int checkRemainingSlots(ItemStack buying) {
         var player = Minecraft.getInstance().player;
-
         if (player == null) return 0;
 
-        if (buying != null && buying != ItemStack.EMPTY && buying.getItem() != Items.AIR) {
-            try {
-                var available = 0;
-
-                for (var curStack : player.getInventory().items) {
-                    if (curStack != null && ItemStack.isSameItem(curStack, buying)) {
-                        available += buying.getMaxStackSize() - curStack.getCount();
-                    } else if (curStack == null || curStack == ItemStack.EMPTY || curStack.getItem() == Items.AIR) {
-                        available += buying.getMaxStackSize();
-                    }
-                }
-
-                return Math.min(2304, available);
-            } catch (Throwable t) {
-                LarielsQoL.getLogger().catching(t);
-                return 2304;
-            }
-        } else {
+        // Guard Clause: Ungültiges Item
+        if (buying == null || buying.isEmpty() || buying.getItem() == Items.AIR)
             return 0;
-        }
-    }
 
-    private void decreaseIncrementInterval() {
-        this.incrementInterval = Math.max(0.5F, this.incrementInterval * 0.75F);
+        int maxStack = buying.getMaxStackSize();
+        int available = 0;
+
+        try {
+            for (var curStack : player.getInventory().items) {
+                if (ItemStack.isSameItemSameComponents(curStack, buying)) {
+                    available += maxStack - curStack.getCount();
+                } else if (curStack.isEmpty()) {
+                    available += maxStack;
+                }
+            }
+
+            return Math.min(2304, available);
+
+        } catch (Throwable t) {
+            LarielsQoL.getLogger().catching(t);
+            return 2304;
+        }
     }
 
     private int getMaxAffordableQuantity(LarielShopItem item, LocalPlayer player) {
