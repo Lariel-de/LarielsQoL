@@ -1,0 +1,32 @@
+package de.lariel.qualityoflife.data;
+
+import com.pixelmonmod.pixelmon.api.shop.ShopItem;
+import de.lariel.qualityoflife.shopkeeper.CurrencyData;
+import de.lariel.qualityoflife.shopkeeper.CurrencyType;
+import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+
+public record LarielShopItemJson(
+        String itemId,
+        int price,
+        String currencyType,
+        String currencyItem,
+        String currencyKey,
+        int level
+) {public LarielShopItem toLarielShopItem() {
+    ItemStack stack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId)));
+
+    CurrencyData currency = switch (CurrencyType.valueOf(currencyType)) {
+        case POKEDOLLAR -> new CurrencyData();
+        case ITEM -> new CurrencyData(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(currencyItem))));
+        case SCOREBOARD -> new CurrencyData(currencyKey);
+        case CUSTOM -> new CurrencyData(currencyKey, CurrencyType.CUSTOM);
+    };
+
+    ShopItem pixelmonItem = new ShopItem(stack, price, 0);
+
+    return new LarielShopItem(pixelmonItem, price, currency);
+}
+}

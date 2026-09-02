@@ -21,7 +21,7 @@ public class CurrencyData {
     }
 
     public CurrencyData(String customKey, CurrencyType type) {
-        this.type = CurrencyType.SCOREBOARD;
+        this.type = type;
         this.customKey = customKey;
         this.currencyItem = null;
     }

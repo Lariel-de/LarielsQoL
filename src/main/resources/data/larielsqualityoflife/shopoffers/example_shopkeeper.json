@@ -1,0 +1,44 @@
+{
+  "name": "Lariel Example Trader",
+  "levels": {
+    "1": [
+      {
+        "item": "minecraft:iron_sword",
+        "price": 5,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0
+      },
+      {
+        "item": "minecraft:diamond",
+        "price": 20,
+        "currency": {
+          "type": "SCOREBOARD",
+          "objective": "coins"
+        },
+        "chance": 0.5
+      }
+    ],
+    "2": [
+      {
+        "item": "minecraft:diamond_sword",
+        "price": 5,
+        "currency": {
+          "type": "POKEDOLLAR"
+        },
+        "chance": 1.0
+      },
+      {
+        "item": "minecraft:golden_apple",
+        "price": 100,
+        "currency": {
+          "type": "ITEM",
+          "key": "minecraft:dirt"
+        },
+        "chance": 0.2
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 package de.lariel.qualityoflife.network.packet.base;
 
-import com.pixelmonmod.pixelmon.Pixelmon;
+import de.lariel.qualityoflife.LarielsQoL;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
@@ -17,7 +17,7 @@ public abstract class LarielPacketBase implements CustomPacketPayload {
                 try {
                     this.handlePacket(context);
                 } catch (Exception e) {
-                    Pixelmon.LOGGER.error("Error handling packet", e);
+                    LarielsQoL.LOGGER.error("Error handling packet", e);
                 }
 
             });

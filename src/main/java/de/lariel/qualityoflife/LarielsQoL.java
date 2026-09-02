@@ -1,10 +1,13 @@
 package de.lariel.qualityoflife;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.pixelmonmod.pixelmon.Pixelmon;
 import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
 import de.lariel.qualityoflife.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.commands.*;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
+import de.lariel.qualityoflife.data.ShopkeeperReloadListener;
 import de.lariel.qualityoflife.entities.LarielEntityRegistration;
 import de.lariel.qualityoflife.items.LarielCreateModeTabs;
 import de.lariel.qualityoflife.items.LarielItemRegistration;
@@ -12,7 +15,6 @@ import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
 import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
 import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
-import de.lariel.qualityoflife.network.packet.LarielShopkeeperOpenScreenPacket;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,6 +22,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -34,9 +37,8 @@ public class LarielsQoL {
 
     public static final String MOD_ID = "larielsqualityoflife";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-
+    public static final Gson GSON = new GsonBuilder().create();
     private static LarielsQoL _instance;
-
     private LarielsQolConfigManager _configManager;
 
     public LarielsQoL(IEventBus bus) {
@@ -64,6 +66,7 @@ public class LarielsQoL {
             NeoForge.EVENT_BUS.register(LarielEntityTrackListener.GetInstance());
             NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
         }
+        NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new ShopkeeperReloadListener()));
 
         Pixelmon.EVENT_BUS.register(new LarielBetterBreedingListener());
     }
