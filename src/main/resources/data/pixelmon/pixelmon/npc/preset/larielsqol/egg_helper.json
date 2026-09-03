@@ -11,10 +11,7 @@
             "type": "pixelmon:constant",
             "value": [
               {
-                "type": "pixelmon:player_execute_command",
-                "commands": [
-                  "_zlariel:qol/internal/breedui"
-                ]
+                "type": "larielsqualityoflife:open_better_breeding"
               }
             ]
           }

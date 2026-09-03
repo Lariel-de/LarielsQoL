@@ -11,6 +11,7 @@ import de.lariel.qualityoflife.listener.*;
 import de.lariel.qualityoflife.entities.LarielEntityRegistration;
 import de.lariel.qualityoflife.items.LarielCreateModeTabs;
 import de.lariel.qualityoflife.items.LarielItemRegistration;
+import de.lariel.qualityoflife.interactions.LarielInteractionResults;
 import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
@@ -43,6 +44,7 @@ public class LarielsQoL {
 
         reloadConfig();
 
+        bus.addListener(LarielInteractionResults::register);
         LarielsQolModMenus.MENUS.register(bus);
 
         NeoForge.EVENT_BUS.register(new LarielHotkeyHandler());
