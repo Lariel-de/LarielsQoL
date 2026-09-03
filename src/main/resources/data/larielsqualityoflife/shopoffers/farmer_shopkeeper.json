@@ -1,0 +1,99 @@
+{
+  "name": "Lariel Farmer Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:wheat",
+        "price": 20,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:carrot",
+        "price": 26,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:potato",
+        "price": 22,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:bread",
+        "price": 6,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 8
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:pumpkin",
+        "price": 15,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:pumpkin_pie",
+        "price": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:melon_slice",
+        "price": 8,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:suspicious_stew",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.5,
+        "Xp": 3,
+        "maxSellCountPerDay": 4
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:apple",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 8
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:golden_carrot",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 4
+      }
+    ]
+  }
+}

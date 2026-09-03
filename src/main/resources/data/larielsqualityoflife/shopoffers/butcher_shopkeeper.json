@@ -1,0 +1,99 @@
+{
+  "name": "Lariel Fisherman Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:string",
+        "price": 20,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:coal",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:cooked_cod",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 8
+      },
+      {
+        "item": "minecraft:cooked_salmon",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 8
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:cod_bucket",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:salmon_bucket",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 4
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:fishing_rod",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:fishing_rod",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 2
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:oak_boat",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.2,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      }
+    ]
+  }
+}

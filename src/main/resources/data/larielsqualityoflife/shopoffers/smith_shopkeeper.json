@@ -1,0 +1,155 @@
+{
+  "name": "Lariel Smith Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:coal",
+        "price": 15,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:stone_pickaxe",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 8
+      },
+      {
+        "item": "minecraft:stone_axe",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 8
+      },
+      {
+        "item": "minecraft:iron_helmet",
+        "price": 5,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:lava_bucket",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:chainmail_chestplate",
+        "price": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.5,
+        "Xp": 2,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:iron_pickaxe",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      },
+      {
+        "item": "minecraft:iron_sword",
+        "price": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:bell",
+        "price": 36,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.5,
+        "Xp": 3,
+        "maxSellCountPerDay": 2
+      },
+      {
+        "item": "minecraft:shield",
+        "price": 5,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:iron_axe",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:iron_pickaxe",
+        "price": 6,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:iron_sword",
+        "price": 5,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:crossbow",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 4
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:diamond_pickaxe",
+        "price": 12,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.2,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      },
+      {
+        "item": "minecraft:diamond_sword",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.2,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      },
+      {
+        "item": "minecraft:diamond_axe",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.2,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      }
+    ]
+  }
+}
