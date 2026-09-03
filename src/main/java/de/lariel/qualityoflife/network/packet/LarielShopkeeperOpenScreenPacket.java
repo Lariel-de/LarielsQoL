@@ -5,7 +5,7 @@ import de.lariel.qualityoflife.client.screen.LarielShopkeeperScreen;
 import de.lariel.qualityoflife.client.screen.services.LarielScreenService;
 import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
-import de.lariel.qualityoflife.utility.LarielShopkeeperSerializer;
+import de.lariel.qualityoflife.shopkeeper.utility.LarielShopkeeperSerializer;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;

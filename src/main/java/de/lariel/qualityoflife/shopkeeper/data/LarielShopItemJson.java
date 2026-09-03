@@ -1,4 +1,4 @@
-package de.lariel.qualityoflife.data;
+package de.lariel.qualityoflife.shopkeeper.data;
 
 import com.pixelmonmod.pixelmon.api.shop.ShopItem;
 import de.lariel.qualityoflife.shopkeeper.CurrencyData;

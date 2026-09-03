@@ -1,4 +1,4 @@
-package de.lariel.qualityoflife.utility;
+package de.lariel.qualityoflife.shopkeeper.utility;
 
 import net.minecraft.resources.ResourceLocation;
 

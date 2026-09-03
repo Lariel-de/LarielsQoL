@@ -1,9 +1,9 @@
-package de.lariel.qualityoflife.utility;
+package de.lariel.qualityoflife.shopkeeper.utility;
 
 import com.pixelmonmod.pixelmon.api.shop.ShopItem;
-import de.lariel.qualityoflife.data.CurrencyJson;
-import de.lariel.qualityoflife.data.ShopkeeperDefinition;
-import de.lariel.qualityoflife.data.TradeDefinition;
+import de.lariel.qualityoflife.shopkeeper.data.CurrencyJson;
+import de.lariel.qualityoflife.shopkeeper.data.ShopkeeperDefinition;
+import de.lariel.qualityoflife.shopkeeper.data.TradeDefinition;
 import de.lariel.qualityoflife.shopkeeper.CurrencyData;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;

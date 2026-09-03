@@ -1,8 +1,8 @@
-package de.lariel.qualityoflife.utility;
+package de.lariel.qualityoflife.shopkeeper.utility;
 
 import com.google.gson.reflect.TypeToken;
 import de.lariel.qualityoflife.LarielsQoL;
-import de.lariel.qualityoflife.data.LarielShopItemJson;
+import de.lariel.qualityoflife.shopkeeper.data.LarielShopItemJson;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 

@@ -1,4 +1,4 @@
-package de.lariel.qualityoflife.data;
+package de.lariel.qualityoflife.shopkeeper.data;
 
 import java.util.List;
 import java.util.Map;

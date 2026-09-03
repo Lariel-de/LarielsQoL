@@ -1,6 +1,6 @@
-package de.lariel.qualityoflife.utility;
+package de.lariel.qualityoflife.shopkeeper.utility;
 
-import de.lariel.qualityoflife.data.ShopkeeperDefinition;
+import de.lariel.qualityoflife.shopkeeper.data.ShopkeeperDefinition;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.server.level.ServerLevel;
 
