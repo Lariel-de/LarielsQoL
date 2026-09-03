@@ -87,8 +87,6 @@ public class LarielsQoL {
         LarielTrackEntityCommand.register(event.getDispatcher());
         LarielTrackBlockCommand.register(event.getDispatcher());
         LarielResetBreedingCounterCommand.register(event.getDispatcher());
-        LarielOpenMintTraderCommand.register(event.getDispatcher());
-        LarielOpenBetterBreedingCommand.register(event.getDispatcher());
         LarielOpenLarielShopkeeperCommand.register(event.getDispatcher());
     }
 

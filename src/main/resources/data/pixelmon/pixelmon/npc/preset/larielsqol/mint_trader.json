@@ -11,10 +11,7 @@
             "type": "pixelmon:constant",
             "value": [
               {
-                "type": "pixelmon:player_execute_command",
-                "commands": [
-                  "_zlariel:qol/internal/openminttrader"
-                ]
+                "type": "larielsqualityoflife:open_mint_trader"
               }
             ]
           }
