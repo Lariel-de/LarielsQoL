@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,7 @@ public class LarielNetwork {
         registerToServer(registrar, LarielOpenPokeBagPacket.TYPE, LarielOpenPokeBagPacket.CODEC);
         registerToServer(registrar, LarielMintTraderPacket.TYPE, LarielMintTraderPacket.CODEC);
         registerToServer(registrar, LarielBetterBreedingApplyPacket.TYPE, LarielBetterBreedingApplyPacket.CODEC);
+        registerToServer(registrar, LarielShopTransactionPacket.TYPE, LarielShopTransactionPacket.CODEC);
 
         // Server → Client
         registerToClient(registrar, LarielMintTraderStatusPacket.TYPE, LarielMintTraderStatusPacket.CODEC);
@@ -47,5 +49,9 @@ public class LarielNetwork {
 
     public static void sendToClient(@NotNull ServerPlayer player, @NotNull LarielPacketBase packet) {
         player.connection.send(packet);
+    }
+
+    public static void sendToServer(CustomPacketPayload payload, CustomPacketPayload... payloads) {
+        PacketDistributor.sendToServer(payload, payloads);
     }
 }

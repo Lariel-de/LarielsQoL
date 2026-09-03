@@ -37,6 +37,3 @@ public class LarielOpenPokeBagPacket extends LarielPacketBase {
         LarielPokeBagHelper.openFirstPokeBag(player);
     }
 }
-
-
-
