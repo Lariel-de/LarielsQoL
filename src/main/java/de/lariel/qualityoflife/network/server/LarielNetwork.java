@@ -11,6 +11,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.jetbrains.annotations.NotNull;
 
 @EventBusSubscriber(modid = LarielsQoL.MOD_ID)
 public class LarielNetwork {
@@ -44,10 +45,7 @@ public class LarielNetwork {
         registrar.playToClient(type, codec, LarielPacketBase::handle);
     }
 
-    public static void sendToClient(ServerPlayer player, LarielPacketBase packet) {
-        if (player == null)
-            return;
-
+    public static void sendToClient(@NotNull ServerPlayer player, @NotNull LarielPacketBase packet) {
         player.connection.send(packet);
     }
 }
