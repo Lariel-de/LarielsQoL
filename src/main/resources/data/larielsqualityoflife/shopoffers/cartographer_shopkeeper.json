@@ -44,7 +44,6 @@
         "item": "minecraft:map",
         "price": 14,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{map:\"woodland_mansion\"}",
         "chance": 0.4,
         "Xp": 3,
         "maxSellCountPerDay": 2
@@ -53,7 +52,6 @@
         "item": "minecraft:map",
         "price": 12,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{map:\"ocean_monument\"}",
         "chance": 0.4,
         "Xp": 3,
         "maxSellCountPerDay": 2
@@ -65,7 +63,6 @@
         "item": "minecraft:map",
         "price": 18,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{map:\"buried_treasure\"}",
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 2
@@ -77,7 +74,6 @@
         "item": "minecraft:map",
         "price": 24,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{map:\"ancient_city\"}",
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 1

@@ -22,7 +22,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:unbreaking\",lvl:2}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:unbreaking": 2 } } } },
         "chance": 0.8,
         "Xp": 2,
         "maxSellCountPerDay": 6
@@ -34,7 +34,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:efficiency\",lvl:2}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:efficiency": 2 } } } },
         "chance": 0.8,
         "Xp": 2,
         "maxSellCountPerDay": 6
@@ -48,7 +48,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:sharpness\",lvl:3}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:sharpness": 3 } } } },
         "chance": 0.6,
         "Xp": 3,
         "maxSellCountPerDay": 4
@@ -60,7 +60,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:fortune\",lvl:2}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:fortune": 2 } } } },
         "chance": 0.6,
         "Xp": 3,
         "maxSellCountPerDay": 4
@@ -74,7 +74,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:mending\",lvl:1}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:mending": 1 } } } },
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 2
@@ -86,7 +86,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:silk_touch\",lvl:1}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:silk_touch": 1 } } } },
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 2
@@ -100,7 +100,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:sharpness\",lvl:5}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:sharpness": 5 } } } },
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 1
@@ -112,7 +112,7 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "nbt": "{StoredEnchantments:[{id:\"minecraft:efficiency\",lvl:5}]}",
+        "nbt": { "components": { "minecraft:stored_enchantments": { "levels": { "minecraft:efficiency": 5 } } } },
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 1

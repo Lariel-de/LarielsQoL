@@ -44,7 +44,7 @@
         "item": "minecraft:tipped_arrow",
         "price": 2,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:poison\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:poison" } } },
         "chance": 0.6,
         "Xp": 3,
         "maxSellCountPerDay": 8
@@ -53,7 +53,7 @@
         "item": "minecraft:tipped_arrow",
         "price": 2,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:slowness\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:slowness" } } },
         "chance": 0.6,
         "Xp": 3,
         "maxSellCountPerDay": 8
@@ -65,7 +65,7 @@
         "item": "minecraft:tipped_arrow",
         "price": 3,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:harming\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:harming" } } },
         "chance": 0.4,
         "Xp": 4,
         "maxSellCountPerDay": 6
@@ -77,7 +77,7 @@
         "item": "minecraft:tipped_arrow",
         "price": 4,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:strong_harming\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:strong_harming" } } },
         "chance": 0.3,
         "Xp": 5,
         "maxSellCountPerDay": 4

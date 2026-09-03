@@ -25,7 +25,7 @@
         "item": "minecraft:potion",
         "price": 6,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:healing\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:healing" } } },
         "chance": 0.8,
         "Xp": 2,
         "maxSellCountPerDay": 6
@@ -37,7 +37,7 @@
         "item": "minecraft:potion",
         "price": 8,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:strength\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:strength" } } },
         "chance": 0.6,
         "Xp": 3,
         "maxSellCountPerDay": 4
@@ -57,7 +57,7 @@
         "item": "minecraft:potion",
         "price": 10,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:regeneration\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:regeneration" } } },
         "chance": 0.4,
         "Xp": 4,
         "maxSellCountPerDay": 3
@@ -77,7 +77,7 @@
         "item": "minecraft:potion",
         "price": 14,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Potion:\"minecraft:fire_resistance\"}",
+        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:fire_resistance" } } },
         "chance": 0.3,
         "Xp": 5,
         "maxSellCountPerDay": 2

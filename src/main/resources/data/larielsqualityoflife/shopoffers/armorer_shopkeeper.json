@@ -17,6 +17,15 @@
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 6
+      },
+      {
+        "item": "minecraft:diamond_boots",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:feather_falling": 4, "minecraft:unbreaking": 3 } } } },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 1
       }
     ],
 
@@ -55,7 +64,7 @@
         "item": "minecraft:diamond_helmet",
         "price": 12,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Enchantments:[{id:\"minecraft:protection\",lvl:3},{id:\"minecraft:unbreaking\",lvl:3}]}",
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 3, "minecraft:unbreaking": 3 } } } },
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 2
@@ -64,7 +73,7 @@
         "item": "minecraft:diamond_chestplate",
         "price": 18,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Enchantments:[{id:\"minecraft:protection\",lvl:3},{id:\"minecraft:unbreaking\",lvl:3}]}",
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 3, "minecraft:unbreaking": 3 } } } },
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 2
@@ -76,7 +85,7 @@
         "item": "minecraft:diamond_leggings",
         "price": 16,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Enchantments:[{id:\"minecraft:protection\",lvl:3},{id:\"minecraft:unbreaking\",lvl:3}]}",
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 3, "minecraft:unbreaking": 3 } } } },
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 1
@@ -85,7 +94,7 @@
         "item": "minecraft:diamond_boots",
         "price": 10,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": "{Enchantments:[{id:\"minecraft:feather_falling\",lvl:4},{id:\"minecraft:unbreaking\",lvl:3}]}",
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:feather_falling": 4, "minecraft:unbreaking": 3 } } } },
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 1
