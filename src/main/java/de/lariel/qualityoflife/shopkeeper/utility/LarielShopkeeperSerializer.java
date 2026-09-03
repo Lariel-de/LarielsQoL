@@ -5,34 +5,35 @@ import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.shopkeeper.data.LarielShopItemJson;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.HolderLookup;
 
 import java.util.List;
 
 public class LarielShopkeeperSerializer {
 
-    public static String serialize(List<LarielShopItem> items) {
+    public static String serialize(List<LarielShopItem> items, HolderLookup.Provider registries) {
         var dtoList = items.stream()
-                .map(LarielShopkeeperSerializer::toDto)
+                .map(item -> toDto(item, registries))
                 .toList();
 
         return LarielsQoL.GSON.toJson(dtoList);
     }
 
-    public static List<LarielShopItem> deserialize(String json) {
+    public static List<LarielShopItem> deserialize(String json, HolderLookup.Provider registries) {
         List<LarielShopItemJson> dtoList =
                 LarielsQoL.GSON.fromJson(json, new TypeToken<List<LarielShopItemJson>>() {
                 }.getType());
 
         return dtoList.stream()
-                .map(LarielShopkeeperSerializer::fromDto)
+                .map(dto -> fromDto(dto, registries))
                 .toList();
     }
 
-    private static LarielShopItemJson toDto(LarielShopItem item) {
-        var itemNbt = LarielItemStackFactory.serialize(item.getShopItem().itemStack());
+    private static LarielShopItemJson toDto(LarielShopItem item, HolderLookup.Provider registries) {
+        var itemNbt = LarielItemStackFactory.serialize(item.getShopItem().itemStack(), registries);
         var currencyNbt = item.getCurrencyData().currencyItem() == null
                 ? null
-                : LarielItemStackFactory.serialize(item.getCurrencyData().currencyItem());
+                : LarielItemStackFactory.serialize(item.getCurrencyData().currencyItem(), registries);
 
         return new LarielShopItemJson(
                 item.getShopItem().uuid().toString(),
@@ -51,7 +52,7 @@ public class LarielShopkeeperSerializer {
         );
     }
 
-    private static LarielShopItem fromDto(LarielShopItemJson dto) {
-        return dto.toLarielShopItem();
+    private static LarielShopItem fromDto(LarielShopItemJson dto, HolderLookup.Provider registries) {
+        return dto.toLarielShopItem(registries);
     }
 }

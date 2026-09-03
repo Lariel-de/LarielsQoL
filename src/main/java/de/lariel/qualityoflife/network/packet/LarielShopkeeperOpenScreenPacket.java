@@ -12,6 +12,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -38,7 +39,11 @@ public class LarielShopkeeperOpenScreenPacket extends LarielPacketBase {
 
     @Override
     protected void handlePacket(IPayloadContext context) {
-        List<LarielShopItem> items = LarielShopkeeperSerializer.deserialize(shopItemsJson);
+        var level = Minecraft.getInstance().level;
+        if (level == null) {
+            return;
+        }
+        List<LarielShopItem> items = LarielShopkeeperSerializer.deserialize(shopItemsJson, level.registryAccess());
         LarielScreenService.openScreen(new LarielShopkeeperScreen(shopkeeperId, items, false));
     }
 

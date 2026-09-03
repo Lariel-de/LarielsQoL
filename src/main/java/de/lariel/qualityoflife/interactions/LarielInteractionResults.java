@@ -138,7 +138,7 @@ public final class LarielInteractionResults {
                 var reputationLevel = LarielPlayerReputationStoreManager.get(player).getLevel(id);
                 var state = LarielShopkeeperStateManager.getState(id);
                 var shopItems = state.getItemsForToday(player.serverLevel(), definition, reputationLevel);
-                var shopItemsJson = LarielShopkeeperSerializer.serialize(shopItems);
+                var shopItemsJson = LarielShopkeeperSerializer.serialize(shopItems, player.serverLevel().registryAccess());
 
                 LarielNetwork.sendToClient(player,
                         new LarielShopkeeperOpenScreenPacket(id, shopItemsJson));

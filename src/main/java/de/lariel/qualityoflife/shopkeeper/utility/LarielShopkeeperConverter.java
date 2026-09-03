@@ -8,6 +8,7 @@ import de.lariel.qualityoflife.shopkeeper.CurrencyData;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.HolderLookup;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -16,19 +17,21 @@ import java.util.Optional;
 
 public class LarielShopkeeperConverter {
 
-    public static List<LarielShopItem> convertToLarielShopItems(ShopkeeperDefinition def) {
+    public static List<LarielShopItem> convertToLarielShopItems(ShopkeeperDefinition def,
+                                                                HolderLookup.Provider registries) {
         return def.levels.entrySet().stream()
                 .flatMap(entry -> {
                     int level = Integer.parseInt(entry.getKey());
 
                     return entry.getValue().stream()
                             .filter(trade -> Math.random() <= trade.chance)
-                            .map(trade -> LarielShopkeeperConverter.convertTrade(trade, level));
+                            .map(trade -> LarielShopkeeperConverter.convertTrade(trade, level, registries));
                 })
                 .toList();
     }
 
-    private static LarielShopItem convertTrade(TradeDefinition trade, int level) {
+    private static LarielShopItem convertTrade(TradeDefinition trade, int level,
+                                               HolderLookup.Provider registries) {
         if (trade == null)
             throw new IllegalArgumentException("Trade definition must not be null");
         if (trade.item == null || trade.item.isBlank())
@@ -39,8 +42,8 @@ public class LarielShopkeeperConverter {
             throw new IllegalArgumentException("Trade maxSellCountPerDay must be -1 or greater");
 
         var itemId = getItemId(trade.item);
-        var item = LarielItemStackFactory.create(itemId, trade.nbt);
-        var currency = getCurrency(trade.currency);
+        var item = LarielItemStackFactory.create(itemId, trade.nbt, registries);
+        var currency = getCurrency(trade.currency, registries);
         var buyPrice = currency.type() == CurrencyType.POKEDOLLAR ? trade.price : 0;
 
         return new LarielShopItem(new ShopItem(item, buyPrice, 0), trade.price, currency, level,
@@ -52,7 +55,7 @@ public class LarielShopkeeperConverter {
                 .orElseThrow(() -> new IllegalArgumentException("Unknown item: " + itemId));
     }
 
-    private static @NotNull CurrencyData getCurrency(CurrencyJson currency) {
+    private static @NotNull CurrencyData getCurrency(CurrencyJson currency, HolderLookup.Provider registries) {
         if (currency == null || currency.type == null || currency.type.isBlank())
             return new CurrencyData();
 
@@ -76,7 +79,7 @@ public class LarielShopkeeperConverter {
                         : currency.key;
                 if (itemId == null || itemId.isBlank())
                     throw new IllegalArgumentException("Item currency requires an item");
-                yield new CurrencyData(LarielItemStackFactory.create(getItemId(itemId), currency.nbt));
+                yield new CurrencyData(LarielItemStackFactory.create(getItemId(itemId), currency.nbt, registries));
             }
             case CUSTOM -> {
                 if (currency.key == null || currency.key.isBlank())

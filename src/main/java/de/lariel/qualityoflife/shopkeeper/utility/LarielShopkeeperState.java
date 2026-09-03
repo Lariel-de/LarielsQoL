@@ -18,7 +18,7 @@ public class LarielShopkeeperState {
         if (day != lastDay) {
             lastDay = day;
 
-            todaysItems = LarielShopkeeperConverter.convertToLarielShopItems(def);
+            todaysItems = LarielShopkeeperConverter.convertToLarielShopItems(def, level.registryAccess());
         }
 
         return todaysItems.stream()
