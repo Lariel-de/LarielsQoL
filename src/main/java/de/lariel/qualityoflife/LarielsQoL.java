@@ -5,13 +5,15 @@ import com.google.gson.GsonBuilder;
 import com.pixelmonmod.pixelmon.Pixelmon;
 import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
 import de.lariel.qualityoflife.client.LarielHotkeyHandler;
-import de.lariel.qualityoflife.commands.*;
+import de.lariel.qualityoflife.commands.LarielResetBreedingCounterCommand;
+import de.lariel.qualityoflife.commands.LarielTrackBlockCommand;
+import de.lariel.qualityoflife.commands.LarielTrackEntityCommand;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
-import de.lariel.qualityoflife.listener.*;
 import de.lariel.qualityoflife.entities.LarielEntityRegistration;
+import de.lariel.qualityoflife.interactions.LarielInteractionResults;
 import de.lariel.qualityoflife.items.LarielCreateModeTabs;
 import de.lariel.qualityoflife.items.LarielItemRegistration;
-import de.lariel.qualityoflife.interactions.LarielInteractionResults;
+import de.lariel.qualityoflife.listener.*;
 import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
@@ -87,7 +89,6 @@ public class LarielsQoL {
         LarielTrackEntityCommand.register(event.getDispatcher());
         LarielTrackBlockCommand.register(event.getDispatcher());
         LarielResetBreedingCounterCommand.register(event.getDispatcher());
-        LarielOpenLarielShopkeeperCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent
