@@ -4,6 +4,7 @@ import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 
 public final class LarielShopPurchaseStore {
     private static final String ROOT_KEY = "lariel_shopkeeper_purchases";
@@ -30,15 +31,15 @@ public final class LarielShopPurchaseStore {
         savePurchases(player, purchases);
     }
 
-    private static int getPurchasedToday(ServerPlayer player, ResourceLocation shopkeeperId, LarielShopItem item) {
+    public static int getPurchasedToday(Player player, ResourceLocation shopkeeperId, LarielShopItem item) {
         return getPurchasedToday(getPurchase(getPurchases(player), shopkeeperId, item), player);
     }
 
-    private static int getPurchasedToday(CompoundTag purchase, ServerPlayer player) {
+    private static int getPurchasedToday(CompoundTag purchase, Player player) {
         return purchase.getLong(DAY_KEY) == currentDay(player) ? purchase.getInt(COUNT_KEY) : 0;
     }
 
-    private static CompoundTag getPurchases(ServerPlayer player) {
+    private static CompoundTag getPurchases(Player player) {
         return player.getPersistentData().getCompound("PlayerPersisted").getCompound(ROOT_KEY);
     }
 
@@ -66,7 +67,7 @@ public final class LarielShopPurchaseStore {
         player.getPersistentData().put("PlayerPersisted", persisted);
     }
 
-    private static long currentDay(ServerPlayer player) {
+    private static long currentDay(Player player) {
         return player.level().getDayTime() / 24000L;
     }
 }

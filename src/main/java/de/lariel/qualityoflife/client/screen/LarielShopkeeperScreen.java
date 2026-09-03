@@ -12,6 +12,7 @@ import de.lariel.qualityoflife.network.server.LarielNetwork;
 import de.lariel.qualityoflife.reputation.LarielPlayerReputationStoreManager;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
+import de.lariel.qualityoflife.shopkeeper.utility.LarielShopPurchaseStore;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
@@ -99,8 +100,9 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
         if (player == null) return;
 
-        if (!playerHasEnoughCurrency(larielItem, player, 1))
+        if (getMaxBuyable(larielItem, player) < 1) {
             color = NOT_ENOUGH_CURRENCY_COLOR;
+        }
 
         switch (larielItem.getCurrencyData().type()) {
             case POKEDOLLAR -> ScreenHelper.drawImageQuad(Resources.pokedollar, graphics, ICON_X, ICON_Y - 1, 6, 9, 0,
@@ -149,7 +151,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
             case CUSTOM -> { /* do nothing -> NYI */ }
         }
 
-        if (!playerHasEnoughCurrency(larielItem, player, quantity)) {
+        if (quantity > getMaxBuyable(larielItem, player)) {
             colour = NOT_ENOUGH_CURRENCY_COLOR;
         }
 
@@ -185,7 +187,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         var MINI_SCREEN_BUY_LABEL_LEFT_EDGE = (float) (miniLeft() + 30) - (float) Minecraft.getInstance().font.width(buyLabel) / 2.0F;
         var MINI_SCREEN_BUY_LABEL_TOP_EDGE = (float) (buyScreenTop() + 78);
         var colour = 16777215;
-        var validTransaction = playerHasEnoughCurrency(larielShopItem, player, quantity);
+        var validTransaction = quantity <= getMaxBuyable(larielShopItem, player);
         if (mouseX > buyButtonLeft() && mouseX < this.BUY_BUTTON_RIGHT_EDGE && mouseY > this.BUY_BUTTON_TOP_EDGE && mouseY < this.BUY_BUTTON_BOTTOM_EDGE) {
             if (validTransaction) {
                 ScreenHelper.drawImageQuad(Resources.shopkeeper, graphics, (float) buyButtonLeft(), (float) this.BUY_BUTTON_TOP_EDGE, 49.0F, 18.0F, 0.01953125F, 0.796875F, 0.2109375F, 0.8671875F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F);
@@ -207,15 +209,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         if (!this.isBuyMiniScreenVisible()) return;
 
         var larielItem = larielItems.get(this.selectedItem);
-        var maxAffordable = playerHasEnoughCurrency(larielItem, player, 1)
-                ? getMaxAffordableQuantity(larielItem, player)
-                : 0;
-
-        var maxStackable = checkRemainingSlots(larielItem.getShopItem().itemStack());
-        var maxBuyable = Math.min(maxAffordable, maxStackable);
-        if (larielItem.getMaxSellCountPerDay() >= 0) {
-            maxBuyable = Math.min(maxBuyable, larielItem.getMaxSellCountPerDay());
-        }
+        var maxBuyable = getMaxBuyable(larielItem, player);
 
         // --- UP ARROW ---
         if (mouseX > ARROW_BUTTON_LEFT_EDGE && mouseX < ARROW_BUTTON_RIGHT_EDGE &&
@@ -223,8 +217,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
             var newQuantity = this.quantity + 1;
 
-            if (playerHasEnoughCurrency(larielItem, player, newQuantity)
-                    && newQuantity <= checkRemainingSlots(larielItem.getShopItem().itemStack())) {
+            if (newQuantity <= maxBuyable) {
 
                 this.quantity = newQuantity;
             } else {
@@ -246,22 +239,36 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
             if (this.quantity > 1) {
                 this.quantity--;
-                this.floatQuantity = 2.0F;
-                return;
+            } else {
+                this.quantity = maxBuyable;
             }
 
-            this.quantity = maxBuyable;
+            this.floatQuantity = 2.0F;
         }
 
         // --- BUY BUTTON ---
         if (mouseX > buyButtonLeft() && mouseX < BUY_BUTTON_RIGHT_EDGE &&
                 mouseY > BUY_BUTTON_TOP_EDGE && mouseY < BUY_BUTTON_BOTTOM_EDGE) {
 
-            if (playerHasEnoughCurrency(larielItem, player, this.quantity)) {
+            if (this.quantity <= maxBuyable) {
                 this.sendBuyPacket();
                 this.selectedItem = -1;
             }
         }
+    }
+
+    private int getMaxBuyable(LarielShopItem larielItem, LocalPlayer player) {
+        var maxAffordable = getMaxAffordableQuantity(larielItem, player);
+
+        var maxStackable = checkRemainingSlots(larielItem.getShopItem().itemStack());
+
+        int maxDaily = Integer.MAX_VALUE;
+        if (larielItem.getMaxSellCountPerDay() >= 0) {
+            var purchasedToday = LarielShopPurchaseStore.getPurchasedToday(player, shopkeeperId, larielItem);
+            maxDaily = larielItem.getMaxSellCountPerDay() - purchasedToday;
+        }
+
+        return Math.min(Math.min(maxAffordable, maxStackable), maxDaily);
     }
 
     @Override
@@ -281,27 +288,6 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
         if (player != null)
             player.closeContainer();
-    }
-
-    private boolean playerHasEnoughCurrency(LarielShopItem item, LocalPlayer player, int quantity) {
-        return switch (item.getCurrencyData().type()) {
-            case POKEDOLLAR -> ClientData.playerMoney.doubleValue() >= item.getPrice() * quantity;
-
-            case SCOREBOARD -> {
-                var scoreboard = player.getScoreboard();
-                var objective = scoreboard.getObjective(item.getCurrencyData().customKey());
-                if (objective == null) yield false;
-                var score = scoreboard.getOrCreatePlayerScore(player, objective).get();
-                yield score >= item.getPrice() * quantity;
-            }
-
-            case ITEM -> {
-                var count = player.getInventory().countItem(item.getCurrencyData().currencyItem().getItem());
-                yield count >= item.getPrice() * quantity;
-            }
-
-            case CUSTOM -> false;
-        };
     }
 
     private int checkRemainingSlots(ItemStack buying) {
