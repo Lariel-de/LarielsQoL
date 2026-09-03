@@ -125,7 +125,7 @@ public class LarielShopTransactionPacket extends LarielPacketBase {
 
         var remaining = amount;
         for (var stack : inventory.items) {
-            if (!ItemStack.matches(stack, currency)) continue;
+            if (!ItemStack.isSameItemSameComponents(stack, currency)) continue;
             var removed = Math.min(remaining, stack.getCount());
             stack.shrink(removed);
             remaining -= removed;
@@ -136,7 +136,7 @@ public class LarielShopTransactionPacket extends LarielPacketBase {
 
     private int countItems(Inventory inventory, ItemStack item) {
         return inventory.items.stream()
-                .filter(stack -> ItemStack.matches(stack, item))
+                .filter(stack -> ItemStack.isSameItemSameComponents(stack, item))
                 .mapToInt(ItemStack::getCount)
                 .sum();
     }
@@ -146,7 +146,7 @@ public class LarielShopTransactionPacket extends LarielPacketBase {
         for (var stack : inventory.items) {
             if (stack.isEmpty()) {
                 remaining -= item.getMaxStackSize();
-            } else if (ItemStack.matches(stack, item)) {
+            } else if (ItemStack.isSameItemSameComponents(stack, item)) {
                 remaining -= item.getMaxStackSize() - stack.getCount();
             }
             if (remaining <= 0) return true;

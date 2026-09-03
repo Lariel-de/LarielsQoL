@@ -37,6 +37,6 @@ public class LarielShopItem {
         if (currencyData.type() == CurrencyType.POKEDOLLAR)
             return shopItem;
 
-        return shopItem.withSellPrice(0).withBuyPrice(0);
+        return new ShopItem(shopItem.uuid(), shopItem.itemStack(), 0, 0);
     }
 }
