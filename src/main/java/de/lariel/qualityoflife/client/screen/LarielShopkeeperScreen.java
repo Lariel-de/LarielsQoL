@@ -9,6 +9,7 @@ import com.pixelmonmod.pixelmon.storage.ClientData;
 import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.network.packet.LarielShopTransactionPacket;
 import de.lariel.qualityoflife.network.server.LarielNetwork;
+import de.lariel.qualityoflife.reputation.LarielPlayerReputationStoreManager;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.client.Minecraft;
@@ -63,7 +64,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     protected void init() {
         super.init();
 
-        int buyScreenTop = this.height / 2 - this.getBuyScreenHeight() / 2 + this.getBuyScreenTopEdgePadding();
+        var buyScreenTop = this.height / 2 - this.getBuyScreenHeight() / 2 + this.getBuyScreenTopEdgePadding();
 
         this.ARROW_BUTTON_LEFT_EDGE = miniLeft() + 27;
         this.ARROW_BUTTON_RIGHT_EDGE = this.ARROW_BUTTON_LEFT_EDGE + 25;
@@ -77,6 +78,13 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         this.BUY_BUTTON_RIGHT_EDGE = buyButtonLeft() + 49;
         this.BUY_BUTTON_TOP_EDGE = buyScreenTop + 73;
         this.BUY_BUTTON_BOTTOM_EDGE = this.BUY_BUTTON_TOP_EDGE + 18;
+    }
+
+    @Override
+    public void render(GuiGraphics graphics, int mouseX, int mouseY, float f) {
+        super.render(graphics, mouseX, mouseY, f);
+
+        renderReputation(graphics);
     }
 
     @Override
@@ -146,6 +154,24 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         }
 
         graphics.drawString(this.font, priceAmount, PRICE_AMOUNT_LEFT_EDGE, PRICE_AMOUNT_TOP_EDGE, colour, true);
+    }
+
+    private void renderReputation(GuiGraphics graphics) {
+        var player = Minecraft.getInstance().player;
+        var buyScreenTop = this.height / 2 - this.getBuyScreenHeight() / 2 + this.getBuyScreenTopEdgePadding();
+
+        if (player == null) return;
+
+        var reputationState = LarielPlayerReputationStoreManager.get(player);
+        var currentLevel = reputationState.getLevel(shopkeeperId);
+        var currentLevelXp = reputationState.getXpInCurrentLevel(shopkeeperId);
+        var nextLevelXp = reputationState.getNextLevelXp(shopkeeperId);
+
+        graphics.drawString(this.font, "Level: " + currentLevel, listLeft() + 66, buyScreenTop + 12,
+                16777215, true);
+
+        ScreenHelper.drawSquashedString(graphics, font, "XP: " + currentLevelXp + "/" + nextLevelXp, false,
+                40, listLeft() + 66, buyScreenTop + 26, 16777215, true);
     }
 
     @Override
@@ -282,8 +308,8 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         if (buying == null || buying.isEmpty() || buying.getItem() == Items.AIR)
             return 0;
 
-        int maxStack = buying.getMaxStackSize();
-        int available = 0;
+        var maxStack = buying.getMaxStackSize();
+        var available = 0;
 
         try {
             for (var curStack : player.getInventory().items) {
