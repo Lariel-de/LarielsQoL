@@ -7,6 +7,7 @@ import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import de.lariel.qualityoflife.shopkeeper.utility.LarielShopkeeperSerializer;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
@@ -20,22 +21,25 @@ public class LarielShopkeeperOpenScreenPacket extends LarielPacketBase {
             new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "lariel_shopkeeper_open_screen_packet"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, LarielShopkeeperOpenScreenPacket> CODEC =
-            StreamCodec.of(
-                    (buf, packet) -> buf.writeUtf(packet.shopItemsJson),
-                    buf -> new LarielShopkeeperOpenScreenPacket(buf.readUtf())
+            StreamCodec.composite(
+                    ResourceLocation.STREAM_CODEC, p -> p.shopkeeperId,
+                    ByteBufCodecs.STRING_UTF8, p -> p.shopItemsJson,
+                    LarielShopkeeperOpenScreenPacket::new
             );
 
     private final String shopItemsJson;
+    private final ResourceLocation shopkeeperId;
 
-    public LarielShopkeeperOpenScreenPacket(String shopItemsJson) {
+    public LarielShopkeeperOpenScreenPacket(ResourceLocation shopkeeperId, String shopItemsJson) {
         super(true);
+        this.shopkeeperId = shopkeeperId;
         this.shopItemsJson = shopItemsJson;
     }
 
     @Override
     protected void handlePacket(IPayloadContext context) {
         List<LarielShopItem> items = LarielShopkeeperSerializer.deserialize(shopItemsJson);
-        LarielScreenService.openScreen(new LarielShopkeeperScreen(items, false));
+        LarielScreenService.openScreen(new LarielShopkeeperScreen(shopkeeperId, items, false));
     }
 
     @Override

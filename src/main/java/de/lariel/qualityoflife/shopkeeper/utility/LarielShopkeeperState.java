@@ -5,6 +5,8 @@ import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.server.level.ServerLevel;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public class LarielShopkeeperState {
     private long lastDay = -1;
@@ -22,5 +24,11 @@ public class LarielShopkeeperState {
         return todaysItems.stream()
                 .filter(item -> item.getMinLevel() <= shopkeeperLevel)
                 .toList();
+    }
+
+    public Optional<LarielShopItem> findItem(UUID id) {
+        return todaysItems.stream()
+                .filter(item -> item.getShopItem().uuid().equals(id))
+                .findFirst();
     }
 }

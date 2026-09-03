@@ -35,7 +35,7 @@ public class LarielOpenLarielShopkeeperCommand {
                             var shopItems = state.getItemsForToday(serverLevel, def, shopkeeperLevel);
 
                             var json = LarielShopkeeperSerializer.serialize(shopItems);
-                            LarielNetwork.sendToClient(player, new LarielShopkeeperOpenScreenPacket(json));
+                            LarielNetwork.sendToClient(player, new LarielShopkeeperOpenScreenPacket(id, json));
 
                             return 1;
                         })

@@ -8,7 +8,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-public record LarielShopItemJson(String itemId, int price, String currencyType, String currencyItem, String currencyKey,
+import java.util.UUID;
+
+public record LarielShopItemJson(String shopItemId, String itemId, int price, String currencyType, String currencyItem, String currencyKey,
                                  int level) {
     public LarielShopItem toLarielShopItem() {
         var stack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId)));
@@ -21,7 +23,8 @@ public record LarielShopItemJson(String itemId, int price, String currencyType, 
             case CUSTOM -> new CurrencyData(currencyKey, CurrencyType.CUSTOM);
         };
 
-        var pixelmonItem = new ShopItem(stack, price, 0);
+        var pixelmonItem = new ShopItem(shopItemId == null ? UUID.randomUUID() : UUID.fromString(shopItemId),
+                stack, price, 0);
 
         return new LarielShopItem(pixelmonItem, price, currency, level);
     }

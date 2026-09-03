@@ -30,6 +30,7 @@ public class LarielShopkeeperSerializer {
 
     private static LarielShopItemJson toDto(LarielShopItem item) {
         return new LarielShopItemJson(
+                item.getShopItem().uuid().toString(),
                 BuiltInRegistries.ITEM.getKey(item.getShopItem().itemStack().getItem()).toString(),
                 item.getPrice(),
                 item.getCurrencyData().type().name(),

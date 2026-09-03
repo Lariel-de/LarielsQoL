@@ -7,12 +7,15 @@ import com.pixelmonmod.pixelmon.client.gui.npc.ShopkeeperScreen;
 import com.pixelmonmod.pixelmon.entities.npcs.registry.EnumBuySell;
 import com.pixelmonmod.pixelmon.storage.ClientData;
 import de.lariel.qualityoflife.LarielsQoL;
+import de.lariel.qualityoflife.network.packet.LarielShopTransactionPacket;
+import de.lariel.qualityoflife.network.server.LarielNetwork;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -23,6 +26,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     private static final int ENOUGH_CURRENCY_COLOR = 14540253;
     private static final int NOT_ENOUGH_CURRENCY_COLOR = 16729156;
     private final List<LarielShopItem> larielItems;
+    private final ResourceLocation shopkeeperId;
     private int ARROW_BUTTON_LEFT_EDGE;
     private int ARROW_BUTTON_RIGHT_EDGE;
     private int UP_ARROW_BUTTON_TOP_EDGE;
@@ -33,8 +37,9 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     private int BUY_BUTTON_TOP_EDGE;
     private int BUY_BUTTON_BOTTOM_EDGE;
 
-    public LarielShopkeeperScreen(List<LarielShopItem> shopItems, boolean sellable) {
+    public LarielShopkeeperScreen(ResourceLocation shopkeeperId, List<LarielShopItem> shopItems, boolean sellable) {
         super(extractPixelmonItems(shopItems), sellable);
+        this.shopkeeperId = shopkeeperId;
 
         buyItems.clear();
 
@@ -232,14 +237,13 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
     @Override
     protected void sendBuyPacket() {
-        // ToDo: Send own packages
-//        NetworkHelper.sendToServer(new ShopTransactionPacket(true, ((ShopItem)this.buyItems.get(this.selectedItem)).uuid(), this.quantity));
+        var shopItemId = larielItems.get(selectedItem).getShopItem().uuid();
+        LarielNetwork.sendToServer(new LarielShopTransactionPacket(shopkeeperId, shopItemId, this.quantity));
     }
 
     @Override
     protected void sendSellPacket() {
-        // ToDo: Send own packages
-//        NetworkHelper.sendToServer(new ShopTransactionPacket(false, ((ShopItem)this.sellItems.get(this.selectedItem)).uuid(), this.quantity));
+        // Do nothing -> I'm not supporting sell -> should be never called
     }
 
     @Override
