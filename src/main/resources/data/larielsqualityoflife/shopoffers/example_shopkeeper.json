@@ -9,7 +9,9 @@
           "type": "ITEM",
           "item": "minecraft:emerald"
         },
-        "chance": 1.0
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": -1
       },
       {
         "item": "minecraft:diamond",
@@ -18,7 +20,9 @@
           "type": "SCOREBOARD",
           "objective": "coins"
         },
-        "chance": 0.5
+        "chance": 0.5,
+        "Xp": 10,
+        "maxSellCountPerDay": 1
       }
     ],
     "2": [
@@ -28,7 +32,9 @@
         "currency": {
           "type": "POKEDOLLAR"
         },
-        "chance": 1.0
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 10
       },
       {
         "item": "minecraft:golden_apple",
@@ -37,7 +43,9 @@
           "type": "ITEM",
           "key": "minecraft:dirt"
         },
-        "chance": 0.2
+        "chance": 0.2,
+        "Xp": 1,
+        "maxSellCountPerDay": 1
       }
     ]
   }

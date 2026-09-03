@@ -213,6 +213,9 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
         var maxStackable = checkRemainingSlots(larielItem.getShopItem().itemStack());
         var maxBuyable = Math.min(maxAffordable, maxStackable);
+        if (larielItem.getMaxSellCountPerDay() >= 0) {
+            maxBuyable = Math.min(maxBuyable, larielItem.getMaxSellCountPerDay());
+        }
 
         // --- UP ARROW ---
         if (mouseX > ARROW_BUTTON_LEFT_EDGE && mouseX < ARROW_BUTTON_RIGHT_EDGE &&

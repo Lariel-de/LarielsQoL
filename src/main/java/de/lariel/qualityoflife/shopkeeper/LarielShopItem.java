@@ -9,12 +9,17 @@ public class LarielShopItem {
     private final int customPrice;
     private final CurrencyData currencyData;
     private final int minLevel;
+    private final int xp;
+    private final int maxSellCountPerDay;
 
-    public LarielShopItem(@NotNull ShopItem shopItem, int customPrice, @NotNull CurrencyData currencyData, int minLevel) {
+    public LarielShopItem(@NotNull ShopItem shopItem, int customPrice, @NotNull CurrencyData currencyData, int minLevel,
+                          int xp, int maxSellCountPerDay) {
         this.minLevel = minLevel;
         this.shopItem = getPixelmonItem(shopItem, currencyData);
         this.customPrice = customPrice;
         this.currencyData = currencyData;
+        this.xp = xp;
+        this.maxSellCountPerDay = maxSellCountPerDay;
     }
 
     public ShopItem getShopItem() {
@@ -31,6 +36,14 @@ public class LarielShopItem {
 
     public int getMinLevel() {
         return minLevel;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public int getMaxSellCountPerDay() {
+        return maxSellCountPerDay;
     }
 
     private ShopItem getPixelmonItem(@NotNull ShopItem shopItem, @NotNull CurrencyData currencyData) {

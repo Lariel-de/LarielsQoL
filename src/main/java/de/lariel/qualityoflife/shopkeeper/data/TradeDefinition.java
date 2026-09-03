@@ -5,4 +5,6 @@ public class TradeDefinition {
     public int price;
     public CurrencyJson currency;
     public double chance;
+    public int Xp;
+    public int maxSellCountPerDay = -1;
 }

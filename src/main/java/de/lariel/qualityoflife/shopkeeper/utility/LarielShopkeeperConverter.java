@@ -37,12 +37,17 @@ public class LarielShopkeeperConverter {
             throw new IllegalArgumentException("Trade definition must not be null");
         if (trade.item == null || trade.item.isBlank())
             throw new IllegalArgumentException("Trade item must not be empty");
+        if (trade.Xp < 0)
+            throw new IllegalArgumentException("Trade Xp must not be negative");
+        if (trade.maxSellCountPerDay < -1)
+            throw new IllegalArgumentException("Trade maxSellCountPerDay must be -1 or greater");
 
         var item = getItem(trade.item);
         var currency = getCurrency(trade.currency);
         var buyPrice = currency.type() == CurrencyType.POKEDOLLAR ? trade.price : 0;
 
-        return new LarielShopItem(new ShopItem(new ItemStack(item), buyPrice, 0), trade.price, currency, level);
+        return new LarielShopItem(new ShopItem(new ItemStack(item), buyPrice, 0), trade.price, currency, level,
+                trade.Xp, trade.maxSellCountPerDay);
     }
 
     private static @NotNull Item getItem(String itemId) {

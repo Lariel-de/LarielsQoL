@@ -38,7 +38,9 @@ public class LarielShopkeeperSerializer {
                         ? BuiltInRegistries.ITEM.getKey(item.getCurrencyData().currencyItem().getItem()).toString()
                         : null,
                 item.getCurrencyData().customKey(),
-                0
+                item.getMinLevel(),
+                item.getXp(),
+                item.getMaxSellCountPerDay()
         );
     }
 

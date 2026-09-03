@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.UUID;
 
 public record LarielShopItemJson(String shopItemId, String itemId, int price, String currencyType, String currencyItem, String currencyKey,
-                                 int level) {
+                                 int level, int xp, int maxSellCountPerDay) {
     public LarielShopItem toLarielShopItem() {
         var stack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId)));
 
@@ -26,6 +26,6 @@ public record LarielShopItemJson(String shopItemId, String itemId, int price, St
         var pixelmonItem = new ShopItem(shopItemId == null ? UUID.randomUUID() : UUID.fromString(shopItemId),
                 stack, price, 0);
 
-        return new LarielShopItem(pixelmonItem, price, currency, level);
+        return new LarielShopItem(pixelmonItem, price, currency, level, xp, maxSellCountPerDay);
     }
 }

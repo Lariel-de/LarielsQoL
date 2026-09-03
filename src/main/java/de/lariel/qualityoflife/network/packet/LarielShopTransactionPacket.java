@@ -6,6 +6,7 @@ import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import de.lariel.qualityoflife.reputation.LarielPlayerReputationStoreManager;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
 import de.lariel.qualityoflife.shopkeeper.utility.LarielShopkeeperStateManager;
+import de.lariel.qualityoflife.shopkeeper.utility.LarielShopPurchaseStore;
 import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -58,6 +59,8 @@ public class LarielShopTransactionPacket extends LarielPacketBase {
             var shopItem = LarielShopkeeperStateManager.findItem(shopkeeperId, shopItemId).orElse(null);
             if (shopItem == null || !canFit(player.getInventory(), shopItem.getShopItem().itemStack(), quantity))
                 return;
+            if (!LarielShopPurchaseStore.canPurchase(player, shopkeeperId, shopItem, quantity))
+                return;
 
             long totalPrice = (long) shopItem.getPrice() * quantity;
             if (totalPrice <= 0 || totalPrice > Integer.MAX_VALUE) return;
@@ -72,7 +75,9 @@ public class LarielShopTransactionPacket extends LarielPacketBase {
             }
             player.inventoryMenu.broadcastChanges();
 
-            LarielPlayerReputationStoreManager.get(player).addXp(shopkeeperId, 1);
+            LarielShopPurchaseStore.recordPurchase(player, shopkeeperId, shopItem, quantity);
+            var earnedXp = Math.min(Integer.MAX_VALUE, (long) shopItem.getXp() * quantity);
+            LarielPlayerReputationStoreManager.get(player).addXp(shopkeeperId, (int) earnedXp);
         });
     }
 
