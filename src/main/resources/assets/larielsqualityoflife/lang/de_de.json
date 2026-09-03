@@ -37,5 +37,21 @@
   "minttrader.larielsqualityoflife.ninemintsrequired": "Du brauchst 9 Minzen!",
   "minttrader.larielsqualityoflife.thanksfortrade": "Danke für den Tausch.",
 
-  "shopkeeper.larielsqualityoflife.title": "Lariels Händler"
+  "shopkeeper.larielsqualityoflife.title": "Lariels Händler",
+
+  "item.larielsqualityoflife.lariel_villager_spawn_egg": "Lariel‑Dorfbewohner‑Spawn‑Ei",
+
+  "entity.larielsqualityoflife.lariel_villager.armorer": "Rüstungsschmied",
+  "entity.larielsqualityoflife.lariel_villager.butcher": "Metzger",
+  "entity.larielsqualityoflife.lariel_villager.cartographer": "Kartograf",
+  "entity.larielsqualityoflife.lariel_villager.cleric": "Geistlicher",
+  "entity.larielsqualityoflife.lariel_villager.farmer": "Bauer",
+  "entity.larielsqualityoflife.lariel_villager.fisherman": "Fischer",
+  "entity.larielsqualityoflife.lariel_villager.fletcher": "Pfeilmacher",
+  "entity.larielsqualityoflife.lariel_villager.leatherworker": "Gerber",
+  "entity.larielsqualityoflife.lariel_villager.librarian": "Bibliothekar",
+  "entity.larielsqualityoflife.lariel_villager.mason": "Steinmetz",
+  "entity.larielsqualityoflife.lariel_villager.shepherd": "Schäfer",
+  "entity.larielsqualityoflife.lariel_villager.toolsmith": "Werkzeugschmied",
+  "entity.larielsqualityoflife.lariel_villager.weaponsmith": "Waffenschmied"
 }

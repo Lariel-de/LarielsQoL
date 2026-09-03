@@ -37,5 +37,21 @@
   "minttrader.larielsqualityoflife.ninemintsrequired": "You need 9 mints!",
   "minttrader.larielsqualityoflife.thanksfortrade": "Thanks for trading.",
 
-  "shopkeeper.larielsqualityoflife.title": "Lariel's Trader"
+  "shopkeeper.larielsqualityoflife.title": "Lariel's Trader",
+
+  "item.larielsqualityoflife.lariel_villager_spawn_egg": "Lariel Villager Spawn Egg",
+
+  "entity.larielsqualityoflife.lariel_villager.armorer": "Armorer",
+  "entity.larielsqualityoflife.lariel_villager.butcher": "Butcher",
+  "entity.larielsqualityoflife.lariel_villager.cartographer": "Cartographer",
+  "entity.larielsqualityoflife.lariel_villager.cleric": "Cleric",
+  "entity.larielsqualityoflife.lariel_villager.farmer": "Farmer",
+  "entity.larielsqualityoflife.lariel_villager.fisherman": "Fisherman",
+  "entity.larielsqualityoflife.lariel_villager.fletcher": "Fletcher",
+  "entity.larielsqualityoflife.lariel_villager.leatherworker": "Leatherworker",
+  "entity.larielsqualityoflife.lariel_villager.librarian": "Librarian",
+  "entity.larielsqualityoflife.lariel_villager.mason": "Mason",
+  "entity.larielsqualityoflife.lariel_villager.shepherd": "Shepherd",
+  "entity.larielsqualityoflife.lariel_villager.toolsmith": "Toolsmith",
+  "entity.larielsqualityoflife.lariel_villager.weaponsmith": "Weaponsmith"
 }
