@@ -1,0 +1,87 @@
+{
+  "name": "Lariel Fletcher Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:stick",
+        "price": 32,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:arrow",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:bow",
+        "price": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 8
+      },
+      {
+        "item": "minecraft:crossbow",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:tipped_arrow",
+        "price": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:poison\"}",
+        "chance": 0.6,
+        "Xp": 3,
+        "maxSellCountPerDay": 8
+      },
+      {
+        "item": "minecraft:tipped_arrow",
+        "price": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:slowness\"}",
+        "chance": 0.6,
+        "Xp": 3,
+        "maxSellCountPerDay": 8
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:tipped_arrow",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:harming\"}",
+        "chance": 0.4,
+        "Xp": 4,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:tipped_arrow",
+        "price": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:strong_harming\"}",
+        "chance": 0.3,
+        "Xp": 5,
+        "maxSellCountPerDay": 4
+      }
+    ]
+  }
+}

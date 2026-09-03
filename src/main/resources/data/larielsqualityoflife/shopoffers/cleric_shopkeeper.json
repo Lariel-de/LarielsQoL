@@ -1,0 +1,87 @@
+{
+  "name": "Lariel Cleric Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:redstone",
+        "price": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:glowstone",
+        "price": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:potion",
+        "price": 6,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:healing\"}",
+        "chance": 0.8,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:potion",
+        "price": 8,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:strength\"}",
+        "chance": 0.6,
+        "Xp": 3,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:ender_pearl",
+        "price": 5,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:potion",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:regeneration\"}",
+        "chance": 0.4,
+        "Xp": 4,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:experience_bottle",
+        "price": 12,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 4
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:potion",
+        "price": 14,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Potion:\"minecraft:fire_resistance\"}",
+        "chance": 0.3,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      }
+    ]
+  }
+}

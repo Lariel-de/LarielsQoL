@@ -1,0 +1,83 @@
+{
+  "name": "Lariel Shepherd Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:white_wool",
+        "price": 12,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:light_gray_wool",
+        "price": 12,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:red_wool",
+        "price": 12,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:blue_wool",
+        "price": 12,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 16
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:white_bed",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 6
+      },
+      {
+        "item": "minecraft:red_bed",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:painting",
+        "price": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.6,
+        "Xp": 4,
+        "maxSellCountPerDay": 4
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:banner",
+        "price": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.4,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      }
+    ]
+  }
+}

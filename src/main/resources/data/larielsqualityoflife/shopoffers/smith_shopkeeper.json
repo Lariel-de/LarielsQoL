@@ -103,6 +103,7 @@
         "item": "minecraft:iron_pickaxe",
         "price": 6,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Enchantments:[{id:\"minecraft:efficiency\",lvl:2},{id:\"minecraft:unbreaking\",lvl:2}]}",
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 4
@@ -111,6 +112,7 @@
         "item": "minecraft:iron_sword",
         "price": 5,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Enchantments:[{id:\"minecraft:sharpness\",lvl:2},{id:\"minecraft:unbreaking\",lvl:2}]}",
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 4
@@ -119,6 +121,7 @@
         "item": "minecraft:crossbow",
         "price": 3,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Enchantments:[{id:\"minecraft:quick_charge\",lvl:1}]}",
         "chance": 1.0,
         "Xp": 4,
         "maxSellCountPerDay": 4
@@ -130,6 +133,7 @@
         "item": "minecraft:diamond_pickaxe",
         "price": 12,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Enchantments:[{id:\"minecraft:efficiency\",lvl:3},{id:\"minecraft:unbreaking\",lvl:3}]}",
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 2
@@ -138,6 +142,7 @@
         "item": "minecraft:diamond_sword",
         "price": 10,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Enchantments:[{id:\"minecraft:sharpness\",lvl:3},{id:\"minecraft:unbreaking\",lvl:3}]}",
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 2
@@ -146,6 +151,7 @@
         "item": "minecraft:diamond_axe",
         "price": 10,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{Enchantments:[{id:\"minecraft:efficiency\",lvl:3},{id:\"minecraft:unbreaking\",lvl:3}]}",
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 2

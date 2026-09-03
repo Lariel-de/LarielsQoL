@@ -1,0 +1,87 @@
+{
+  "name": "Lariel Cartographer Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:paper",
+        "price": 24,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:map",
+        "price": 7,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 8
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:compass",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      },
+      {
+        "item": "minecraft:white_banner",
+        "price": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 8
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:map",
+        "price": 14,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{map:\"woodland_mansion\"}",
+        "chance": 0.4,
+        "Xp": 3,
+        "maxSellCountPerDay": 2
+      },
+      {
+        "item": "minecraft:map",
+        "price": 12,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{map:\"ocean_monument\"}",
+        "chance": 0.4,
+        "Xp": 3,
+        "maxSellCountPerDay": 2
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:map",
+        "price": 18,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{map:\"buried_treasure\"}",
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 2
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:map",
+        "price": 24,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": "{map:\"ancient_city\"}",
+        "chance": 0.2,
+        "Xp": 5,
+        "maxSellCountPerDay": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "name": "Lariel Librarian Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:book",
+        "price": 9,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      }
+    ],
+    "1": [
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 12,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:unbreaking\",lvl:2}]}",
+        "chance": 0.8,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      },
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 14,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:efficiency\",lvl:2}]}",
+        "chance": 0.8,
+        "Xp": 2,
+        "maxSellCountPerDay": 6
+      }
+    ],
+    "2": [
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 18,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:sharpness\",lvl:3}]}",
+        "chance": 0.6,
+        "Xp": 3,
+        "maxSellCountPerDay": 4
+      },
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 20,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:fortune\",lvl:2}]}",
+        "chance": 0.6,
+        "Xp": 3,
+        "maxSellCountPerDay": 4
+      }
+    ],
+    "3": [
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 24,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:mending\",lvl:1}]}",
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 2
+      },
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 28,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:silk_touch\",lvl:1}]}",
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 2
+      }
+    ],
+    "4": [
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 32,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:sharpness\",lvl:5}]}",
+        "chance": 0.2,
+        "Xp": 5,
+        "maxSellCountPerDay": 1
+      },
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 36,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": "{StoredEnchantments:[{id:\"minecraft:efficiency\",lvl:5}]}",
+        "chance": 0.2,
+        "Xp": 5,
+        "maxSellCountPerDay": 1
+      }
+    ]
+  }
+}

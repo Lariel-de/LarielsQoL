@@ -1,0 +1,75 @@
+{
+  "name": "Lariel Mason Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:clay_ball",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:brick",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:terracotta",
+        "price": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 8
+      },
+      {
+        "item": "minecraft:quartz",
+        "price": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:glazed_terracotta",
+        "price": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 6
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:quartz_block",
+        "price": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.6,
+        "Xp": 4,
+        "maxSellCountPerDay": 4
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:chiseled_quartz_block",
+        "price": 6,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.4,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      }
+    ]
+  }
+}
