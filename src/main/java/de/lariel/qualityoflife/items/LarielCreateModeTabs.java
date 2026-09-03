@@ -17,7 +17,7 @@ public class LarielCreateModeTabs {
     @SuppressWarnings("unused")
     public static final Supplier<CreativeModeTab> LARIELS_AUTOMATIC_FARMS = CREATIVE_MODE_TAB.register("lariels_automatic_farms",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(LarielItemRegistration.LARIEL_VILLAGER_SPAWN_EGG.get()))
-                    .title(Component.translatable("creativetab.larielsautomaticfarms.tabtitle"))
+                    .title(Component.translatable("creativetab.larielsqualityoflife.tabtitle"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(LarielItemRegistration.LARIEL_VILLAGER_SPAWN_EGG);
                     }).build());
