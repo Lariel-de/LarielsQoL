@@ -1,5 +1,6 @@
 package de.lariel.qualityoflife.reputation;
 
+import de.lariel.qualityoflife.LarielsQoL;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -8,12 +9,13 @@ public class LarielPlayerReputationStore {
 
     private static final String KEY = "lariel_shopkeeper_reputation";
     private final Player player;
-    private final double scaleFactor = 100.0;
+    private final double scaleFactor;
     private final int maxLevel;
 
     public LarielPlayerReputationStore(Player player) {
         this.player = player;
-        this.maxLevel = 5;
+        this.maxLevel = LarielsQoL.getConfig().general().getShopkeeperMaxLevel();
+        scaleFactor = LarielsQoL.getConfig().general().getLevelScaleFactor();
     }
 
     public int getTotalXp(ResourceLocation shopkeeperId) {
@@ -23,7 +25,7 @@ public class LarielPlayerReputationStore {
     public int getLevel(ResourceLocation shopkeeperId) {
         int totalXp = getTotalXp(shopkeeperId);
         int level = (int) Math.floor(Math.sqrt(totalXp / scaleFactor));
-        return Math.min(5, level);
+        return Math.min(maxLevel, level);
     }
 
     public int getXpInCurrentLevel(ResourceLocation shopkeeperId) {
@@ -37,7 +39,7 @@ public class LarielPlayerReputationStore {
     public int getNextLevelXp(ResourceLocation shopkeeperId) {
         int level = getLevel(shopkeeperId);
 
-        if (level >= 5) return 0;
+        if (level >= maxLevel) return 0;
 
         int currentLevelBaseXp = getLevelTotalXp(level);
         int nextLevelBaseXp = getLevelTotalXp(level + 1);
