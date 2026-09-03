@@ -1,28 +1,38 @@
 package de.lariel.qualityoflife.reputation;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LarielPlayerReputationStore {
-    private final Map<ResourceLocation, Integer> reputation = new HashMap<>();
 
-    private LarielPlayerReputationStore() {
+    private static final String KEY = "lariel_shopkeeper_reputation";
+    private final ServerPlayer player;
+
+    public LarielPlayerReputationStore(ServerPlayer player) {
+        this.player = player;
     }
 
     public int getLevel(ResourceLocation shopkeeperId) {
-        return reputation.getOrDefault(shopkeeperId, 0);
+        return getData().getInt(shopkeeperId.toString());
     }
 
     public void addXp(ResourceLocation shopkeeperId, int xp) {
-        int current = reputation.getOrDefault(shopkeeperId, 0);
-        reputation.put(shopkeeperId, current + xp);
+        var data = getData();
+        var key = shopkeeperId.toString();
+        data.putInt(key, data.getInt(key) + xp);
+        saveData(data);
     }
 
-    public static LarielPlayerReputationStore get(@NotNull ServerPlayer player) {
-        return new LarielPlayerReputationStore();
+    private CompoundTag getData() {
+        var persisted = player.getPersistentData().getCompound("PlayerPersisted");
+        return persisted.getCompound(KEY);
+    }
+
+    private void saveData(CompoundTag data) {
+        var persisted = player.getPersistentData().getCompound("PlayerPersisted");
+        persisted.put(KEY, data);
+        player.getPersistentData().put("PlayerPersisted", persisted);
     }
 }
+

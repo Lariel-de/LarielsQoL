@@ -7,13 +7,10 @@ import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
 import de.lariel.qualityoflife.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.commands.*;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
-import de.lariel.qualityoflife.listener.ShopkeeperReloadListener;
+import de.lariel.qualityoflife.listener.*;
 import de.lariel.qualityoflife.entities.LarielEntityRegistration;
 import de.lariel.qualityoflife.items.LarielCreateModeTabs;
 import de.lariel.qualityoflife.items.LarielItemRegistration;
-import de.lariel.qualityoflife.listener.LarielBlockTrackListener;
-import de.lariel.qualityoflife.listener.LarielEntityTrackListener;
-import de.lariel.qualityoflife.listener.LarielPokeSpawnListener;
 import de.lariel.qualityoflife.menu.registry.LarielsQolModMenus;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
 import net.neoforged.bus.api.IEventBus;
@@ -67,6 +64,7 @@ public class LarielsQoL {
             NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
         }
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new ShopkeeperReloadListener()));
+        NeoForge.EVENT_BUS.register(new LarielPlayerListener());
 
         Pixelmon.EVENT_BUS.register(new LarielBetterBreedingListener());
     }

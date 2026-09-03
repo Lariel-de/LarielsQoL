@@ -1,7 +1,7 @@
 {
   "name": "Lariel Example Trader",
   "levels": {
-    "1": [
+    "0": [
       {
         "item": "minecraft:iron_sword",
         "price": 5,
