@@ -7,11 +7,7 @@ import de.lariel.qualityoflife.shopkeeper.data.TradeDefinition;
 import de.lariel.qualityoflife.shopkeeper.CurrencyData;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -42,18 +38,17 @@ public class LarielShopkeeperConverter {
         if (trade.maxSellCountPerDay < -1)
             throw new IllegalArgumentException("Trade maxSellCountPerDay must be -1 or greater");
 
-        var item = getItem(trade.item);
+        var itemId = getItemId(trade.item);
+        var item = LarielItemStackFactory.create(itemId, trade.nbt);
         var currency = getCurrency(trade.currency);
         var buyPrice = currency.type() == CurrencyType.POKEDOLLAR ? trade.price : 0;
 
-        return new LarielShopItem(new ShopItem(new ItemStack(item), buyPrice, 0), trade.price, currency, level,
+        return new LarielShopItem(new ShopItem(item, buyPrice, 0), trade.price, currency, level,
                 trade.Xp, trade.maxSellCountPerDay);
     }
 
-    private static @NotNull Item getItem(String itemId) {
+    private static @NotNull ResourceLocation getItemId(String itemId) {
         return Optional.ofNullable(ResourceLocation.tryParse(itemId))
-                .map(BuiltInRegistries.ITEM::get)
-                .filter(item -> item != Items.AIR)
                 .orElseThrow(() -> new IllegalArgumentException("Unknown item: " + itemId));
     }
 
@@ -81,7 +76,7 @@ public class LarielShopkeeperConverter {
                         : currency.key;
                 if (itemId == null || itemId.isBlank())
                     throw new IllegalArgumentException("Item currency requires an item");
-                yield new CurrencyData(new ItemStack(getItem(itemId)));
+                yield new CurrencyData(LarielItemStackFactory.create(getItemId(itemId), currency.nbt));
             }
             case CUSTOM -> {
                 if (currency.key == null || currency.key.isBlank())

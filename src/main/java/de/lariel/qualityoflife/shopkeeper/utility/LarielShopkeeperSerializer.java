@@ -29,14 +29,21 @@ public class LarielShopkeeperSerializer {
     }
 
     private static LarielShopItemJson toDto(LarielShopItem item) {
+        var itemNbt = LarielItemStackFactory.serialize(item.getShopItem().itemStack());
+        var currencyNbt = item.getCurrencyData().currencyItem() == null
+                ? null
+                : LarielItemStackFactory.serialize(item.getCurrencyData().currencyItem());
+
         return new LarielShopItemJson(
                 item.getShopItem().uuid().toString(),
                 BuiltInRegistries.ITEM.getKey(item.getShopItem().itemStack().getItem()).toString(),
+                itemNbt,
                 item.getPrice(),
                 item.getCurrencyData().type().name(),
                 item.getCurrencyData().currencyItem() != null
                         ? BuiltInRegistries.ITEM.getKey(item.getCurrencyData().currencyItem().getItem()).toString()
                         : null,
+                currencyNbt,
                 item.getCurrencyData().customKey(),
                 item.getMinLevel(),
                 item.getXp(),
