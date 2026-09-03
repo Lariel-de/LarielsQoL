@@ -6,4 +6,3 @@ public class TradeDefinition {
     public CurrencyJson currency;
     public double chance;
 }
-

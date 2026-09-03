@@ -7,7 +7,7 @@ import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
 import de.lariel.qualityoflife.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.commands.*;
 import de.lariel.qualityoflife.config.LarielsQolConfigManager;
-import de.lariel.qualityoflife.data.ShopkeeperReloadListener;
+import de.lariel.qualityoflife.listener.ShopkeeperReloadListener;
 import de.lariel.qualityoflife.entities.LarielEntityRegistration;
 import de.lariel.qualityoflife.items.LarielCreateModeTabs;
 import de.lariel.qualityoflife.items.LarielItemRegistration;
@@ -59,7 +59,7 @@ public class LarielsQoL {
     public static void onModLoad(FMLCommonSetupEvent event) {
         // Here is how you register a listener for Pixelmon events
 
-        // Since the desired shopItem event fires to early and the coordinates of the entity is always 0 0 0
+        // Since the desired pixelmon event fires to early and the coordinates of the entity is always 0 0 0
         // use the NeoForgeEventBus
         if (_instance._configManager.general().getEnableSpawnNotification()) {
             NeoForge.EVENT_BUS.register(new LarielPokeSpawnListener(LarielSpawnNotifier.GetInstance()));

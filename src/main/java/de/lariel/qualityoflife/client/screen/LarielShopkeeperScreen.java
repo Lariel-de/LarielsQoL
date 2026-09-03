@@ -39,7 +39,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         buyItems.clear();
 
         for (var item : shopItems) {
-            buyItems.add(item.shopItem());
+            buyItems.add(item.getShopItem());
         }
 
         larielItems = shopItems;
@@ -48,7 +48,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     private static List<ShopItem> extractPixelmonItems(List<LarielShopItem> items) {
         List<ShopItem> pixelmonItems = new ArrayList<>();
         for (var item : items) {
-            pixelmonItems.add(item.shopItem());
+            pixelmonItems.add(item.getShopItem());
         }
 
         return pixelmonItems;
@@ -89,19 +89,19 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         if (!playerHasEnoughCurrency(larielItem, player, 1))
             color = NOT_ENOUGH_CURRENCY_COLOR;
 
-        switch (larielItem.currencyData().type()) {
+        switch (larielItem.getCurrencyData().type()) {
             case POKEDOLLAR -> ScreenHelper.drawImageQuad(Resources.pokedollar, graphics, ICON_X, ICON_Y - 1, 6, 9, 0,
                     0, 1, 1, 1, 1, 1, 1, 0);
             case SCOREBOARD ->
-                    ScreenHelper.drawSquashedString(graphics, Minecraft.getInstance().font, larielItem.currencyData().customKey(), false,
+                    ScreenHelper.drawSquashedString(graphics, Minecraft.getInstance().font, larielItem.getCurrencyData().customKey(), false,
                             16, ICON_X - 10, TEXT_Y, ENOUGH_CURRENCY_COLOR, true);
-            case ITEM -> graphics.renderItem(larielItem.currencyData().currencyItem(), ICON_X - 6, ICON_Y - 4);
+            case ITEM -> graphics.renderItem(larielItem.getCurrencyData().currencyItem(), ICON_X - 6, ICON_Y - 4);
             case CUSTOM -> {
                 // do nothing -> NYI
             }
         }
 
-        ScreenHelper.drawSquashedString(graphics, Minecraft.getInstance().font, String.valueOf(larielItem.price()), false,
+        ScreenHelper.drawSquashedString(graphics, Minecraft.getInstance().font, String.valueOf(larielItem.getPrice()), false,
                 20, TEXT_X, TEXT_Y, color, true);
     }
 
@@ -110,7 +110,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         var larielItem = larielItems.get(selectedItem);
         var player = Minecraft.getInstance().player;
         var priceLabel = I18n.get("gui.shopkeeper.price");
-        var priceAmount = String.valueOf(this.quantity * larielItem.price());
+        var priceAmount = String.valueOf(this.quantity * larielItem.getPrice());
         var PRICE_LABEL_LEFT_EDGE = miniLeft() + 30 - Minecraft.getInstance().font.width(priceLabel) / 2;
         var PRICE_LABEL_TOP_EDGE = buyScreenTop() + 6;
         var POKE_DOLLAR_LEFT_EDGE = miniLeft() + 29 - (Minecraft.getInstance().font.width(priceAmount) + 8) / 2 - 4;
@@ -119,20 +119,20 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         var PRICE_AMOUNT_TOP_EDGE = buyScreenTop() + 18;
         var colour = 14540253;
 
-        if (larielItem.currencyData().type() == CurrencyType.POKEDOLLAR || player == null) {
+        if (larielItem.getCurrencyData().type() == CurrencyType.POKEDOLLAR || player == null) {
             super.renderMiniScreenPrice(graphics, price);
 
             return;
         }
         graphics.drawString(Minecraft.getInstance().font, priceLabel, PRICE_LABEL_LEFT_EDGE, PRICE_LABEL_TOP_EDGE, 16777215);
 
-        switch (larielItem.currencyData().type()) {
+        switch (larielItem.getCurrencyData().type()) {
             case POKEDOLLAR -> { /* Is already handled */}
             case SCOREBOARD ->
-                    ScreenHelper.drawSquashedString(graphics, Minecraft.getInstance().font, larielItem.currencyData().customKey(), false,
+                    ScreenHelper.drawSquashedString(graphics, Minecraft.getInstance().font, larielItem.getCurrencyData().customKey(), false,
                             16, (float) POKE_DOLLAR_LEFT_EDGE - 10, (float) POKE_DOLLAR_TOP_EDGE, ENOUGH_CURRENCY_COLOR, true);
             case ITEM ->
-                    graphics.renderItem(larielItem.currencyData().currencyItem(), POKE_DOLLAR_LEFT_EDGE - 8, POKE_DOLLAR_TOP_EDGE - 4);
+                    graphics.renderItem(larielItem.getCurrencyData().currencyItem(), POKE_DOLLAR_LEFT_EDGE - 8, POKE_DOLLAR_TOP_EDGE - 4);
             case CUSTOM -> { /* do nothing -> NYI */ }
         }
 
@@ -180,7 +180,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
                 ? getMaxAffordableQuantity(larielItem, player)
                 : 0;
 
-        var maxStackable = checkRemainingSlots(larielItem.shopItem().itemStack());
+        var maxStackable = checkRemainingSlots(larielItem.getShopItem().itemStack());
         var maxBuyable = Math.min(maxAffordable, maxStackable);
 
         // --- UP ARROW ---
@@ -190,7 +190,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
             var newQuantity = this.quantity + 1;
 
             if (playerHasEnoughCurrency(larielItem, player, newQuantity)
-                    && newQuantity <= checkRemainingSlots(larielItem.shopItem().itemStack())) {
+                    && newQuantity <= checkRemainingSlots(larielItem.getShopItem().itemStack())) {
 
                 this.quantity = newQuantity;
             } else {
@@ -251,20 +251,20 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     }
 
     private boolean playerHasEnoughCurrency(LarielShopItem item, LocalPlayer player, int quantity) {
-        return switch (item.currencyData().type()) {
-            case POKEDOLLAR -> ClientData.playerMoney.doubleValue() >= item.price() * quantity;
+        return switch (item.getCurrencyData().type()) {
+            case POKEDOLLAR -> ClientData.playerMoney.doubleValue() >= item.getPrice() * quantity;
 
             case SCOREBOARD -> {
                 var scoreboard = player.getScoreboard();
-                var objective = scoreboard.getObjective(item.currencyData().customKey());
+                var objective = scoreboard.getObjective(item.getCurrencyData().customKey());
                 if (objective == null) yield false;
                 var score = scoreboard.getOrCreatePlayerScore(player, objective).get();
-                yield score >= item.price() * quantity;
+                yield score >= item.getPrice() * quantity;
             }
 
             case ITEM -> {
-                var count = player.getInventory().countItem(item.currencyData().currencyItem().getItem());
-                yield count >= item.price() * quantity;
+                var count = player.getInventory().countItem(item.getCurrencyData().currencyItem().getItem());
+                yield count >= item.getPrice() * quantity;
             }
 
             case CUSTOM -> false;
@@ -299,21 +299,21 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     }
 
     private int getMaxAffordableQuantity(LarielShopItem item, LocalPlayer player) {
-        var price = item.price();
+        var price = item.getPrice();
 
-        return switch (item.currencyData().type()) {
+        return switch (item.getCurrencyData().type()) {
             case POKEDOLLAR -> (int) (ClientData.playerMoney.doubleValue() / price);
 
             case SCOREBOARD -> {
                 var scoreboard = player.getScoreboard();
-                var objective = scoreboard.getObjective(item.currencyData().customKey());
+                var objective = scoreboard.getObjective(item.getCurrencyData().customKey());
                 if (objective == null) yield 0;
                 var score = scoreboard.getOrCreatePlayerScore(player, objective).get();
                 yield score / price;
             }
 
             case ITEM -> {
-                var count = player.getInventory().countItem(item.currencyData().currencyItem().getItem());
+                var count = player.getInventory().countItem(item.getCurrencyData().currencyItem().getItem());
                 yield count / price;
             }
 

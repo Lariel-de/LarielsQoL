@@ -1,6 +1,7 @@
-package de.lariel.qualityoflife.data;
+package de.lariel.qualityoflife.listener;
 
 import com.google.gson.JsonElement;
+import de.lariel.qualityoflife.data.ShopkeeperDefinition;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;

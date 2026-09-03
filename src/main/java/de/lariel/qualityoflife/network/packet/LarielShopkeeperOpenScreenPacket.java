@@ -1,12 +1,11 @@
 package de.lariel.qualityoflife.network.packet;
 
-import com.google.gson.reflect.TypeToken;
 import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.client.screen.LarielShopkeeperScreen;
 import de.lariel.qualityoflife.client.screen.services.LarielScreenService;
-import de.lariel.qualityoflife.data.LarielShopItemJson;
 import de.lariel.qualityoflife.network.packet.base.LarielPacketBase;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
+import de.lariel.qualityoflife.utility.LarielShopkeeperSerializer;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -35,13 +34,7 @@ public class LarielShopkeeperOpenScreenPacket extends LarielPacketBase {
 
     @Override
     protected void handlePacket(IPayloadContext context) {
-        List<LarielShopItemJson> dtoList =
-                LarielsQoL.GSON.fromJson(shopItemsJson, new TypeToken<List<LarielShopItemJson>>(){}.getType());
-
-        List<LarielShopItem> items = dtoList.stream()
-                .map(LarielShopItemJson::toLarielShopItem)
-                .toList();
-
+        List<LarielShopItem> items = LarielShopkeeperSerializer.deserialize(shopItemsJson);
         LarielScreenService.openScreen(new LarielShopkeeperScreen(items, false));
     }
 
