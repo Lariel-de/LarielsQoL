@@ -125,7 +125,7 @@
       {
         "item": "minecraft:glowstone",
         "price": 8,
-        "amount": 2,
+        "amount": 3,
         "currency": {
           "type": "ITEM",
           "item": "minecraft:emerald"
