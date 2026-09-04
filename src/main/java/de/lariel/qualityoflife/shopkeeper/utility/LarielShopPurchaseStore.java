@@ -18,7 +18,7 @@ public final class LarielShopPurchaseStore {
         int limit = item.getMaxSellCountPerDay();
         if (limit < 0) return true;
 
-        return getPurchasedToday(player, shopkeeperId, item) + 1 <= limit;
+        return getPurchasedToday(player, shopkeeperId, item) + quantity <= limit;
     }
 
     public static void recordPurchase(ServerPlayer player, ResourceLocation shopkeeperId, LarielShopItem item, int quantity) {
@@ -27,7 +27,7 @@ public final class LarielShopPurchaseStore {
         var purchases = getPurchases(player);
         var purchase = getPurchase(purchases, shopkeeperId, item);
         purchase.putLong(DAY_KEY, currentDay(player));
-        purchase.putInt(COUNT_KEY, getPurchasedToday(purchase, player) + 1);
+        purchase.putInt(COUNT_KEY, getPurchasedToday(purchase, player) + quantity);
         savePurchases(player, purchases);
     }
 
