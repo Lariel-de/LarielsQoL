@@ -12,7 +12,7 @@ import de.lariel.qualityoflife.network.server.LarielNetwork;
 import de.lariel.qualityoflife.reputation.LarielPlayerReputationStoreManager;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
-import de.lariel.qualityoflife.shopkeeper.utility.LarielShopPurchaseStore;
+import de.lariel.qualityoflife.client.screen.services.LarielShopPurchaseClientCache;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
@@ -265,7 +265,8 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
 
         int maxDaily = Integer.MAX_VALUE;
         if (larielItem.getMaxSellCountPerDay() >= 0) {
-            var purchasedToday = LarielShopPurchaseStore.getPurchasedToday(player, shopkeeperId, larielItem);
+            var purchasedToday = LarielShopPurchaseClientCache.getPurchasedToday(
+                    shopkeeperId, larielItem.getShopItem().uuid());
             maxDaily = larielItem.getMaxSellCountPerDay() - purchasedToday;
         }
 

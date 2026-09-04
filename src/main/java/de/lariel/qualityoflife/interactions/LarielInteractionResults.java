@@ -12,10 +12,12 @@ import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.menu.MintTraderMenuProvider;
 import de.lariel.qualityoflife.network.packet.LarielBetterBreedingOpenScreenPacket;
 import de.lariel.qualityoflife.network.packet.LarielShopkeeperOpenScreenPacket;
+import de.lariel.qualityoflife.network.packet.LarielShopPurchaseSyncPacket;
 import de.lariel.qualityoflife.network.server.LarielNetwork;
 import de.lariel.qualityoflife.listener.ShopkeeperReloadListener;
 import de.lariel.qualityoflife.reputation.LarielPlayerReputationStoreManager;
 import de.lariel.qualityoflife.shopkeeper.utility.LarielShopkeeperSerializer;
+import de.lariel.qualityoflife.shopkeeper.utility.LarielShopPurchaseStore;
 import de.lariel.qualityoflife.shopkeeper.utility.LarielShopkeeperStateManager;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.registries.RegisterEvent;
@@ -142,6 +144,11 @@ public final class LarielInteractionResults {
 
                 LarielNetwork.sendToClient(player,
                         new LarielShopkeeperOpenScreenPacket(id, shopItemsJson));
+                for (var item : shopItems) {
+                    LarielNetwork.sendToClient(player, new LarielShopPurchaseSyncPacket(
+                            id, item.getShopItem().uuid(),
+                            LarielShopPurchaseStore.getPurchasedToday(player, id, item)));
+                }
             });
         }
     }
