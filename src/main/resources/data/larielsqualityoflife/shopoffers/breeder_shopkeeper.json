@@ -1,0 +1,649 @@
+{
+  "name": "Lariel Breeding Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:flint_and_steel",
+        "price": 5,
+        "amount": 5,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:lava_bucket",
+        "price": 2,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:blaze_rod",
+        "price": 3,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:turtle_scute",
+        "price": 4,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:water_bucket",
+        "price": 2,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "pixelmon:fresh_water",
+        "price": 5,
+        "amount": 5,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:tall_grass",
+        "price": 5,
+        "amount": 5,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:oak_leaves",
+        "price": 3,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:grass_block",
+        "price": 3,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:redstone_block",
+        "price": 9,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:glowstone",
+        "price": 8,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:redstone_lamp",
+        "price": 12,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:leather",
+        "price": 5,
+        "amount": 10,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:hay_block",
+        "price": 3,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:white_wool",
+        "price": 1,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:brewing_stand",
+        "price": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:mycelium",
+        "price": 3,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:slime_block",
+        "price": 12,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:clay_ball",
+        "price": 1,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:brown_terracotta",
+        "price": 6,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:soul_soil",
+        "price": 6,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:ice",
+        "price": 2,
+        "amount": 10,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:blue_ice",
+        "price": 6,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:snow_block",
+        "price": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:coal_block",
+        "price": 2,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:skeleton_skull",
+        "price": 10,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:obsidian",
+        "price": 4,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:dandelion",
+        "price": 1,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:cobweb",
+        "price": 1,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:spider_eye",
+        "price": 2,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:ender_eye",
+        "price": 10,
+        "amount": 5,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:bookshelf",
+        "price": 6,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:clock",
+        "price": 5,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:iron_block",
+        "price": 9,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:iron_bars",
+        "price": 1,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "pixelmon:silver_block",
+        "price": 6,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:feather",
+        "price": 1,
+        "amount": 10,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:glass",
+        "price": 1,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:target",
+        "price": 3,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:ghast_tear",
+        "price": 8,
+        "amount": 10,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:soul_torch",
+        "price": 2,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:soul_sand",
+        "price": 2,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:oak_planks",
+        "price": 1,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:bricks",
+        "price": 2,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:chiseled_stone_bricks",
+        "price": 4,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:diamond_block",
+        "price": 30,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:gold_block",
+        "price": 20,
+        "amount": 2,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:end_stone",
+        "price": 10,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:cake",
+        "price": 1,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:lily_of_the_valley",
+        "price": 3,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:chorus_fruit",
+        "price": 3,
+        "amount": 3,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "pixelmon:boulder",
+        "price": 2,
+        "amount": 5,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:granite",
+        "price": 5,
+        "amount": 5,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:stone",
+        "price": 1,
+        "amount": 10,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 3
+      }
+    ]
+  }
+}
