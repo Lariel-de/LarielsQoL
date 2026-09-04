@@ -261,6 +261,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         var maxAffordable = getMaxAffordableQuantity(larielItem, player);
 
         var maxStackable = checkRemainingSlots(larielItem.getShopItem().itemStack());
+        maxStackable /= larielItem.getAmount();
 
         int maxDaily = Integer.MAX_VALUE;
         if (larielItem.getMaxSellCountPerDay() >= 0) {

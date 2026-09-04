@@ -13,7 +13,8 @@
         },
         "chance": 1.0,
         "Xp": 1,
-        "maxSellCountPerDay": -1
+        "maxSellCountPerDay": -1,
+        "amount": 1
       },
       {
         "item": "minecraft:diamond",
@@ -22,9 +23,10 @@
           "type": "SCOREBOARD",
           "objective": "coins"
         },
-        "chance": 0.5,
+        "chance": 1.0,
         "Xp": 10,
-        "maxSellCountPerDay": 2
+        "maxSellCountPerDay": 2,
+        "amount": 16
       }
     ],
     "2": [

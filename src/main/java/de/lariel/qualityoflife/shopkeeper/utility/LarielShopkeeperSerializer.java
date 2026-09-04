@@ -48,7 +48,8 @@ public class LarielShopkeeperSerializer {
                 item.getCurrencyData().customKey(),
                 item.getMinLevel(),
                 item.getXp(),
-                item.getMaxSellCountPerDay()
+                item.getMaxSellCountPerDay(),
+                item.getAmount()
         );
     }
 

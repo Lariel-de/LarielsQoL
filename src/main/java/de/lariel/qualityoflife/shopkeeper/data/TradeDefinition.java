@@ -10,4 +10,5 @@ public class TradeDefinition {
     public double chance;
     public int Xp;
     public int maxSellCountPerDay = -1;
+    public int amount = 1;
 }

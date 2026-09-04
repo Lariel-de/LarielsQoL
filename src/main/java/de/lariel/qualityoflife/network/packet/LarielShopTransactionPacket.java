@@ -57,7 +57,9 @@ public class LarielShopTransactionPacket extends LarielPacketBase {
             if (quantity <= 0 || quantity > 2304) return;
 
             var shopItem = LarielShopkeeperStateManager.findItem(shopkeeperId, shopItemId).orElse(null);
-            if (shopItem == null || !canFit(player.getInventory(), shopItem.getShopItem().itemStack(), quantity))
+            if (shopItem == null) return;
+            long totalItems = (long) shopItem.getAmount() * quantity;
+            if (totalItems > 2304 || !canFit(player.getInventory(), shopItem.getShopItem().itemStack(), (int) totalItems))
                 return;
             if (!LarielShopPurchaseStore.canPurchase(player, shopkeeperId, shopItem, quantity))
                 return;
@@ -68,7 +70,7 @@ public class LarielShopTransactionPacket extends LarielPacketBase {
             if (!takeCurrency(player, shopItem, (int) totalPrice)) return;
 
             var purchased = shopItem.getShopItem().itemStack().copy();
-            purchased.setCount(quantity);
+            purchased.setCount((int) totalItems);
             if (!player.addItem(purchased)) {
                 restoreCurrency(player, shopItem, (int) totalPrice);
                 return;
