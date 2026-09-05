@@ -504,7 +504,7 @@
       {
         "item": "minecraft:oak_planks",
         "price": 1,
-        "amount": 3,
+        "amount": 2,
         "currency": {
           "type": "ITEM",
           "item": "minecraft:emerald"
@@ -526,7 +526,7 @@
         "maxSellCountPerDay": 3
       },
       {
-        "item": "minecraft:chiseled_stone_bricks",
+        "item": "pixelmon:temple_brick",
         "price": 4,
         "amount": 2,
         "currency": {
