@@ -1,8 +1,16 @@
 package de.lariel.qualityoflife.listener;
 
+import com.pixelmonmod.pixelmon.api.events.spawning.SpawnEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
+import com.pixelmonmod.pixelmon.api.storage.StorageProxy;
+import com.pixelmonmod.pixelmon.api.spawning.archetypes.entities.pokemon.SpawnActionPokemon;
+import com.pixelmonmod.pixelmon.api.spawning.archetypes.entities.pokemon.SpawnInfoPokemon;
 import com.pixelmonmod.pixelmon.entities.pixelmon.PixelmonEntity;
+import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.utility.LarielSpawnNotifier;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 
@@ -25,6 +33,10 @@ public class LarielPokeSpawnListener {
         var pokemon = pixelmonEntity.getPokemon();
 
         if (!IsValidPokemon(pixelmonEntity, pokemon)) {
+            return;
+        }
+
+        if (!LarielsQoL.getConfig().general().getEnableSpawnNotification()) {
             return;
         }
 
@@ -53,8 +65,54 @@ public class LarielPokeSpawnListener {
         }
     }
 
+    @SubscribeEvent
+    public void AdjustSpawnLevel(SpawnEvent event) {
+        if (!LarielsQoL.getConfig().general().getEnableSpawnLevelAdjustment()
+                || !(event.action instanceof SpawnActionPokemon action)) {
+            return;
+        }
+
+        var location = action.spawnLocation;
+        if (location == null
+                || !(location.cause instanceof ServerPlayer player)
+                || location.location == null
+                || !(location.location.world instanceof ServerLevel serverLevel)
+                || serverLevel.dimension() != Level.OVERWORLD) {
+            return;
+        }
+
+        var entity = action.getOrCreateEntity();
+        var pokemon = action.pokemon;
+        if (!IsValidPokemon(entity, pokemon)) {
+            return;
+        }
+
+        if (!(action.spawnInfo instanceof SpawnInfoPokemon spawnInfo)) {
+            return;
+        }
+
+        var party = StorageProxy.getPartyNow(player.getUUID());
+        if (party == null) {
+            return;
+        }
+
+        int maxLevel = Math.max(1, LarielsQoL.getConfig().general().getOverworldSpawnMaxLevel());
+        int currentLevel = pokemon.getPokemonLevel();
+        if (currentLevel >= maxLevel) {
+            return;
+        }
+
+        int targetLevel = Math.min(maxLevel, Math.max(spawnInfo.minLevel, party.getAverageLevel()));
+        if (targetLevel <= currentLevel) {
+            return;
+        }
+
+        pokemon.setLevel(targetLevel);
+        entity.setHealth(pokemon.getHealth());
+    }
+
     private boolean IsValidPokemon(PixelmonEntity entity, Pokemon pokemon) {
-        if (pokemon == null && entity == null) {
+        if (pokemon == null || entity == null) {
             return false;
         }
 

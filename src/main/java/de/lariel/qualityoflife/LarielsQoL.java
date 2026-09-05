@@ -58,12 +58,18 @@ public class LarielsQoL {
     }
 
     public static void onModLoad(FMLCommonSetupEvent event) {
-        // Here is how you register a listener for Pixelmon events
+        var generalConfig = _instance._configManager.general();
+        var spawnListener = new LarielPokeSpawnListener(LarielSpawnNotifier.GetInstance());
 
-        // Since the desired pixelmon event fires to early and the coordinates of the entity is always 0 0 0
-        // use the NeoForgeEventBus
-        if (_instance._configManager.general().getEnableSpawnNotification()) {
-            NeoForge.EVENT_BUS.register(new LarielPokeSpawnListener(LarielSpawnNotifier.GetInstance()));
+        if (generalConfig.getEnableSpawnNotification()) {
+            NeoForge.EVENT_BUS.register(spawnListener);
+        }
+
+        if (generalConfig.getEnableSpawnLevelAdjustment()) {
+            Pixelmon.EVENT_BUS.register(spawnListener);
+        }
+
+        if (generalConfig.getEnableSpawnNotification()) {
             NeoForge.EVENT_BUS.register(LarielEntityTrackListener.GetInstance());
             NeoForge.EVENT_BUS.register(LarielBlockTrackListener.GetInstance());
         }

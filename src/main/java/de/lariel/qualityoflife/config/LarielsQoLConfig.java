@@ -13,6 +13,10 @@ public class LarielsQoLConfig extends AbstractYamlConfig {
     // --- General QoL Settings ---
     @Comment("Are spawn notifications enabled\n")
     private final boolean enableSpawnNotification;
+    @Comment("Should wild Pokemon levels be raised based on the spawning player's party level when lower\n")
+    private final boolean enableSpawnLevelAdjustment;
+    @Comment("Maximum level for adjusted wild Pokemon spawns in the Overworld\n")
+    private final int overworldSpawnMaxLevel;
     @Comment("Defines the range of the spawn notifications\n")
     private final double spawnDetectionRadius;
 
@@ -26,6 +30,8 @@ public class LarielsQoLConfig extends AbstractYamlConfig {
 
         // --- QoL Defaults ---
         this.enableSpawnNotification = true;
+        this.enableSpawnLevelAdjustment = true;
+        this.overworldSpawnMaxLevel = 60;
         this.spawnDetectionRadius = 90;
         shopkeeperMaxLevel = 5;
         levelScaleFactor = 5.0;
@@ -34,6 +40,14 @@ public class LarielsQoLConfig extends AbstractYamlConfig {
     // --- Getter: QoL ---
     public boolean getEnableSpawnNotification() {
         return enableSpawnNotification;
+    }
+
+    public boolean getEnableSpawnLevelAdjustment() {
+        return enableSpawnLevelAdjustment;
+    }
+
+    public int getOverworldSpawnMaxLevel() {
+        return overworldSpawnMaxLevel;
     }
 
     public double getSpawnDetectionRadius() {
