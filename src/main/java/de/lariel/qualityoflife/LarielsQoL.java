@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pixelmonmod.pixelmon.Pixelmon;
 import de.lariel.qualityoflife.betterBreeding.LarielBetterBreedingListener;
+import de.lariel.qualityoflife.capture.LarielIWantService;
 import de.lariel.qualityoflife.client.LarielHotkeyHandler;
 import de.lariel.qualityoflife.commands.LarielResetBreedingCounterCommand;
 import de.lariel.qualityoflife.commands.LarielTrackBlockCommand;
@@ -77,6 +78,7 @@ public class LarielsQoL {
         NeoForge.EVENT_BUS.register(new LarielPlayerListener());
 
         Pixelmon.EVENT_BUS.register(new LarielBetterBreedingListener());
+        Pixelmon.EVENT_BUS.register(LarielIWantService.getInstance());
     }
 
     @SubscribeEvent

@@ -25,6 +25,7 @@ public class LarielNetwork {
         registerToServer(registrar, LarielMintTraderPacket.TYPE, LarielMintTraderPacket.CODEC);
         registerToServer(registrar, LarielBetterBreedingApplyPacket.TYPE, LarielBetterBreedingApplyPacket.CODEC);
         registerToServer(registrar, LarielShopTransactionPacket.TYPE, LarielShopTransactionPacket.CODEC);
+        registerToServer(registrar, LarielIWantPacket.TYPE, LarielIWantPacket.CODEC);
 
         // Server → Client
         registerToClient(registrar, LarielMintTraderStatusPacket.TYPE, LarielMintTraderStatusPacket.CODEC);
@@ -33,6 +34,7 @@ public class LarielNetwork {
         registerToClient(registrar, LarielShopkeeperOpenScreenPacket.TYPE, LarielShopkeeperOpenScreenPacket.CODEC);
         registerToClient(registrar, LarielShopPurchaseSyncPacket.TYPE, LarielShopPurchaseSyncPacket.CODEC);
         registerToClient(registrar, LarielTrackingHudPacket.TYPE, LarielTrackingHudPacket.CODEC);
+        registerToClient(registrar, LarielIWantStatusPacket.TYPE, LarielIWantStatusPacket.CODEC);
     }
 
     private static <T extends LarielPacketBase> void registerToServer(
