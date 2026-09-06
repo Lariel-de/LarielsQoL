@@ -40,4 +40,9 @@ public class LarielBlockTrackListener extends LarielBaseTrackListener<BlockPos> 
     protected double getTargetZ(BlockPos target) {
         return target.getZ() + 0.5;
     }
+
+    @Override
+    protected double getTargetY(BlockPos target) {
+        return target.getY() + 0.5;
+    }
 }

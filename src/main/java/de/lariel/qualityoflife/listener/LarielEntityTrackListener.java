@@ -40,4 +40,9 @@ public class LarielEntityTrackListener extends LarielBaseTrackListener<Entity> {
     protected double getTargetZ(Entity target) {
         return target.getZ();
     }
+
+    @Override
+    protected double getTargetY(Entity target) {
+        return target.getY() + target.getBbHeight() / 2.0;
+    }
 }

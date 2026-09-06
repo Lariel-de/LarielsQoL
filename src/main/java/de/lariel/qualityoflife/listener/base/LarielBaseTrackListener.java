@@ -23,7 +23,7 @@ public abstract class LarielBaseTrackListener<T> {
         var target = data.target().get();
         if (target == null || !isTargetValid(player, target)) {
             activeTargets.remove(player.getUUID());
-            LarielNetwork.sendToClient(player, new LarielTrackingHudPacket(false, 0.0F, 0));
+            LarielNetwork.sendToClient(player, new LarielTrackingHudPacket(false, 0.0F, 0.0F, 0));
             return;
         }
 
@@ -42,6 +42,8 @@ public abstract class LarielBaseTrackListener<T> {
 
     protected abstract double getTargetZ(T target);
 
+    protected abstract double getTargetY(T target);
+
     private float getAngleToTarget(ServerPlayer player, T target) {
         var dx = getTargetX(target) - player.getX();
         var dz = getTargetZ(target) - player.getZ();
@@ -55,7 +57,15 @@ public abstract class LarielBaseTrackListener<T> {
         var playerYaw = player.getYRot();
         var distance = (int) getDistance(player, target);
         var relativeAngle = (angleToTarget - playerYaw + 540) % 360 - 180;
+        var horizontalDistance = Math.sqrt(
+                Math.pow(getTargetX(target) - player.getX(), 2)
+                        + Math.pow(getTargetZ(target) - player.getZ(), 2)
+        );
+        var verticalAngle = (float) Math.toDegrees(Math.atan2(
+                getTargetY(target) - player.getY(),
+                horizontalDistance
+        ));
 
-        LarielNetwork.sendToClient(player, new LarielTrackingHudPacket(true, relativeAngle, distance));
+        LarielNetwork.sendToClient(player, new LarielTrackingHudPacket(true, relativeAngle, verticalAngle, distance));
     }
 }

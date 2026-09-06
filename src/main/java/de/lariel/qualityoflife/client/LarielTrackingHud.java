@@ -19,24 +19,26 @@ public final class LarielTrackingHud {
     private static boolean active;
     private static float targetAngle;
     private static float renderedAngle;
+    private static float verticalAngle;
     private static int distance;
 
     private LarielTrackingHud() {
     }
 
-    public static void update(boolean tracking, float relativeAngle, int targetDistance) {
+    public static void update(boolean tracking, float relativeAngle, float targetVerticalAngle, int targetDistance) {
         active = tracking;
         if (!tracking) {
             return;
         }
 
         targetAngle = relativeAngle;
+        verticalAngle = targetVerticalAngle;
         distance = Math.max(0, targetDistance);
     }
 
     @SubscribeEvent
     public static void onLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
-        update(false, 0.0F, 0);
+        update(false, 0.0F, 0.0F, 0);
     }
 
     @SubscribeEvent
@@ -62,6 +64,8 @@ public final class LarielTrackingHud {
 
         graphics.pose().popPose();
 
+        drawVerticalIndicator(graphics, centerX + 22, centerY);
+
         String distanceText = distance + "m";
         graphics.drawString(
                 minecraft.font,
@@ -78,6 +82,25 @@ public final class LarielTrackingHud {
         graphics.fill(offsetX - 8, offsetY - 4, offsetX + 9, offsetY + 1, color);
         graphics.fill(offsetX - 6, offsetY - 8, offsetX + 7, offsetY - 4, color);
         graphics.fill(offsetX - 4, offsetY - 11, offsetX + 5, offsetY - 8, color);
+    }
+
+    private static void drawVerticalIndicator(GuiGraphics graphics, int x, int y) {
+        if (Math.abs(verticalAngle) < 5.0F) {
+            return;
+        }
+
+        boolean targetIsAbove = verticalAngle > 0.0F;
+        int color = targetIsAbove ? ARROW_LIGHT : ARROW_DARK;
+        int length = 6 + Math.min(7, (int) (Math.abs(verticalAngle) / 10.0F));
+
+        graphics.fill(x - 1, y - length, x + 2, y + length + 1, color);
+        if (targetIsAbove) {
+            graphics.fill(x - 5, y - length, x + 6, y - length + 3, color);
+            graphics.fill(x - 3, y - length - 3, x + 4, y - length, color);
+        } else {
+            graphics.fill(x - 5, y + length - 2, x + 6, y + length + 1, color);
+            graphics.fill(x - 3, y + length + 1, x + 4, y + length + 4, color);
+        }
     }
 
     private static float wrapDegrees(float angle) {

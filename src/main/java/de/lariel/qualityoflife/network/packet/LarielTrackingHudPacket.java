@@ -16,6 +16,7 @@ public class LarielTrackingHudPacket extends LarielPacketBase {
             StreamCodec.composite(
                     ByteBufCodecs.BOOL, packet -> packet.active,
                     ByteBufCodecs.FLOAT, packet -> packet.relativeAngle,
+                    ByteBufCodecs.FLOAT, packet -> packet.verticalAngle,
                     ByteBufCodecs.VAR_INT, packet -> packet.distance,
                     LarielTrackingHudPacket::new
             );
@@ -25,18 +26,20 @@ public class LarielTrackingHudPacket extends LarielPacketBase {
 
     private final boolean active;
     private final float relativeAngle;
+    private final float verticalAngle;
     private final int distance;
 
-    public LarielTrackingHudPacket(boolean active, float relativeAngle, int distance) {
+    public LarielTrackingHudPacket(boolean active, float relativeAngle, float verticalAngle, int distance) {
         super(true);
         this.active = active;
         this.relativeAngle = relativeAngle;
+        this.verticalAngle = verticalAngle;
         this.distance = distance;
     }
 
     @Override
     protected void handlePacket(IPayloadContext context) {
-        LarielTrackingHud.update(active, relativeAngle, distance);
+        LarielTrackingHud.update(active, relativeAngle, verticalAngle, distance);
     }
 
     @Override
