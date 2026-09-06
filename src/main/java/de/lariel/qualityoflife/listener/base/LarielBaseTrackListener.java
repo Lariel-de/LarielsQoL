@@ -1,8 +1,8 @@
 package de.lariel.qualityoflife.listener.base;
 
+import de.lariel.qualityoflife.network.packet.LarielTrackingHudPacket;
+import de.lariel.qualityoflife.network.server.LarielNetwork;
 import de.lariel.qualityoflife.utility.LarielTrackedTarget;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -12,9 +12,6 @@ import java.util.UUID;
 
 public abstract class LarielBaseTrackListener<T> {
 
-    private static final String[] ARROWS = {
-            "🡱", "🡲", "🡲", "🡳", "🡳", "🡰", "🡰", "🡱"
-    };
     protected final Map<UUID, LarielTrackedTarget<T>> activeTargets = new HashMap<>();
 
     protected void onPlayerTick(PlayerTickEvent.Post event) {
@@ -26,6 +23,7 @@ public abstract class LarielBaseTrackListener<T> {
         var target = data.target().get();
         if (target == null || !isTargetValid(player, target)) {
             activeTargets.remove(player.getUUID());
+            LarielNetwork.sendToClient(player, new LarielTrackingHudPacket(false, 0.0F, 0));
             return;
         }
 
@@ -52,23 +50,12 @@ public abstract class LarielBaseTrackListener<T> {
         return (angle + 360) % 360;
     }
 
-    private String getArrow(float angleToTarget, float playerYaw) {
-        var relative = (angleToTarget - playerYaw + 360) % 360;
-        var index = Math.round(relative / 45f) % 8;
-        return ARROWS[index];
-    }
-
     private void sendCompass(ServerPlayer player, T target) {
-
         var angleToTarget = getAngleToTarget(player, target);
         var playerYaw = player.getYRot();
-
-        var arrow = getArrow(angleToTarget, playerYaw);
         var distance = (int) getDistance(player, target);
+        var relativeAngle = (angleToTarget - playerYaw + 540) % 360 - 180;
 
-        Component msg = Component.literal(arrow + "  §b" + distance + "m");
-
-        player.connection.send(new ClientboundSetActionBarTextPacket(msg));
+        LarielNetwork.sendToClient(player, new LarielTrackingHudPacket(true, relativeAngle, distance));
     }
 }
-
