@@ -142,7 +142,7 @@
         "price": 33,
         "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 3, "minecraft:unbreaking": 3 } } } },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 4, "minecraft:unbreaking": 3 } } } },
         "chance": 0.2,
         "Xp": 5,
         "maxSellCountPerDay": 3
@@ -165,7 +165,7 @@
         "price": 27,
         "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 3, "minecraft:unbreaking": 3 } } } },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 4, "minecraft:unbreaking": 3 } } } },
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 3
@@ -175,7 +175,7 @@
         "price": 35,
         "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 3, "minecraft:unbreaking": 3 } } } },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:protection": 4, "minecraft:unbreaking": 3 } } } },
         "chance": 0.3,
         "Xp": 4,
         "maxSellCountPerDay": 3
