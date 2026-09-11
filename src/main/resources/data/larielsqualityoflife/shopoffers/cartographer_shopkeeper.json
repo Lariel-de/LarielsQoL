@@ -3,9 +3,10 @@
   "levels": {
     "0": [
       {
-        "item": "minecraft:paper",
+        "item": "minecraft:emerald",
         "price": 24,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:paper" },
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 16
@@ -13,70 +14,285 @@
       {
         "item": "minecraft:map",
         "price": 7,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
         "Xp": 1,
-        "maxSellCountPerDay": 8
+        "maxSellCountPerDay": 12
       }
     ],
 
     "1": [
       {
-        "item": "minecraft:compass",
-        "price": 10,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "item": "minecraft:emerald",
+        "price": 11,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:glass_pane" },
         "chance": 1.0,
         "Xp": 2,
-        "maxSellCountPerDay": 6
-      },
-      {
-        "item": "minecraft:white_banner",
-        "price": 3,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 1.0,
-        "Xp": 2,
-        "maxSellCountPerDay": 8
+        "maxSellCountPerDay": 16
       }
     ],
 
     "2": [
       {
-        "item": "minecraft:map",
-        "price": 14,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.4,
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:compass" },
+        "chance": 1.0,
         "Xp": 3,
-        "maxSellCountPerDay": 2
-      },
-      {
-        "item": "minecraft:map",
-        "price": 12,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.4,
-        "Xp": 3,
-        "maxSellCountPerDay": 2
+        "maxSellCountPerDay": 12
       }
     ],
 
     "3": [
       {
-        "item": "minecraft:map",
-        "price": 18,
+        "item": "minecraft:item_frame",
+        "price": 7,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.3,
+        "chance": 1.0,
         "Xp": 4,
-        "maxSellCountPerDay": 2
+        "maxSellCountPerDay": 12
+      },
+
+      {
+        "item": "minecraft:white_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:light_gray_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:gray_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:black_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:brown_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:red_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:orange_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:yellow_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:lime_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:green_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:cyan_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:light_blue_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:blue_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:purple_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:magenta_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:pink_banner",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
       }
     ],
 
     "4": [
       {
-        "item": "minecraft:map",
-        "price": 24,
+        "item": "minecraft:flower_banner_pattern",
+        "price": 8,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.2,
+        "chance": 1.0,
         "Xp": 5,
-        "maxSellCountPerDay": 1
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:creeper_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:skull_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:mojang_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:globe_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:piglin_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:flow_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:guster_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:border_indented_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:field_masoned_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
       }
     ]
   }
