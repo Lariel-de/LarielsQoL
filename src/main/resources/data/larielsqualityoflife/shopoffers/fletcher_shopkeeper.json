@@ -3,9 +3,10 @@
   "levels": {
     "0": [
       {
-        "item": "minecraft:stick",
+        "item": "minecraft:emerald",
         "price": 32,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:stick" },
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 16
@@ -13,74 +14,106 @@
       {
         "item": "minecraft:arrow",
         "price": 1,
+        "amount": 16,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
         "Xp": 1,
-        "maxSellCountPerDay": 16
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:flint",
+        "price": 10,
+        "amount": 10,
+        "currency": { "type": "ITEM", "item": "minecraft:gravel" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
       }
     ],
 
     "1": [
       {
-        "item": "minecraft:bow",
-        "price": 2,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "item": "minecraft:emerald",
+        "price": 26,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:flint" },
         "chance": 1.0,
         "Xp": 2,
-        "maxSellCountPerDay": 8
+        "maxSellCountPerDay": 12
       },
       {
-        "item": "minecraft:crossbow",
-        "price": 3,
+        "item": "minecraft:bow",
+        "price": 2,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
         "Xp": 2,
-        "maxSellCountPerDay": 6
+        "maxSellCountPerDay": 12
       }
     ],
 
     "2": [
       {
-        "item": "minecraft:tipped_arrow",
-        "price": 2,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:poison" } } },
-        "chance": 0.6,
+        "item": "minecraft:emerald",
+        "price": 14,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:string" },
+        "chance": 1.0,
         "Xp": 3,
-        "maxSellCountPerDay": 8
+        "maxSellCountPerDay": 16
       },
       {
-        "item": "minecraft:tipped_arrow",
-        "price": 2,
+        "item": "minecraft:crossbow",
+        "price": 3,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:slowness" } } },
-        "chance": 0.6,
+        "chance": 1.0,
         "Xp": 3,
-        "maxSellCountPerDay": 8
+        "maxSellCountPerDay": 12
       }
     ],
 
     "3": [
       {
-        "item": "minecraft:tipped_arrow",
-        "price": 3,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:harming" } } },
-        "chance": 0.4,
+        "item": "minecraft:emerald",
+        "price": 24,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:feather" },
+        "chance": 1.0,
         "Xp": 4,
-        "maxSellCountPerDay": 6
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:bow",
+        "price": 21,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:flame": 1, "minecraft:infinity": 1 } } } },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 3
       }
     ],
 
     "4": [
       {
-        "item": "minecraft:tipped_arrow",
-        "price": 4,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "nbt": { "components": { "minecraft:potion_contents": { "potion": "minecraft:strong_harming" } } },
-        "chance": 0.3,
+        "item": "minecraft:emerald",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:tripwire_hook" },
+        "chance": 1.0,
         "Xp": 5,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:crossbow",
+        "price": 22,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:flame": 1, "minecraft:infinity": 1 } } } },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 3
       }
     ]
   }
