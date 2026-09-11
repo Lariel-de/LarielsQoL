@@ -162,7 +162,7 @@
         "amount": 1,
         "currency": {
           "type": "ITEM",
-          "item": "minecraft:inc_sac"
+          "item": "minecraft:ink_sac"
         },
         "chance": 1.0,
         "Xp": 3,
