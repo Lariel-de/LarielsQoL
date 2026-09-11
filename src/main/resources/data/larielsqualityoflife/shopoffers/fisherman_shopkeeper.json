@@ -3,9 +3,10 @@
   "levels": {
     "0": [
       {
-        "item": "minecraft:string",
+        "item": "minecraft:emerald",
         "price": 20,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:string" },
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 16
@@ -13,86 +14,186 @@
       {
         "item": "minecraft:coal",
         "price": 10,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
         "Xp": 1,
-        "maxSellCountPerDay": 12
+        "maxSellCountPerDay": 16
       },
       {
         "item": "minecraft:cooked_cod",
         "price": 1,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
         "Xp": 1,
-        "maxSellCountPerDay": 8
+        "maxSellCountPerDay": 16
       },
       {
-        "item": "minecraft:cooked_salmon",
-        "price": 1,
+        "item": "minecraft:cod_bucket",
+        "price": 3,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
-        "Xp": 1,
-        "maxSellCountPerDay": 8
+        "Xp": 2,
+        "maxSellCountPerDay": 16
       }
     ],
 
     "1": [
       {
-        "item": "minecraft:cod_bucket",
-        "price": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "item": "minecraft:emerald",
+        "price": 15,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:raw_cod" },
         "chance": 1.0,
         "Xp": 2,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 16
       },
       {
-        "item": "minecraft:salmon_bucket",
+        "item": "minecraft:cooked_salmon",
         "price": 1,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
-        "Xp": 2,
-        "maxSellCountPerDay": 4
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:campfire",
+        "price": 2,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
       }
     ],
 
     "2": [
       {
-        "item": "minecraft:fishing_rod",
-        "price": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "item": "minecraft:emerald",
+        "price": 13,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:raw_salmon" },
         "chance": 1.0,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 16
       },
       {
         "item": "minecraft:fishing_rod",
-        "price": 1,
+        "price": 22,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.3,
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:lure": 3 } } } },
+        "chance": 1.0,
         "Xp": 4,
-        "maxSellCountPerDay": 2
+        "maxSellCountPerDay": 3
       }
     ],
 
     "3": [
       {
-        "item": "minecraft:oak_boat",
-        "price": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "item": "minecraft:emerald",
+        "price": 6,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:tropical_fish" },
         "chance": 1.0,
         "Xp": 4,
-        "maxSellCountPerDay": 6
+        "maxSellCountPerDay": 12
       }
     ],
 
     "4": [
       {
-        "item": "minecraft:enchanted_book",
+        "item": "minecraft:emerald",
+        "price": 4,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:pufferfish" },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
         "price": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.2,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:oak_boat" },
+        "chance":  1.0,
         "Xp": 5,
-        "maxSellCountPerDay": 2
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:spruce_boat" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:birch_boat" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:jungle_boat" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:acacia_boat" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:dark_oak_boat" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:mangrove_boat" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:cherry_boat" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:bamboo_raft" },
+        "chance":  1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
       }
     ]
   }
