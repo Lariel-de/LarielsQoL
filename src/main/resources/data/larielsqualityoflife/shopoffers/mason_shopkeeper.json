@@ -3,34 +3,38 @@
   "levels": {
     "0": [
       {
-        "item": "minecraft:clay_ball",
+        "item": "minecraft:emerald",
         "price": 10,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:clay_ball" },
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 16
       },
       {
         "item": "minecraft:brick",
+        "amount": 10,
         "price": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
         "Xp": 1,
-        "maxSellCountPerDay": 12
+        "maxSellCountPerDay": 16
       }
     ],
 
     "1": [
       {
-        "item": "minecraft:terracotta",
-        "price": 10,
-        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "item": "minecraft:emerald",
+        "price": 20,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:stone" },
         "chance": 1.0,
         "Xp": 2,
-        "maxSellCountPerDay": 8
+        "maxSellCountPerDay": 16
       },
       {
-        "item": "minecraft:quartz",
+        "item": "minecraft:chiseled_stone_bricks",
+        "amount": 4,
         "price": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 1.0,
@@ -41,32 +45,261 @@
 
     "2": [
       {
-        "item": "minecraft:glazed_terracotta",
-        "price": 2,
+        "item": "minecraft:emerald",
+        "price": 16,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:granite" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 16,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:andesite" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 16,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:diorite" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:polished_andesite",
+        "price": 1,
+        "amount": 4,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
         "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 6
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:polished_granite",
+        "price": 1,
+        "amount": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:polished_diorite",
+        "price": 1,
+        "amount": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:dripstone_block",
+        "price": 1,
+        "amount": 4,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 16
       }
     ],
 
     "3": [
       {
-        "item": "minecraft:quartz_block",
-        "price": 4,
+        "item": "minecraft:emerald",
+        "price": 12,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:quartz" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:emerald",
+        "price": 12,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:quartz" },
+        "chance": 0.8,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+
+      {
+        "item": "minecraft:terracotta",
+        "price": 1,
+        "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.6,
-        "Xp": 4,
-        "maxSellCountPerDay": 4
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:white_terracotta",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:light_gray_terracotta",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:gray_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:black_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:brown_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:red_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:orange_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:yellow_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:lime_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:green_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:cyan_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:light_blue_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:blue_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:purple_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:magenta_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
+      },
+      {
+        "item": "minecraft:pink_terracotta",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 24
       }
     ],
 
     "4": [
       {
-        "item": "minecraft:chiseled_quartz_block",
-        "price": 6,
+        "item": "minecraft:quartz_pillar",
+        "price": 1,
+        "amount":1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
-        "chance": 0.4,
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 2
+      },
+      {
+        "item": "minecraft:quartz_block",
+        "price": 1,
+        "amount":1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
         "Xp": 5,
         "maxSellCountPerDay": 2
       }
