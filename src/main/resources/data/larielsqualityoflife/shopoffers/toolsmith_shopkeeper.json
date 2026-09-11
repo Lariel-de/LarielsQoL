@@ -1,0 +1,169 @@
+{
+  "name": "Lariel Toolsmith Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:emerald",
+        "price": 15,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:coal" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:stone_pickaxe",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:stone_axe",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:stone_shovel",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:stone_hoe",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:emerald",
+        "price": 4,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:iron_ingot" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:bell",
+        "price": 36,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:emerald",
+        "price": 30,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:flint" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 2
+      },
+      {
+        "item": "minecraft:iron_pickaxe",
+        "price": 22,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:efficiency": 3, "minecraft:unbreaking": 3 } } } },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:iron_shovel",
+        "price": 21,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:efficiency": 3, "minecraft:unbreaking": 3 } } } },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:iron_axe",
+        "price": 20,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:efficiency": 3, "minecraft:unbreaking": 3 } } } },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:diamond_hoe",
+        "price": 4,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 3
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:diamond" },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:diamond_axe",
+        "price": 31,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:efficiency": 3, "minecraft:unbreaking": 3 } } } },
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:diamond_shovel",
+        "price": 24,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:efficiency": 3, "minecraft:unbreaking": 3 } } } },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 3
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:diamond_pickaxe",
+        "price": 32,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": { "components": { "minecraft:enchantments": { "levels": { "minecraft:efficiency": 3, "minecraft:unbreaking": 3 } } } },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 3
+      }
+    ]
+  }
+}

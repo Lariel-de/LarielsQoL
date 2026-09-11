@@ -1,0 +1,153 @@
+{
+  "name": "Lariel Weaponsmith Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:emerald",
+        "price": 15,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:coal"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:iron_axe",
+        "price": 3,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:iron_sword",
+        "price": 21,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": {
+          "components": {
+            "minecraft:enchantments": {
+              "levels": {
+                "minecraft:sharpness": 3,
+                "minecraft:unbreaking": 3
+              }
+            }
+          }
+        },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      }
+    ],
+    "1": [
+      {
+        "item": "minecraft:emerald",
+        "price": 4,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:iron_ingot"
+        },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:bell",
+        "price": 36,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      }
+    ],
+    "2": [
+      {
+        "item": "minecraft:emerald",
+        "price": 24,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:flint"
+        },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 2
+      }
+    ],
+    "3": [
+      {
+        "item": "minecraft:emerald",
+        "price": 1,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:diamond"
+        },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:diamond_axe",
+        "price": 32,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": {
+          "components": {
+            "minecraft:enchantments": {
+              "levels": {
+                "minecraft:sharpness": 3,
+                "minecraft:unbreaking": 3
+              }
+            }
+          }
+        },
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 3
+      }
+    ],
+    "4": [
+      {
+        "item": "minecraft:diamond_sword",
+        "price": 32,
+        "amount": 1,
+        "currency": {
+          "type": "ITEM",
+          "item": "minecraft:emerald"
+        },
+        "nbt": {
+          "components": {
+            "minecraft:enchantments": {
+              "levels": {
+                "minecraft:sharpness": 3,
+                "minecraft:unbreaking": 3
+              }
+            }
+          }
+        },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 3
+      }
+    ]
+  }
+}
