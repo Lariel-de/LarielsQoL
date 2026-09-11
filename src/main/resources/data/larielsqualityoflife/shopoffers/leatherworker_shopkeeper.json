@@ -1,0 +1,145 @@
+{
+  "name": "Lariel Leatherworker Shopkeeper",
+  "levels": {
+    "0": [
+      {
+        "item": "minecraft:emerald",
+        "price": 6,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:leather" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 16
+      },
+      {
+        "item": "minecraft:leather_chestplate",
+        "price": 7,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather_leggings",
+        "price": 3,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      }
+    ],
+
+    "1": [
+      {
+        "item": "minecraft:emerald",
+        "price": 26,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:flint" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather_helmet",
+        "price": 5,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather_boots",
+        "price": 4,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      }
+    ],
+
+    "2": [
+      {
+        "item": "minecraft:emerald",
+        "price": 9,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:rabbit_hide" },
+        "chance": 1.0,
+        "Xp": 3,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather",
+        "price": 1,
+        "amount": 6,
+        "currency": { "type": "ITEM", "item": "minecraft:leather_chestplate" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather",
+        "price": 1,
+        "amount": 5,
+        "currency": { "type": "ITEM", "item": "minecraft:leather_leggings" },
+        "chance": 1.0,
+        "Xp": 1,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather",
+        "price": 1,
+        "amount": 3,
+        "currency": { "type": "ITEM", "item": "minecraft:leather_helmet" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather",
+        "price": 1,
+        "amount": 2,
+        "currency": { "type": "ITEM", "item": "minecraft:leather_boots" },
+        "chance": 1.0,
+        "Xp": 2,
+        "maxSellCountPerDay": 12
+      }
+    ],
+
+    "3": [
+      {
+        "item": "minecraft:emerald",
+        "price": 4,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:turtle_scute" },
+        "chance": 1.0,
+        "Xp": 4,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "minecraft:leather",
+        "price": 1,
+        "amount": 5,
+        "currency": { "type": "ITEM", "item": "minecraft:leather_horse_armor" },
+        "chance": 0.3,
+        "Xp": 4,
+        "maxSellCountPerDay": 2
+      }
+    ],
+
+    "4": [
+      {
+        "item": "minecraft:leather",
+        "price": 1,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:saddle" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      }
+    ]
+  }
+}
