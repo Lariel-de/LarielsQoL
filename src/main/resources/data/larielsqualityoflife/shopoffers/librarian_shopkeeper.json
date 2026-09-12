@@ -26,9 +26,9 @@
             }
           }
         },
-        "chance": 0.6,
+        "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:enchanted_book",
@@ -42,9 +42,9 @@
             }
           }
         },
-        "chance": 0.6,
+        "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:enchanted_book",
@@ -58,9 +58,9 @@
             }
           }
         },
-        "chance": 0.6,
+        "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:enchanted_book",
@@ -74,9 +74,9 @@
             }
           }
         },
-        "chance": 0.6,
+        "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:book_shelf",
@@ -117,9 +117,9 @@
             }
           }
         },
-        "chance": 0.6,
+        "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:enchanted_book",
@@ -133,9 +133,9 @@
             }
           }
         },
-        "chance": 0.6,
+        "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:enchanted_book",
@@ -149,9 +149,9 @@
             }
           }
         },
-        "chance": 0.6,
+        "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       }
     ],
 
@@ -182,7 +182,7 @@
         },
         "chance": 0.8,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:glass_pane",
@@ -226,7 +226,7 @@
         },
         "chance": 0.8,
         "Xp": 4,
-        "maxSellCountPerDay": 2
+        "maxSellCountPerDay": 3
       },
       {
         "item": "minecraft:clock",
@@ -280,7 +280,25 @@
         },
         "chance": 0.6,
         "Xp": 3,
-        "maxSellCountPerDay": 4
+        "maxSellCountPerDay": 3
+      },
+      {
+        "item": "minecraft:enchanted_book",
+        "price": 32,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "nbt": {
+          "components": {
+            "minecraft:stored_enchantments": {
+              "levels": {
+                "betterbreeding:warm_steps": 1
+              }
+            }
+          }
+        },
+        "chance": 0.9,
+        "Xp": 3,
+        "maxSellCountPerDay": 3
       }
     ]
   }
