@@ -6,7 +6,7 @@
         "item": "minecraft:emerald",
         "price": 14,
         "amount": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:raw_chicken" },
+        "currency": { "type": "ITEM", "item": "minecraft:chicken" },
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 16
@@ -15,7 +15,7 @@
         "item": "minecraft:emerald",
         "price": 7,
         "amount": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:raw_porkchop" },
+        "currency": { "type": "ITEM", "item": "minecraft:porkchop" },
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 16
@@ -24,7 +24,7 @@
         "item": "minecraft:emerald",
         "price": 4,
         "amount": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:raw_rabbit" },
+        "currency": { "type": "ITEM", "item": "minecraft:rabbit" },
         "chance": 1.0,
         "Xp": 1,
         "maxSellCountPerDay": 16
@@ -75,7 +75,7 @@
         "item": "minecraft:emerald",
         "price": 7,
         "amount": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:raw_mutton" },
+        "currency": { "type": "ITEM", "item": "minecraft:mutton" },
         "chance": 1.0,
         "Xp": 3,
         "maxSellCountPerDay": 16
@@ -84,7 +84,7 @@
         "item": "minecraft:emerald",
         "price": 10,
         "amount": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:raw_beef" },
+        "currency": { "type": "ITEM", "item": "minecraft:beef" },
         "chance": 1.0,
         "Xp": 4,
         "maxSellCountPerDay": 16

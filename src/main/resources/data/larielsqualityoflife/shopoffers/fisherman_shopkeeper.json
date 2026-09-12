@@ -45,7 +45,7 @@
         "item": "minecraft:emerald",
         "price": 15,
         "amount": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:raw_cod" },
+        "currency": { "type": "ITEM", "item": "minecraft:cod" },
         "chance": 1.0,
         "Xp": 2,
         "maxSellCountPerDay": 16
@@ -75,7 +75,7 @@
         "item": "minecraft:emerald",
         "price": 13,
         "amount": 1,
-        "currency": { "type": "ITEM", "item": "minecraft:raw_salmon" },
+        "currency": { "type": "ITEM", "item": "minecraft:salmon" },
         "chance": 1.0,
         "Xp": 3,
         "maxSellCountPerDay": 16

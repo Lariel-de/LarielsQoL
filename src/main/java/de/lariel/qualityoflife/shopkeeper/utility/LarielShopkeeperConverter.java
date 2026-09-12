@@ -1,6 +1,7 @@
 package de.lariel.qualityoflife.shopkeeper.utility;
 
 import com.pixelmonmod.pixelmon.api.shop.ShopItem;
+import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.shopkeeper.data.CurrencyJson;
 import de.lariel.qualityoflife.shopkeeper.data.ShopkeeperDefinition;
 import de.lariel.qualityoflife.shopkeeper.data.TradeDefinition;
@@ -13,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 
 public class LarielShopkeeperConverter {
@@ -25,32 +27,39 @@ public class LarielShopkeeperConverter {
 
                     return entry.getValue().stream()
                             .filter(trade -> Math.random() <= trade.chance)
-                            .map(trade -> LarielShopkeeperConverter.convertTrade(trade, level, registries));
+                            .map(trade -> convertTrade(trade, level, registries))
+                            .filter(Objects::nonNull);
                 })
                 .toList();
     }
 
     private static LarielShopItem convertTrade(TradeDefinition trade, int level,
                                                HolderLookup.Provider registries) {
-        if (trade == null)
-            throw new IllegalArgumentException("Trade definition must not be null");
-        if (trade.item == null || trade.item.isBlank())
-            throw new IllegalArgumentException("Trade item must not be empty");
-        if (trade.Xp < 0)
-            throw new IllegalArgumentException("Trade Xp must not be negative");
-        if (trade.maxSellCountPerDay < -1)
-            throw new IllegalArgumentException("Trade maxSellCountPerDay must be -1 or greater");
-        if (trade.amount < 1)
-            throw new IllegalArgumentException("Trade amount must be greater than zero");
+        try {
+            if (trade == null)
+                throw new IllegalArgumentException("Trade definition must not be null");
+            if (trade.item == null || trade.item.isBlank())
+                throw new IllegalArgumentException("Trade item must not be empty");
+            if (trade.Xp < 0)
+                throw new IllegalArgumentException("Trade Xp must not be negative");
+            if (trade.maxSellCountPerDay < -1)
+                throw new IllegalArgumentException("Trade maxSellCountPerDay must be -1 or greater");
+            if (trade.amount < 1)
+                throw new IllegalArgumentException("Trade amount must be greater than zero");
 
-        var itemId = getItemId(trade.item);
-        var item = LarielItemStackFactory.create(itemId, trade.nbt, registries);
-        var currency = getCurrency(trade.currency, registries);
-        var buyPrice = currency.type() == CurrencyType.POKEDOLLAR ? trade.price : 0;
+            var itemId = getItemId(trade.item);
+            var item = LarielItemStackFactory.create(itemId, trade.nbt, registries); // kann Fehler werfen
+            var currency = getCurrency(trade.currency, registries);
+            var buyPrice = currency.type() == CurrencyType.POKEDOLLAR ? trade.price : 0;
 
-        item.setCount(trade.amount);
-        return new LarielShopItem(new ShopItem(item, buyPrice, 0), trade.price, currency, level,
-                trade.Xp, trade.maxSellCountPerDay, trade.amount);
+            item.setCount(trade.amount);
+            return new LarielShopItem(new ShopItem(item, buyPrice, 0), trade.price, currency, level,
+                    trade.Xp, trade.maxSellCountPerDay, trade.amount);
+
+        } catch (Exception e) {
+            LarielsQoL.getLogger().error(e);
+            return null;
+        }
     }
 
     private static @NotNull ResourceLocation getItemId(String itemId) {

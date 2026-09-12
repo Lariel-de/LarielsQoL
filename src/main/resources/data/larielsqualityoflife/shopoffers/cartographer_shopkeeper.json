@@ -277,7 +277,7 @@
         "maxSellCountPerDay": 12
       },
       {
-        "item": "minecraft:border_indented_banner_pattern",
+        "item": "pixelmon:common_banner_pattern",
         "price": 8,
         "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },
@@ -286,7 +286,43 @@
         "maxSellCountPerDay": 12
       },
       {
-        "item": "minecraft:field_masoned_banner_pattern",
+        "item": "pixelmon:logo_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "pixelmon:pokeball_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "pixelmon:special_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "pixelmon:types_banner_pattern",
+        "price": 8,
+        "amount": 1,
+        "currency": { "type": "ITEM", "item": "minecraft:emerald" },
+        "chance": 1.0,
+        "Xp": 5,
+        "maxSellCountPerDay": 12
+      },
+      {
+        "item": "pixelmon:villain_teams_banner_pattern",
         "price": 8,
         "amount": 1,
         "currency": { "type": "ITEM", "item": "minecraft:emerald" },

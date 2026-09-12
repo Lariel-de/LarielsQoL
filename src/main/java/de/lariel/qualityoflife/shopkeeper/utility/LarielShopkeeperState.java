@@ -15,7 +15,7 @@ public class LarielShopkeeperState {
     public List<LarielShopItem> getItemsForToday(ServerLevel level, ShopkeeperDefinition def, int shopkeeperLevel) {
         long day = level.getDayTime() / 24000L;
 
-        if (day != lastDay) {
+        if (day != lastDay || todaysItems.isEmpty()) {
             lastDay = day;
 
             todaysItems = LarielShopkeeperConverter.convertToLarielShopItems(def, level.registryAccess());

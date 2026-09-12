@@ -79,7 +79,7 @@
         "maxSellCountPerDay": 3
       },
       {
-        "item": "minecraft:book_shelf",
+        "item": "minecraft:bookshelf",
         "price": 9,
         "amount": 1,
         "currency": {
