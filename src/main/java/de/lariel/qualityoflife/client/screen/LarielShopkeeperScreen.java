@@ -7,12 +7,12 @@ import com.pixelmonmod.pixelmon.client.gui.npc.ShopkeeperScreen;
 import com.pixelmonmod.pixelmon.entities.npcs.registry.EnumBuySell;
 import com.pixelmonmod.pixelmon.storage.ClientData;
 import de.lariel.qualityoflife.LarielsQoL;
+import de.lariel.qualityoflife.client.screen.services.LarielShopPurchaseClientCache;
 import de.lariel.qualityoflife.network.packet.LarielShopTransactionPacket;
 import de.lariel.qualityoflife.network.server.LarielNetwork;
 import de.lariel.qualityoflife.reputation.LarielPlayerReputationStoreManager;
 import de.lariel.qualityoflife.shopkeeper.CurrencyType;
 import de.lariel.qualityoflife.shopkeeper.LarielShopItem;
-import de.lariel.qualityoflife.client.screen.services.LarielShopPurchaseClientCache;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
@@ -86,6 +86,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         super.render(graphics, mouseX, mouseY, f);
 
         renderReputation(graphics);
+        renderLarielTooltips(graphics, mouseX, mouseY);
     }
 
     @Override
@@ -176,6 +177,31 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
                 40, listLeft() + 66, buyScreenTop + 26, 16777215, true);
     }
 
+    private void renderLarielTooltips(GuiGraphics graphics, int mouseX, int mouseY) {
+        var pixelmonItems = this.buyItems;
+
+        var larielItems = this.larielItems;
+
+        var left = listLeft();
+        var top = buyScreenTop();
+        var entryHeight = 20;
+
+        for (var i = 0; i < pixelmonItems.size(); i++) {
+            var itemY = top + 60 + i * entryHeight;
+
+            var itemX = left + 10;
+
+            if (mouseX >= itemX && mouseX <= itemX + 16 &&
+                    mouseY >= itemY && mouseY <= itemY + 16) {
+
+                var larielItem = larielItems.get(i);
+                var stack = larielItem.getShopItem().itemStack();
+
+                graphics.renderTooltip(Minecraft.getInstance().font, stack, mouseX, mouseY);
+            }
+        }
+    }
+
     @Override
     protected void renderMiniScreenBuySellButton(GuiGraphics graphics, int mouseX, int mouseY, double price, List<ShopItem> listItems) {
         var larielShopItem = larielItems.get(selectedItem);
@@ -263,7 +289,7 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
         var maxStackable = checkRemainingSlots(larielItem.getShopItem().itemStack());
         maxStackable /= larielItem.getAmount();
 
-        int maxDaily = Integer.MAX_VALUE;
+        var maxDaily = Integer.MAX_VALUE;
         if (larielItem.getMaxSellCountPerDay() >= 0) {
             var purchasedToday = LarielShopPurchaseClientCache.getPurchasedToday(
                     shopkeeperId, larielItem.getShopItem().uuid());
