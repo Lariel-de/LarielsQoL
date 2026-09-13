@@ -178,21 +178,23 @@ public class LarielShopkeeperScreen extends ShopkeeperScreen {
     }
 
     private void renderLarielTooltips(GuiGraphics graphics, int mouseX, int mouseY) {
-        var pixelmonItems = this.buyItems;
+        var startIndex = this.currentTab == EnumBuySell.Buy ? this.buyStartIndex : this.sellStartIndex;
+        var listItems = this.currentTab == EnumBuySell.Buy ? this.buyItems : this.sellItems;
 
-        var larielItems = this.larielItems;
-
-        var left = listLeft();
+        var left = listLeft() + 2;
         var top = buyScreenTop();
         var entryHeight = 20;
 
-        for (var i = 0; i < pixelmonItems.size(); i++) {
-            var itemY = top + 60 + i * entryHeight;
+        for (var i = startIndex; i < startIndex + 6; i++) {
+            if (i >= listItems.size()) break;
 
-            var itemX = left + 10;
+            var visibleIndex = i - startIndex;
+            var itemY = top + 60 + visibleIndex * entryHeight;
 
-            if (mouseX >= itemX && mouseX <= itemX + 16 &&
-                    mouseY >= itemY && mouseY <= itemY + 16) {
+            var itemY2 = itemY + 2;
+
+            if (mouseX >= left && mouseX <= left + 16 &&
+                    mouseY >= itemY2 && mouseY <= itemY2 + 16) {
 
                 var larielItem = larielItems.get(i);
                 var stack = larielItem.getShopItem().itemStack();
