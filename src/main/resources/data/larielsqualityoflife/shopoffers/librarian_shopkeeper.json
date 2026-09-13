@@ -291,7 +291,7 @@
           "components": {
             "minecraft:stored_enchantments": {
               "levels": {
-                "betterbreeding:warm_steps": 1
+                "larielsqualityoflife:warm_steps": 1
               }
             }
           }
