@@ -40,6 +40,20 @@
   "minttrader.larielsqualityoflife.thanksfortrade": "Danke für den Tausch.",
 
   "shopkeeper.larielsqualityoflife.title": "Lariels Händler",
+  "shopkeeper.larielsqualityoflife.armorer.title": "Rüstungshändler",
+  "shopkeeper.larielsqualityoflife.breeder.title": "Züchtungshändler",
+  "shopkeeper.larielsqualityoflife.butcher.title": "Metzger",
+  "shopkeeper.larielsqualityoflife.cartographer.title": "Kartograph",
+  "shopkeeper.larielsqualityoflife.cleric.title": "Geistlicher",
+  "shopkeeper.larielsqualityoflife.farmer.title": "Bauer",
+  "shopkeeper.larielsqualityoflife.fisherman.title": "Fischer",
+  "shopkeeper.larielsqualityoflife.leatherworker.title": "Gerber",
+  "shopkeeper.larielsqualityoflife.librarian.title": "Bibliothekar",
+  "shopkeeper.larielsqualityoflife.mason.title": "Maurer",
+  "shopkeeper.larielsqualityoflife.shepherd.title": "Schäfer",
+  "shopkeeper.larielsqualityoflife.toolsmith.title": "Grobschmied",
+  "shopkeeper.larielsqualityoflife.weaponsmith.title": "Waffenhändler",
+
   "capture.larielsqualityoflife.i_want": "Will ich",
 
   "item.larielsqualityoflife.lariel_villager_spawn_egg": "Lariel‑Dorfbewohner‑Spawn‑Ei",

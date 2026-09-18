@@ -30,7 +30,7 @@
         "height": 2.0
       },
       "title": {
-        "translate": "shopkeeper.larielsqualityoflife.title",
+        "translate": "shopkeeper.larielsqualityoflife.shepherd.title",
         "color": "#2176FF",
         "bold": true,
         "italic": false,

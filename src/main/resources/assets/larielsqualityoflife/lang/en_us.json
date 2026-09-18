@@ -40,6 +40,20 @@
   "minttrader.larielsqualityoflife.thanksfortrade": "Thanks for trading.",
 
   "shopkeeper.larielsqualityoflife.title": "Lariel's Trader",
+  "shopkeeper.larielsqualityoflife.armorer.title": "Armorer",
+  "shopkeeper.larielsqualityoflife.breeder.title": "Breeder Shopkeeper",
+  "shopkeeper.larielsqualityoflife.butcher.title": "Butcher",
+  "shopkeeper.larielsqualityoflife.cartographer.title": "Cartographer",
+  "shopkeeper.larielsqualityoflife.cleric.title": "Cleric",
+  "shopkeeper.larielsqualityoflife.farmer.title": "Farmer",
+  "shopkeeper.larielsqualityoflife.fisherman.title": "Fisherman",
+  "shopkeeper.larielsqualityoflife.leatherworker.title": "Leatherworker",
+  "shopkeeper.larielsqualityoflife.librarian.title": "Librarian",
+  "shopkeeper.larielsqualityoflife.mason.title": "Mason",
+  "shopkeeper.larielsqualityoflife.shepherd.title": "Shepherd",
+  "shopkeeper.larielsqualityoflife.toolsmith.title": "Toolsmith",
+  "shopkeeper.larielsqualityoflife.weaponsmith.title": "Weaponsmith",
+
   "capture.larielsqualityoflife.i_want": "I want it",
 
   "item.larielsqualityoflife.lariel_villager_spawn_egg": "Lariel Villager Spawn Egg",
