@@ -35,7 +35,7 @@ public class LarielMintTraderPacket extends LarielPacketBase {
             );
     public static final Type<LarielMintTraderPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(LarielsQoL.MOD_ID, "mint_trader_packet"));
     private static final TagKey<Item> MINT_TAG =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("larielsqol", "mints"));
+            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("larielsqualityoflife", "mints"));
     private final Item selectedMint;
 
     public LarielMintTraderPacket(boolean sync, Item selectedMint) {
