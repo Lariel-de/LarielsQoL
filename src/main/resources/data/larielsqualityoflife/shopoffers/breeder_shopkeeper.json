@@ -516,7 +516,7 @@
       {
         "item": "minecraft:bricks",
         "price": 2,
-        "amount": 3,
+        "amount": 2,
         "currency": {
           "type": "ITEM",
           "item": "minecraft:emerald"
