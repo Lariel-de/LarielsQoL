@@ -5,16 +5,18 @@ import com.pixelmonmod.pixelmon.api.events.battles.BattleEndEvent;
 import com.pixelmonmod.pixelmon.api.events.battles.BattleStartedEvent;
 import com.pixelmonmod.pixelmon.battles.controller.BattleController;
 import com.pixelmonmod.pixelmon.battles.controller.participants.BattleParticipant;
+import de.lariel.qualityoflife.LarielsQoL;
 import de.lariel.qualityoflife.network.packet.LarielIWantStatusPacket;
 import de.lariel.qualityoflife.network.server.LarielNetwork;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
 public final class LarielIWantService {
     private static final LarielIWantService INSTANCE = new LarielIWantService();
-
+    private static final Logger logger = LarielsQoL.getLogger();
     private final Map<BattleController, BattleState> battles = new IdentityHashMap<>();
 
     private LarielIWantService() {
@@ -27,6 +29,7 @@ public final class LarielIWantService {
     @SubscribeEvent
     public void onBattleStarted(BattleStartedEvent.Post event) {
         var state = new BattleState(
+                event.getBattleController(),
                 event.getTeamOne(),
                 event.getTeamTwo()
         );
@@ -62,11 +65,37 @@ public final class LarielIWantService {
 
     public void toggle(ServerPlayer player, UUID targetUuid) {
         var state = findState(player);
-        if (state == null || !state.wildTargets.contains(targetUuid)) {
+
+        if (state == null) {
+            logger.warn(
+                    "I want it: No battle state found for {}",
+                    player.getUUID()
+            );
             return;
         }
 
-        state.protectedPokemon = targetUuid.equals(state.protectedPokemon) ? null : targetUuid;
+        if (!state.wildTargets.contains(targetUuid)) {
+            state.refreshWildTargets();
+        }
+
+        if (!state.wildTargets.contains(targetUuid)) {
+            logger.warn(
+                    "I want it: Could not resolve target {} in current battle",
+                    targetUuid
+            );
+            return;
+        }
+
+        state.protectedPokemon =
+                targetUuid.equals(state.protectedPokemon)
+                        ? null
+                        : targetUuid;
+
+        logger.info(
+                "I want it: Protected Pokemon changed to {}",
+                state.protectedPokemon
+        );
+
         sendState(state);
     }
 
@@ -91,40 +120,38 @@ public final class LarielIWantService {
     private static final class BattleState {
         private final List<UUID> wildTargets = new ArrayList<>();
         private final List<ServerPlayer> players = new ArrayList<>();
+        private final BattleController battleController;
         private UUID protectedPokemon;
 
-        private BattleState(BattleParticipant[] teamOne, BattleParticipant[] teamTwo) {
+        private BattleState(BattleController battleController, BattleParticipant[] teamOne, BattleParticipant[] teamTwo) {
+            this.battleController = battleController;
             for (var participant : teamOne) {
                 addPlayer(participant);
-                addWildTargetsForPlayer(participant, teamTwo);
             }
             for (var participant : teamTwo) {
                 addPlayer(participant);
-                addWildTargetsForPlayer(participant, teamOne);
+            }
+
+            refreshWildTargets();
+        }
+
+        private void refreshWildTargets() {
+            for (var participant : battleController.getParticipants(p -> true)) {
+                if (participant.isPlayer()) {
+                    continue;
+                }
+
+                for (var pokemon : participant.controlledPokemon) {
+                    if (pokemon.isWildPokemon() && !wildTargets.contains(pokemon.getPokemonUUID())) {
+                        wildTargets.add(pokemon.getPokemonUUID());
+                    }
+                }
             }
         }
 
         private void addPlayer(BattleParticipant participant) {
             if (participant.getEntity() instanceof ServerPlayer player && !players.contains(player)) {
                 players.add(player);
-            }
-        }
-
-        private void addWildTargetsForPlayer(BattleParticipant participant, BattleParticipant[] opposingTeam) {
-            if (!participant.isPlayer()) {
-                return;
-            }
-
-            for (var opponent : opposingTeam) {
-                if (opponent.isPlayer()) {
-                    continue;
-                }
-
-                for (var pokemon : opponent.controlledPokemon) {
-                    if (pokemon.isWildPokemon() && !wildTargets.contains(pokemon.getPokemonUUID())) {
-                        wildTargets.add(pokemon.getPokemonUUID());
-                    }
-                }
             }
         }
     }
